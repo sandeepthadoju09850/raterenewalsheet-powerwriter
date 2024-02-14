@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [testexecution]">
+  <test name="Nopackage(failed)">
+    <classes>
+      <class name="com.nike.automation.test.billingtest">
+        <methods>
+          <include name="setup"/>
+          <include name="entershippingdetails"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- com.nike.automation.test.billingtest -->
+      <class name="com.nike.automation.test.sampletest">
+        <methods>
+          <include name="A"/>
+          <include name="D"/>
+        </methods>
+      </class> <!-- com.nike.automation.test.sampletest -->
+    </classes>
+  </test> <!-- Nopackage(failed) -->
+</suite> <!-- Failed suite [testexecution] -->

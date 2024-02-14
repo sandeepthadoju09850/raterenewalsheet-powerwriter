@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="16" name="Failed suite [Secura PW WC Regression Suite]" parallel="methods" data-provider-thread-count="1">
+  <parameter name="LOB" value="WC"/>
+  <listeners>
+    <listener class-name="Libraries.automation.common.TestListener"/>
+    <listener class-name="Libraries.automation.common.Transformer"/>
+  </listeners>
+  <test name="WC Regression Test Suite(failed)" parallel="methods">
+    <parameter name="LOB" value="WC"/>
+    <classes>
+      <class name="pw.RunnerScripts.WCRunner">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="afterSuite"/>
+          <include name="afterMethod"/>
+          <include name="beforeSuite"/>
+          <include name="WC_15"/>
+        </methods>
+      </class> <!-- pw.RunnerScripts.WCRunner -->
+    </classes>
+  </test> <!-- WC Regression Test Suite(failed) -->
+</suite> <!-- Failed suite [Secura PW WC Regression Suite] -->

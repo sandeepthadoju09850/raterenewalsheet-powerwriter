@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="30" name="Failed suite [Secura PW CA Regression Suite]" parallel="methods" data-provider-thread-count="1">
+  <parameter name="LOB" value="CA"/>
+  <listeners>
+    <listener class-name="Libraries.automation.common.TestListener"/>
+    <listener class-name="Libraries.automation.common.Transformer"/>
+  </listeners>
+  <test name="CA Regression Test Suite(failed)" parallel="methods">
+    <parameter name="LOB" value="CA"/>
+    <classes>
+      <class name="pw.RunnerScripts.CARunner">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="CA_1" invocation-numbers="0"/>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
+          <include name="afterSuite"/>
+          <include name="CA_31" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- pw.RunnerScripts.CARunner -->
+    </classes>
+  </test> <!-- CA Regression Test Suite(failed) -->
+</suite> <!-- Failed suite [Secura PW CA Regression Suite] -->

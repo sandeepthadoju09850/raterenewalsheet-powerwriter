@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Secura PW BP Regression Suite" verbose="1" parallel="methods" thread-count="15" data-provider-thread-count="1">
+		
+	<listeners>
+		<!-- <listener class-name="com.test.automation.common.RetryListener"/>-->
+		<listener class-name="Libraries.automation.common.TestListener"/> 
+		 <listener class-name="Libraries.automation.common.Transformer"></listener> 
+	</listeners>
+	
+
+	<test name="BP Regression Test Suite">
+	<parameter name="LOB" value="BP" />
+		<classes>			
+			<class name="pw.RunnerScripts.BPRunner"/>
+		</classes>
+	</test>
+</suite>

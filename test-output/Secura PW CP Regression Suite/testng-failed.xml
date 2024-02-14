@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="31" name="Failed suite [Secura PW CP Regression Suite]" parallel="methods" data-provider-thread-count="1">
+  <parameter name="LOB" value="CP"/>
+  <listeners>
+    <listener class-name="Libraries.automation.common.TestListener"/>
+    <listener class-name="Libraries.automation.common.Transformer"/>
+  </listeners>
+  <test name="CP Regression Test Suite(failed)" parallel="methods">
+    <parameter name="LOB" value="CP"/>
+    <classes>
+      <class name="pw.RunnerScripts.CPRunner">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="beforeMethod"/>
+          <include name="CP_12"/>
+          <include name="afterMethod"/>
+        </methods>
+      </class> <!-- pw.RunnerScripts.CPRunner -->
+    </classes>
+  </test> <!-- CP Regression Test Suite(failed) -->
+</suite> <!-- Failed suite [Secura PW CP Regression Suite] -->

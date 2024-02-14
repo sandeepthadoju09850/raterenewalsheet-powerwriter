@@ -1,0 +1,321 @@
+<html>
+<head>
+<title>TestNG:  WC Regression Test Suite</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>WC Regression Test Suite</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Nov 01 14:44:56 IST 2023</td>
+</tr>
+<tr><td>Total time:</td><td>4232 seconds (4232906 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='pw.RunnerScripts.WCRunner.WC_13()'><b>WC_13</b><br>Test class: pw.RunnerScripts.WCRunner<br>Test method: WC13_MultiStateOOSE_WCRegression<br>Parameters: GridChrome, GridChrome, <br/>
+<a href="#Output-262109943" onClick='toggleBox("Output-262109943", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-262109943" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-262109943">
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Access PW Application</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Get URL: https://hopw89.intranet.secura.net/</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Log into the PowerWriter</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP00 login page for PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> id: username]Entered value pwtestn</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> id: password]Entered value pwtestn1</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entering username as: pwtestn</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entering password as: pwtestn1</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Forms</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: //*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/01_Timed_Out_Waiting_For_Element.png" title='ScreenShot 01_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/01_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=xpath, value=//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_01_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_01_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>UW approval</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP02 UW approval Page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: //*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/03_Timed_Out_Waiting_For_Element.png" title='ScreenShot 03_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/03_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=xpath, value=//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_02_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_02_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Forms</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - OOSE Status</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: (//*[@id='field_key$1-1-6$3status_detail-label']/table)[last()]/tbody/tr/td[2]</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/04_Timed_Out_Waiting_For_Element.png" title='ScreenShot 04_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/04_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"xpath","selector":"(//*[@id='field_key$1-1-6$3status_detail-label']/table)[last()]/tbody/tr/td[2]"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=xpath, value=(//*[@id='field_key$1-1-6$3status_detail-label']/table)[last()]/tbody/tr/td[2]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_03_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_03_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Failed at WaitForDashboardStatus - java.lang.NullPointerException</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: (//*[@id='field_key$1-1-6$3status_detail-label']/table)[last()]/tbody/tr/td[2]</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/05_Timed_Out_Waiting_For_Element.png" title='ScreenShot 05_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/05_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"xpath","selector":"(//*[@id='field_key$1-1-6$3status_detail-label']/table)[last()]/tbody/tr/td[2]"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=xpath, value=(//*[@id='field_key$1-1-6$3status_detail-label']/table)[last()]/tbody/tr/td[2]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_04_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_04_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Failed at WaitForDashboardStatus - java.lang.NullPointerException</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: //*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/06_Timed_Out_Waiting_For_Element.png" title='ScreenShot 06_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/06_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=xpath, value=//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_05_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_05_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Forms</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - Ready for Booking</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: //*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/07_Timed_Out_Waiting_For_Element.png" title='ScreenShot 07_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/07_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=xpath, value=//*[@id='WorkflowActivitiesListReportContent']/table/tbody/tr[4]/td[1]/data/a}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_06_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_06_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - Ready for Booking</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: (//*[@id='field_key$1-1-7$5action-hyperlink'])[last()]</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/08_Timed_Out_Waiting_For_Element.png" title='ScreenShot 08_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/08_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"xpath","selector":"(//*[@id='field_key$1-1-7$5action-hyperlink'])[last()]"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=xpath, value=(//*[@id='field_key$1-1-7$5action-hyperlink'])[last()]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_07_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_07_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP09 Failed to fill in details for Dashboard Forms : verify boolean Actual: 'true' Expected: 'false'</div><br/>
+<div class='fail-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/09_Failed_to_fill_in_details_for_Dashboard_Forms_.png" title='ScreenShot 09_Failed_to_fill_in_details_for_Dashboard_Forms_ Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/09_Failed_to_fill_in_details_for_Dashboard_Forms_.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Exception in Dashboard Forms - java.lang.NullPointerException</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP10 DashboardForms Table : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP11 Actual and Expected form Count: verify boolean Actual: '17' Expected: '17'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP12 Actual and Expected forms mismatch: verify boolean Actual: 'false' Expected: 'true'</div><br/>
+<div class='fail-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/12_Actual_and_Expected_forms_mismatch.png" title='ScreenShot 12_Actual_and_Expected_forms_mismatch Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/12_Actual_and_Expected_forms_mismatch.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Actions</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - In Force</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP13 DashboardActions Page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: //div[text()='Notification']/../following-sibling::div//span[contains(text(),'OK')]/../..</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/14_Timed_Out_Waiting_For_Element.png" title='ScreenShot 14_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/14_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Could not click on [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> xpath: //div[text()='Audit Details']], element not visible</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Selecting WC_FinalAuditDetails </div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP15 WC_FinalAuditDetails page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> xpath: (//*[contains(text(),'8810-0')]/ancestor::td[1]/following-sibling::td//input[contains(@id,'audited_exposure-textbox')])[1]]Entered value $ 91,800</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Selecting WC_FinalAuditDetails </div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP16 WC_FinalAuditDetails page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Test data is provided as N/A</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> xpath: (//*[contains(text(),'8810-0')]/ancestor::td[1]/following-sibling::td//input[contains(@id,'audited_exposure-textbox')])[2]]Entered value $ 250,000</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Selecting WC_FinalAuditDetails </div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP17 WC_FinalAuditDetails page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Test data is provided as N/A</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> xpath: (//*[contains(text(),'4299-0')]/ancestor::td[1]/following-sibling::td//input[contains(@id,'audited_exposure-textbox')])[1]]Entered value $ 150,000</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Clicked on calculatePremium</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP18 WCPremiumSummary Page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>The Current Actual value of Company code is - 20-WC-004225409-3</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.id: field_key$2d45d4ed-ab70-385a-a8f2-bbb52d2e4f83$1company_name-textbox</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/19_Timed_Out_Waiting_For_Element.png" title='ScreenShot 19_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/19_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"css selector","selector":"#field_key\$2d45d4ed\-ab70\-385a\-a8f2\-bbb52d2e4f83\$1company_name\-textbox"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=id, value=field_key$2d45d4ed-ab70-385a-a8f2-bbb52d2e4f83$1company_name-textbox}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_08_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_08_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in nullEntered value SECURA Insurance Company</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>The Current Actual value of Company code is - 20-WC-004225409-3</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP20 LiabilityLimits Validation: verify boolean Actual: '$500,000 / $500,000 / $500,000' Expected: '$500,000 / $500,000 / $500,000'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP21 PolicyMinimumPremiumState Validation: verify boolean Actual: 'MN' Expected: 'MN'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP22 PolicyMinimumPremium Validation: verify boolean Actual: '$474' Expected: '$474'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP23 ExpenseConstantState Validation: verify boolean Actual: 'IA' Expected: 'IA'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP24 ExpenseConstantPremium Validation: verify boolean Actual: '$160' Expected: '$160'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP25 ProRateFactor Validation: verify boolean Actual: '1' Expected: '1'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP26 Total TransactionPremium Validation: verify boolean Actual: '$2' Expected: '$2'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP27 TransactionSurchargeTaxesFees Validation: verify boolean Actual: '$1' Expected: '$1'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP28 TotalPremium Validation: verify boolean Actual: '$4,750' Expected: '$4,750'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP29 DashboardForms Table : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP30 Actual and Expected form Count: verify boolean Actual: '17' Expected: '17'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP31 Actual and Expected forms mismatch: verify boolean Actual: 'false' Expected: 'true'</div><br/>
+<div class='fail-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/31_Actual_and_Expected_forms_mismatch.png" title='ScreenShot 31_Actual_and_Expected_forms_mismatch Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/31_Actual_and_Expected_forms_mismatch.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Actions</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - Ready for Booking</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP32 DashboardActions Page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Actions</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - In Force</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP33 DashboardActions Page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.xpath: //div[text()='Notification']/../following-sibling::div//span[contains(text(),'OK')]/../..</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/34_Timed_Out_Waiting_For_Element.png" title='ScreenShot 34_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/34_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Selecting WC_FinalAuditDetails </div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP35 WC_FinalAuditDetails page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Test data is provided as N/A</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> xpath: (//*[contains(text(),'8810-0')]/ancestor::td[1]/following-sibling::td//input[contains(@id,'audited_exposure-textbox')])[1]]Entered value $ 150,000</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Selecting WC_FinalAuditDetails </div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP36 WC_FinalAuditDetails page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Test data is provided as N/A</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> xpath: (//*[contains(text(),'8810-0')]/ancestor::td[1]/following-sibling::td//input[contains(@id,'audited_exposure-textbox')])[2]]Entered value $ 250,000</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Selecting WC_FinalAuditDetails </div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP37 WC_FinalAuditDetails page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Test data is provided as N/A</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in [[RemoteWebDriver: chrome on WINDOWS (121df335cbfd28be9df46ddc51e5b4be)] -> xpath: (//*[contains(text(),'4299-0')]/ancestor::td[1]/following-sibling::td//input[contains(@id,'audited_exposure-textbox')])[1]]Entered value $ 100,000</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Clicked on calculatePremium</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP38 WCPremiumSummary Page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>The Current Actual value of Company code is - 20-WC-004225409-3</div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Timed out waiting for element By.id: field_key$2d45d4ed-ab70-385a-a8f2-bbb52d2e4f83$1company_name-textbox</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>Timed Out Waiting For Element</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/39_Timed_Out_Waiting_For_Element.png" title='ScreenShot 39_Timed_Out_Waiting_For_Element Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/39_Timed_Out_Waiting_For_Element.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>NoSuchElementException Exception in getElement:no such element: Unable to locate element: {"method":"css selector","selector":"#field_key\$2d45d4ed\-ab70\-385a\-a8f2\-bbb52d2e4f83\$1company_name\-textbox"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.0.0', revision: '3a21814679'
+System info: host: 'VT0-IT-47-D143', ip: '172.18.224.196', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [121df335cbfd28be9df46ddc51e5b4be, findElement {using=id, value=field_key$2d45d4ed-ab70-385a-a8f2-bbb52d2e4f83$1company_name-textbox}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.16 (7e1ff058633f..., userDataDir: C:\Users\sh09475\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 121df335cbfd28be9df46ddc51e...}
+Session ID: 121df335cbfd28be9df46ddc51e5b4be</div><br/>
+<div class=trace-step><strong class='error-label'>ERROR: </strong><span class='error-body'>NoSuchElementException Exception in getElement:</span></div><br/>
+<div class='error-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_09_NoSuchElementException_Exception_in_getElement_.png" title='ScreenShot NoSuchElementException Exception in getElement: Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/ERROR_09_NoSuchElementException_Exception_in_getElement_.png'></div><hr></a></div><br/>
+<div class=se-step><strong class='sestep-label'>SE STEP: </strong>Entered text in nullEntered value SECURA Insurance Company</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>The Current Actual value of Company code is - 20-WC-004225409-3</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP40 LiabilityLimits Validation: verify boolean Actual: '$500,000 / $500,000 / $500,000' Expected: '$500,000 / $500,000 / $500,000'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP41 PolicyMinimumPremiumState Validation: verify boolean Actual: 'MN' Expected: 'MN'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP42 PolicyMinimumPremium Validation: verify boolean Actual: '$474' Expected: '$474'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP43 ExpenseConstantState Validation: verify boolean Actual: 'IA' Expected: 'IA'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP44 ExpenseConstantPremium Validation: verify boolean Actual: '$160' Expected: '$160'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP45 ProRateFactor Validation: verify boolean Actual: '1' Expected: '1'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP46 Total TransactionPremium Validation: verify boolean Actual: '-$1,230' Expected: '-$1,230'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP47 TransactionSurchargeTaxesFees Validation: verify boolean Actual: '-$35' Expected: '-$35'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP48 TotalPremium Validation: verify boolean Actual: '$3,520' Expected: '$3,520'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP49 DashboardForms Table : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP50 Actual and Expected form Count: verify boolean Actual: '17' Expected: '17'</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP51 Actual and Expected forms mismatch: verify boolean Actual: 'false' Expected: 'true'</div><br/>
+<div class='fail-screenshot'><a class='crop' href="http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/51_Actual_and_Expected_forms_mismatch.png" title='ScreenShot 51_Actual_and_Expected_forms_mismatch Fail'><div class='mask'><img src='http://172.18.118.245:5555/test_results/WC_13_179_20231101144457688/51_Actual_and_Expected_forms_mismatch.png'></div><hr></a></div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Actions</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - Ready for Booking</div><br/>
+<div class=verification><strong class='verification-label'>VERIFICATION: </strong>VP52 DashboardActions Page of PowerWriter : verify boolean Actual: 'true' Expected: 'true'</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>Dashboard Actions</div><br/>
+<div class=test-step><strong class='teststep-label'>TEST STEP: </strong>DashboardStatus is - In Force</div><br/>
+</div>
+</td>
+<td></td>
+<td>4218</td>
+<td>pw.RunnerScripts.WCRunner@62ea3440</td></tr>
+</table><p>
+</body>
+</html>

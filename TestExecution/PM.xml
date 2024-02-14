@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Secura PW CP Regression Suite" verbose="1" parallel="methods" thread-count="10" data-provider-thread-count="1">
+		
+	<listeners>
+		<!-- <listener class-name="com.test.automation.common.RetryListener"/>-->
+		<listener class-name="Libraries.automation.common.TestListener"/> 
+		 <listener class-name="Libraries.automation.common.Transformer"></listener> 
+	</listeners>
+	
+
+	<test name="PM Regression Test Suite">
+	<parameter name="LOB" value="PM" />
+		<classes>			
+			<class name="pw.RunnerScripts.PMRunner"/>
+		</classes>
+	</test>
+</suite>

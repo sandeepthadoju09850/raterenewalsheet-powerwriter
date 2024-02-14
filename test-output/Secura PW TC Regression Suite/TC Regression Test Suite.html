@@ -1,0 +1,395 @@
+<html>
+<head>
+<title>TestNG:  TC Regression Test Suite</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>TC Regression Test Suite</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Sep 07 12:58:32 IST 2023</td>
+</tr>
+<tr><td>Total time:</td><td>11 seconds (11831 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='pw.RunnerScripts.TCRunner.beforeMethod()'><b>beforeMethod</b><br>Test class: pw.RunnerScripts.TCRunner<br>Parameters: public void pw.RunnerScripts.TCRunner.TC_1(Libraries.automation.common.framework.Browser$Browsers,Libraries.automation.common.SeHelper,java.util.Map) throws java.io.IOException, [Ljava.lang.Object;@6ab72419<br/>
+<a href="#Output-979723205" onClick='toggleBox("Output-979723205", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-979723205" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-979723205">
+<div class=trace-step>Test Method: TC_1</div><br/>
+<div class=trace-step>Description: TC_1 AZ TC regression testing</div><br/>
+<div class=trace-step>Browser: GridChrome</div><br/>
+</div>
+</td>
+<td><div><pre>org.testng.internal.thread.ThreadExecutionException: org.testng.internal.InvokeMethodRunnable$TestNGRuntimeException: org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from no such execution context: uniqueContextId not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: driver.version: unknown
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00F26E73+48323]
+	(No symbol) [0x00EB9661]
+	(No symbol) [0x00DC5308]
+	(No symbol) [0x00DB8960]
+	(No symbol) [0x00DB70E8]
+	(No symbol) [0x00DB775A]
+	(No symbol) [0x00DC83C7]
+	(No symbol) [0x00DC9991]
+	(No symbol) [0x00DC9A30]
+	(No symbol) [0x00E120BB]
+	(No symbol) [0x00E10ADC]
+	(No symbol) [0x00E0A6D6]
+	(No symbol) [0x00DE847C]
+	(No symbol) [0x00DE957D]
+	GetHandleVerifier [0x0118FD5D+2575277]
+	GetHandleVerifier [0x011CF86E+2836158]
+	GetHandleVerifier [0x011C96DC+2811180]
+	GetHandleVerifier [0x00FB41B0+626688]
+	(No symbol) [0x00EC314C]
+	(No symbol) [0x00EBF4B8]
+	(No symbol) [0x00EBF59B]
+	(No symbol) [0x00EB21B7]
+	BaseThreadInitThunk [0x757700C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77827B1E+286]
+	RtlGetAppContainerNamedObjectPath [0x77827AEE+238]
+
+Build info: version: &apos;4.0.0&apos;, revision: &apos;3a21814679&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}}]
+Capabilities {}
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+from no such execution context: uniqueContextId not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: driver.version: unknown
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00F26E73+48323]
+	(No symbol) [0x00EB9661]
+	(No symbol) [0x00DC5308]
+	(No symbol) [0x00DB8960]
+	(No symbol) [0x00DB70E8]
+	(No symbol) [0x00DB775A]
+	(No symbol) [0x00DC83C7]
+	(No symbol) [0x00DC9991]
+	(No symbol) [0x00DC9A30]
+	(No symbol) [0x00E120BB]
+	(No symbol) [0x00E10ADC]
+	(No symbol) [0x00E0A6D6]
+	(No symbol) [0x00DE847C]
+	(No symbol) [0x00DE957D]
+	GetHandleVerifier [0x0118FD5D+2575277]
+	GetHandleVerifier [0x011CF86E+2836158]
+	GetHandleVerifier [0x011C96DC+2811180]
+	GetHandleVerifier [0x00FB41B0+626688]
+	(No symbol) [0x00EC314C]
+	(No symbol) [0x00EBF4B8]
+	(No symbol) [0x00EBF59B]
+	(No symbol) [0x00EB21B7]
+	BaseThreadInitThunk [0x757700C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77827B1E+286]
+	RtlGetAppContainerNamedObjectPath [0x77827AEE+238]
+
+Build info: version: &apos;4.0.0&apos;, revision: &apos;3a21814679&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}}]
+Capabilities {}
+	... 5 more
+Caused by: org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from no such execution context: uniqueContextId not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: driver.version: unknown
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00F26E73+48323]
+	(No symbol) [0x00EB9661]
+	(No symbol) [0x00DC5308]
+	(No symbol) [0x00DB8960]
+	(No symbol) [0x00DB70E8]
+	(No symbol) [0x00DB775A]
+	(No symbol) [0x00DC83C7]
+	(No symbol) [0x00DC9991]
+	(No symbol) [0x00DC9A30]
+	(No symbol) [0x00E120BB]
+	(No symbol) [0x00E10ADC]
+	(No symbol) [0x00E0A6D6]
+	(No symbol) [0x00DE847C]
+	(No symbol) [0x00DE957D]
+	GetHandleVerifier [0x0118FD5D+2575277]
+	GetHandleVerifier [0x011CF86E+2836158]
+	GetHandleVerifier [0x011C96DC+2811180]
+	GetHandleVerifier [0x00FB41B0+626688]
+	(No symbol) [0x00EC314C]
+	(No symbol) [0x00EBF4B8]
+	(No symbol) [0x00EBF59B]
+	(No symbol) [0x00EB21B7]
+	BaseThreadInitThunk [0x757700C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77827B1E+286]
+	RtlGetAppContainerNamedObjectPath [0x77827AEE+238]
+
+Build info: version: &apos;4.0.0&apos;, revision: &apos;3a21814679&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}}]
+Capabilities {}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:84)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:156)
+	at org.openqa.selenium.remote.TracedCommandExecutor.execute(TracedCommandExecutor.java:39)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:168)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:146)
+	at Libraries.automation.common.SeHelper.buildDriver(SeHelper.java:262)
+	at Libraries.automation.common.SeHelper.startSession(SeHelper.java:140)
+	at Libraries.automation.common.SeHelper.startSession(SeHelper.java:168)
+	at Libraries.automation.common.CommonBaseTest.beforeMethod(CommonBaseTest.java:74)
+	at pw.RunnerScripts.TCRunner.beforeMethod(TCRunner.java:115)
+	... 6 more
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace979723205", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace979723205'><pre>org.testng.internal.thread.ThreadExecutionException: org.testng.internal.InvokeMethodRunnable$TestNGRuntimeException: org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from no such execution context: uniqueContextId not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: driver.version: unknown
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00F26E73+48323]
+	(No symbol) [0x00EB9661]
+	(No symbol) [0x00DC5308]
+	(No symbol) [0x00DB8960]
+	(No symbol) [0x00DB70E8]
+	(No symbol) [0x00DB775A]
+	(No symbol) [0x00DC83C7]
+	(No symbol) [0x00DC9991]
+	(No symbol) [0x00DC9A30]
+	(No symbol) [0x00E120BB]
+	(No symbol) [0x00E10ADC]
+	(No symbol) [0x00E0A6D6]
+	(No symbol) [0x00DE847C]
+	(No symbol) [0x00DE957D]
+	GetHandleVerifier [0x0118FD5D+2575277]
+	GetHandleVerifier [0x011CF86E+2836158]
+	GetHandleVerifier [0x011C96DC+2811180]
+	GetHandleVerifier [0x00FB41B0+626688]
+	(No symbol) [0x00EC314C]
+	(No symbol) [0x00EBF4B8]
+	(No symbol) [0x00EBF59B]
+	(No symbol) [0x00EB21B7]
+	BaseThreadInitThunk [0x757700C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77827B1E+286]
+	RtlGetAppContainerNamedObjectPath [0x77827AEE+238]
+
+Build info: version: &apos;4.0.0&apos;, revision: &apos;3a21814679&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}}]
+Capabilities {}
+	at org.testng.internal.thread.FutureResultAdapter.get(FutureResultAdapter.java:25)
+	at org.testng.internal.MethodInvocationHelper.invokeWithTimeoutWithNewExecutor(MethodInvocationHelper.java:273)
+	at org.testng.internal.MethodInvocationHelper.invokeWithTimeout(MethodInvocationHelper.java:231)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:567)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:73)
+	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.testng.internal.InvokeMethodRunnable$TestNGRuntimeException: org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from no such execution context: uniqueContextId not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: driver.version: unknown
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00F26E73+48323]
+	(No symbol) [0x00EB9661]
+	(No symbol) [0x00DC5308]
+	(No symbol) [0x00DB8960]
+	(No symbol) [0x00DB70E8]
+	(No symbol) [0x00DB775A]
+	(No symbol) [0x00DC83C7]
+	(No symbol) [0x00DC9991]
+	(No symbol) [0x00DC9A30]
+	(No symbol) [0x00E120BB]
+	(No symbol) [0x00E10ADC]
+	(No symbol) [0x00E0A6D6]
+	(No symbol) [0x00DE847C]
+	(No symbol) [0x00DE957D]
+	GetHandleVerifier [0x0118FD5D+2575277]
+	GetHandleVerifier [0x011CF86E+2836158]
+	GetHandleVerifier [0x011C96DC+2811180]
+	GetHandleVerifier [0x00FB41B0+626688]
+	(No symbol) [0x00EC314C]
+	(No symbol) [0x00EBF4B8]
+	(No symbol) [0x00EBF59B]
+	(No symbol) [0x00EB21B7]
+	BaseThreadInitThunk [0x757700C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77827B1E+286]
+	RtlGetAppContainerNamedObjectPath [0x77827AEE+238]
+
+Build info: version: &apos;4.0.0&apos;, revision: &apos;3a21814679&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}}]
+Capabilities {}
+	at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:49)
+	at org.testng.internal.InvokeMethodRunnable.run(InvokeMethodRunnable.java:37)
+	... 5 more
+Caused by: org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from no such execution context: uniqueContextId not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: driver.version: unknown
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00F26E73+48323]
+	(No symbol) [0x00EB9661]
+	(No symbol) [0x00DC5308]
+	(No symbol) [0x00DB8960]
+	(No symbol) [0x00DB70E8]
+	(No symbol) [0x00DB775A]
+	(No symbol) [0x00DC83C7]
+	(No symbol) [0x00DC9991]
+	(No symbol) [0x00DC9A30]
+	(No symbol) [0x00E120BB]
+	(No symbol) [0x00E10ADC]
+	(No symbol) [0x00E0A6D6]
+	(No symbol) [0x00DE847C]
+	(No symbol) [0x00DE957D]
+	GetHandleVerifier [0x0118FD5D+2575277]
+	GetHandleVerifier [0x011CF86E+2836158]
+	GetHandleVerifier [0x011C96DC+2811180]
+	GetHandleVerifier [0x00FB41B0+626688]
+	(No symbol) [0x00EC314C]
+	(No symbol) [0x00EBF4B8]
+	(No symbol) [0x00EBF59B]
+	(No symbol) [0x00EB21B7]
+	BaseThreadInitThunk [0x757700C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77827B1E+286]
+	RtlGetAppContainerNamedObjectPath [0x77827AEE+238]
+
+Build info: version: &apos;4.0.0&apos;, revision: &apos;3a21814679&apos;
+System info: host: &apos;VT0-IT-47-D143&apos;, ip: &apos;172.18.224.196&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_291&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [], binary: C:/NewGC/Google1/Chrome/App..., extensions: []}}}]
+Capabilities {}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:84)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:156)
+	at org.openqa.selenium.remote.TracedCommandExecutor.execute(TracedCommandExecutor.java:39)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:168)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:146)
+	at Libraries.automation.common.SeHelper.buildDriver(SeHelper.java:262)
+	at Libraries.automation.common.SeHelper.startSession(SeHelper.java:140)
+	at Libraries.automation.common.SeHelper.startSession(SeHelper.java:168)
+	at Libraries.automation.common.CommonBaseTest.beforeMethod(CommonBaseTest.java:74)
+	at pw.RunnerScripts.TCRunner.beforeMethod(TCRunner.java:115)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:46)
+	... 6 more
+</pre></div></td>
+<td>0</td>
+<td>pw.RunnerScripts.TCRunner@62ea3440</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='pw.RunnerScripts.TCRunner.TC_1()'><b>TC_1</b><br>Test class: pw.RunnerScripts.TCRunner<br>Test method: TC_1 AZ TC regression testing<br>Parameters: GridChrome, none, </td>
+<td></td>
+<td>0</td>
+<td>pw.RunnerScripts.TCRunner@62ea3440</td></tr>
+</table><p>
+</body>
+</html>
