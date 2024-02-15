@@ -640,4 +640,13 @@ public class OR_RRS_MainScreen extends OR_Common{
 	se.element().waitForElement(RRS_LBL_LoadingPleaseWait);
 	return se.element().getElement(RRS_LBL_LoadingPleaseWait);
 	}
+	
+	//td[@class='Vertical-Borders']//strong[contains(text(),'')]
+	public By RRS_LBL_AccountNumberSearch; 
+	public WebElement getRRS_LBL_AccountNumberSearch(String testData)
+	{
+		RRS_LBL_AccountNumberSearch =By.xpath("//td[@class='Vertical-Borders']//strong[contains(text(),'"+testData+"')]");
+	se.element().waitForElement(RRS_LBL_AccountNumberSearch);
+	return se.element().getElement(RRS_LBL_AccountNumberSearch);
+	}
 }

@@ -102,6 +102,7 @@ import pw.regressions.TC.TC6_IN_TCRegression;
 import pw.regressions.TC.TC7_KS_TCRegression;
 import pw.regressions.TC.TC8_KY_Regression;
 import pw.regressions.TC.TC9_MI_TCRegression;
+import rrs.Regressions.RRS_Regression_01;
 
 @SuppressWarnings("unused")
 public class CURunner extends BaseTest {
@@ -139,6 +140,20 @@ public class CURunner extends BaseTest {
 	protected void afterSuite() throws IOException {
 		Util.stopExecutionIfPassed(RegressionStatus,constants.CU);
 		
+	}
+	
+	@Test(description = "CU12_AZ_CURegression", dataProvider = "browserXlsByRow", groups = {
+    "PWRateComparision" }, timeOut = 500000000)
+	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
+	public void CU_12(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
+	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
+	System.out.println(strRegressionId);
+	String RegressionName = Util.getRegressionName(strRegressionId);
+	System.out.println(RegressionName);
+	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
+	RRS_Regression_01.RRS_RegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
+	test.setEndedTime(Util.getTime());
+	extent.endTest(test);
 	}
 	
 	@Test(description = "CU1_AZ_CURegression", dataProvider = "browserXlsByRow", groups = {

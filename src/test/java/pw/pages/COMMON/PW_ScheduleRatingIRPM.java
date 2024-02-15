@@ -65,12 +65,13 @@ public class PW_ScheduleRatingIRPM extends OR_Common {
 			se.element().checkUncheckOrValidate(getScheduleRating_CHK_Apply(strScheduleRating_CHK_Apply),strScheduleRating_CHK_Apply,test);
 			se.element().checkUncheckOrValidate(getScheduleRating_CHK_DoNotApply(strScheduleRating_CHK_DoNotApply),strScheduleRating_CHK_DoNotApply,test);
 			
-			se.element().enterOrValidateText(getScheduleRating_TXT_Credit(strScheduleRating_TXT_Credit,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Credit,test);
 			if((strScheduleRating_TXT_CreditClear.equalsIgnoreCase("Yes"))){
 				
 				getScheduleRating_TXT_Credit(strScheduleRating_TXT_CreditClear,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB).clear();
 				se.util().sleep(5000);
 			}
+			se.element().enterOrValidateText(getScheduleRating_TXT_Credit(strScheduleRating_TXT_Credit,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Credit,test);
+			
 			
 			if(!strScheduleRating_TXT_Debit.equalsIgnoreCase(constants.NA) && !strScheduleRating_TXT_Debit.contains(constants.Validate)){
                 se.element().clearTheField(getScheduleRating_TXT_Debit(strScheduleRating_TXT_Debit,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB));

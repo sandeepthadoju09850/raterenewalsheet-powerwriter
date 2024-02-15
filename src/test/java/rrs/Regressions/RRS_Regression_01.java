@@ -17,6 +17,7 @@ import Libraries.automation.common.SeHelper;
 import Libraries.automation.common.Utils.TestPageFactory;
 import Libraries.automation.common.framework.Browser.Browsers;
 import pw.Constants.constants;
+import pw.pages.CA.CA_ScheduleRating;
 import pw.pages.CAF.CAF_CrimeEndorsement;
 import pw.pages.CAF.CAF_InsuringAgreements;
 import pw.pages.CAF.CAF_Locations;
@@ -57,6 +58,8 @@ import pw.pages.GL.GL_PremAndProd;
 import pw.pages.GL.GeneralLiability;
 import pw.pages.PLCM.CP_ProfessionalLiabilityClaims;
 import pw.pages.PLCM.ProfLiab_MiscellaneousCoverage;
+import pw.pages.WC.WC_ScheduleRating;
+import pw.pages.WC.WC_WCRatingPeriod;
 import rrs.pages.MainScreen.RateRenewalSheet;
 import rrs.pages.MainScreen.PWQuoteOpen;
 import rrs.pages.MainScreen.PWValidations;
@@ -108,10 +111,12 @@ public class RRS_Regression_01 extends BaseTest {
 		CP_DirectorsAndOfficers DirectorsAndOfficersPage = TestPageFactory.initElements(se, CP_DirectorsAndOfficers.class);
 		CP_ProfessionalLiabilityClaims ProfessionalLiabilityClaims  = TestPageFactory.initElements(se, CP_ProfessionalLiabilityClaims.class);
 		ProfLiab_MiscellaneousCoverage ProfLiab_MiscellaneousCoveragePage = TestPageFactory.initElements(se, ProfLiab_MiscellaneousCoverage.class);
-		
+		CA_ScheduleRating CA_ScheduleRatingPage = TestPageFactory.initElements(se, CA_ScheduleRating.class);
 		RateRenewalSheet RateRenewalSheet = TestPageFactory.initElements(se, RateRenewalSheet.class);
 		PWValidations PWValidationsPage = TestPageFactory.initElements(se, PWValidations.class);
 		PWQuoteOpen PWQuoteOpenPage = TestPageFactory.initElements(se, PWQuoteOpen.class);
+		WC_WCRatingPeriod WC_WCRatingPeriodPage = TestPageFactory.initElements(se, WC_WCRatingPeriod.class);
+		WC_ScheduleRating ScheduleRating = TestPageFactory.initElements(se, WC_ScheduleRating.class);
 		
 		try {
 			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
@@ -123,136 +128,91 @@ public class RRS_Regression_01 extends BaseTest {
 			LinkedHashMap<String, String> QFRPremiumsCA= new LinkedHashMap<String, String>();
 			LinkedHashMap<String, String> QFRPremiumsWC= new LinkedHashMap<String, String>();
 			LinkedHashMap<String, String> QFRPremiumsUM= new LinkedHashMap<String, String>();
+			LinkedHashMap<String, String> NewQFRPremium= new LinkedHashMap<String, String>();
+			LinkedHashMap<String, String> NewQFRPremiumCA= new LinkedHashMap<String, String>();
+			LinkedHashMap<String, String> NewQFRPremiumWC= new LinkedHashMap<String, String>();
+			
 			//int iteration = 0;
-		/*	CommonFunPage.PWAppStartUp(test);
-			
-			//New Transaction Actions
-			
-			if (transactionsList.contains("NewQuote")) {
-				String transaction = "NewQuote";
-				LoginPage.PWAppLogin(strRegressionID, transaction, test);
-				WelcomePage.homePage(strRegressionID, transaction, test);
-				QuoteGenInfoPage.quote_ProdInfo(strRegressionID, transaction, test);
-				ProducerPage.AddProducers(strRegressionID, transaction, test);
-				CommonMethods.NavigateTo("Business Protector Policy",test);
-				String cyberChkY = CommercialPackage.CommercialPackage(strRegressionID, transaction, test);
-				CommercialPropertyPage.CommercialPropertyMethod(strRegressionID, transaction, test);
-				CP_FloodCoveragepage.FloodCoveragePage(strRegressionID, transaction, test);
-				CP_ElectronicCommercepage.ElectronicCommerce(strRegressionID, transaction, test);
-				CplocationsPage.Locations(strRegressionID, transaction, test);
-				BuildingsPage.BuildingDetails(strRegressionID, transaction, test);
-				CP_Terrorismpage.CP_TerrorismPage(strRegressionID, transaction, test);
-				CommonMethods.NavigateToNextScreen(test);
-				CPKeyEmployeeReplacementExpense.CP_KeyEmployeePage(strRegressionID, transaction, test);
-				
-				CommonMethods.CollapseAllAndNavigateTo("Business Protector Policy", "20-BP", test);
-				CommonMethods.NavigateTo("General Liability", test);
-				GeneralLiabilityPage.GeneralLiabilityPage(strRegressionID, transaction, test);
-				GLLocationPage.GL_Location_Details(strRegressionID, transaction, test);
-				GLPremAndProdPage.GL_PremAndProdPage(strRegressionID, transaction, test);
-				GLClassificationsPage.GL_ClassificationsPage(strRegressionID, transaction, test);
-				GLEmployeeBenefitsLiabilityPage.GL_EmployeeBenefitsLiability_Details(strRegressionID, transaction,test);
-				GLLiquorLiabilityPage.GL_LiquorLiability_Details(strRegressionID, transaction, test);
-				GLLiquorLiabilityClassificationsPage.GL_LiquorLiability_ClassificationsPage(strRegressionID, transaction, test);
-				CommonMethods.NavigateToNextScreen(test);
-				GLOptionalProvisionsPage.CP_GLOptionalProvisions(strRegressionID, transaction, test);
-				GLExperienceRating.GLExperienceRatingPage(strRegressionID, transaction, test);
-				
-				CrimeAndFidelity_MainPage.CrimeAndFidelity_MainPage(strRegressionID, transaction, test);
-				CAF_LocationsPage.CAF_Locations_Details(strRegressionID, transaction, test);
-				CAF_InsuringAgreementsPage.CAF_InsuringAgreementsPage(strRegressionID, transaction, test);
-				Crime_EndorsementsPage.CAF_CrimeEndorsementMethod(strRegressionID, transaction, test);
-				
-				CIMMainPage.CIM_Main(strRegressionID, transaction, test);
-				CIMLocationsPage.CIM_Locations(strRegressionID, transaction, test);
-				CommonMethods.NavigateToNextScreen(test);
-				CIMFineArtsFloaterPage.Add_FineArtsFloater(strRegressionID, transaction, test);
-				CIMFineArtsFloaterOtherCoveragesPage.FineArtsFloater_OtherCoverages(strRegressionID, transaction, test);
-				CIMSignsPage.CIMSigns(strRegressionID, transaction, test);
-				CommonMethods.NavigateToNextScreen(test);
-				CyberSecurtiy_Main.CyberSecurityPage(strRegressionID, transaction,cyberChkY,test);
-				ScheduleRatingIRPMPage.ScheduleRatingIRPM(strRegressionID,transaction,test);
-				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);
-				PremiumSummary.GetPremiumSummary(strRegressionID, transaction, transactionsList, file, workbook, test);
-				BillingTab.getUpdateBillingTab(strRegressionID, transaction, test);
-				CommonMethods.getDashboardForms(strRegressionID, transaction, test);
-				//CommonMethods.getDashboardSupplementaryInfo(strRegressionID, transaction, test);
-				CommonMethods.getDashboardActions(strRegressionID, transaction, test);
-								
-			}
-			
-			
-			
-			// Convert To Policy
-			if (transactionsList.contains("ConvertToPolicy")) {
-				String transaction = "ConvertToPolicy";
-				QuoteGenInfoPage.quote_ProdInfo(strRegressionID, transaction, test);
-				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);
-				PremiumSummary.GetPremiumSummary(strRegressionID, transaction, transactionsList, file, workbook, test);
-				CommonMethods.getDashboardActions(strRegressionID, transaction, test);
-			}
+		
 
-			
-			if (transactionsList.contains("QuoteForRenewal")) {
-				String transaction = "QuoteForRenewal";
-				QuoteGenInfoPage.quote_ProdInfo(strRegressionID, transaction, test);
-				CommonMethods.NavigateTo("Business Protector Policy",test);
-				CommercialPackage.CommercialPackage(strRegressionID, transaction, test);
-				CommonMethods.NavigateTo("Commercial Property", test);
-				CommercialPropertyPage.CommercialPropertyMethod(strRegressionID, transaction, test);
-				CommonMethods.NavigateTo("Buildings (1)", test);
-				BuildingsPage.BuildingDetails(strRegressionID, transaction, test);
-				CommonMethods.NavigateToNextScreen(test);
-				CPCoverages.CP_BusinessPersonalProperty(strRegressionID, transaction,"Location 1 Building 1", test);
-				CommonMethods.NavigateTo("Professional Liability Claims-Made",test);
-				ProfessionalLiabilityClaims.CP_ProfessionalLiabilityClaimsPage(strRegressionID, transaction, test);
-				ProfLiab_MiscellaneousCoveragePage.CP_ProfLiabMiscellaneousCoverage(strRegressionID, transaction, test);
-				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);
-				PremiumSummary.GetPremiumSummary(strRegressionID, transaction, transactionsList, file, workbook, test);
-				CommonMethods.getDashboardActions(strRegressionID, transaction, test);
-
-			}
-
-		*/	if (transactionsList.contains("NewQuote")) {
-			String transaction = "NewQuote";
+			if (transactionsList.contains("BPNewQuote")) {
+			String transaction = "BPNewQuote";
 			CommonFunPage.PWAppStartUp(test);
 			LoginPage.PWAppLogin(strRegressionID, transaction, test);
 			}
 			
 			
-			if (transactionsList.contains("PWPremiums1")) {
-				String transaction = "PWPremiums";				
+			if (transactionsList.contains("BPPWPremiums")) {
+				String transaction = "BPPWPremiums";		
+				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);								
 			}
 			
-			if (transactionsList.contains("RRSValidationOne1")) {
-				String transaction = "RRSValidationOne";				
+			if (transactionsList.contains("BPRRSValidationOne1")) {
+				String transaction = "BPRRSValidationOne";				
 				CommonFunPage.RRSAppStartUp(test, constants.Env);				
 				RateRenewalSheet.RateRenewalSheetMethod(CurrentTermPremiums,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,strRegressionID, transaction, test);							
 			}
 			
-			if (transactionsList.contains("RRSValidationTwo1")) {
-				String transaction = "RRSValidationTwo";				
+			if (transactionsList.contains("BPRRSValidationTwo1")) {
+				String transaction = "BPRRSValidationTwo";				
 				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);
 			}
 			
-			if(transactionsList.contains("ReviseQuote")){				
-				String transaction = "ReviseQuote";
-				//String policyNum = PWQuoteOpen.policyNumber;
-				String policyNum = "4165523";
+			if(transactionsList.contains("BPReviseQuote")){				
+				String transaction = "BPReviseQuote";
+				String policyNum = PWQuoteOpen.policyNumberPackage;
+				//String policyNum = "4165167";
 				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);
-				//CommonMethods.NavigateToPage("Schedule Rating/IRPM",test);
-				
+				CommonMethods.CollapseAllAndNavigateTo("Business Protector Policy", "20-BP", test);
+				CommonMethods.NavigateTo("Cyber Security", test);
+				CommonMethods.NavigateTo("Schedule Rating/IRPM",test);				
 				ScheduleRatingIRPMPage.ScheduleRatingIRPM(strRegressionID,transaction,test);
-				
-				
+				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);				
+				PWQuoteOpenPage.getPremiums(NewQFRPremium,"Package");
+				CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
 				
 			}
 			
-			if (transactionsList.contains("RRSValidationThree1")) {
-				String transaction = "RRSValidationTwo";
+			if(transactionsList.contains("CAReviseQuote")){				
+				String transaction = "CAReviseQuote";
+				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
+				String policyNum = PWQuoteOpen.policyNumberCA;
+				//String policyNum = "4165167";
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);				
+				CommonMethods.NavigateTo("Commercial Auto",test);
+				CommonMethods.NavigateTo("Schedule Rating (1)",test);					
+				CA_ScheduleRatingPage.CA_ScheduleRatingPage(strRegressionID, transaction, suspendSheet, test);
+				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);				
+				PWQuoteOpenPage.getPremiums(NewQFRPremiumCA,"CA");
+				CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+				
+			}
+			
+			if(transactionsList.contains("WCReviseQuote")){				
+				String transaction = "CAReviseQuote";
+				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
+				String policyNum = PWQuoteOpen.policyNumberWC;
+				//String policyNum = "4165167";
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);				
+				CommonMethods.NavigateTo("Workers Compensation", test);
+				CommonMethods.NavigateTo("State Information (3)", test);
+				CommonMethods.NavigateTo("Colorado", test);
+				CommonMethods.NavigateTo("Rating Periods (1)", test);
+				CommonMethods.NavigateTo("1 - Policy Effective",test);
+				CommonMethods.NavigateTo("Schedule Rating (1)",test);
+				ScheduleRating.WC_ScheduleRatingPage(strRegressionID,transaction, suspendSheet,test);
+				PWQuoteOpenPage.getPremiums(NewQFRPremiumWC,"WC");
+				CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+				
+			}
+			
+			if (transactionsList.contains("BPRRSValidationThree1")) {
+				String transaction = "BPRRSValidationTwo";  //its valid
 				CommonFunPage.RRSAppStartUp(test, constants.Env);
-				//RateRenewalSheet.RateRenewalSheetMethod(hm,strRegressionID, transaction, test);
+				RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID, transaction, test);				
+				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, "BPRRSValidationThree", test);
+				
 			}
 			
 			

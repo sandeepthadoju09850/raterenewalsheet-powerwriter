@@ -37,38 +37,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 			
 			String strPW_TXT_LeadPolicy = (String) row.get("PW_TXT_LeadPolicy");
 			String strRRS_TXT_SearchPolicy = (String) row.get("RRS_TXT_SearchPolicy");
-			String strRRS_LBL_ExposureDifference = (String) row.get("RRS_LBL_ExposureDifference");
-			String strRRS_LBL_RateDifference = (String) row.get("RRS_LBL_RateDifference");
-			String strRRS_LBL_PremiumDifference = (String) row.get("RRS_LBL_PremiumDifference");
-			String strRRS_LBL_QFRExposure = (String) row.get("RRS_LBL_QFRExposure");
-			String strRRS_LBL_QFROldExposure = (String) row.get("RRS_LBL_QFROldExposure");
-			String strRRS_LBL_CurrentTermAnnPremium = (String) row.get("RRS_LBL_CurrentTermAnnPremium");
-			String strRRS_LBL_AccountNumber = (String) row.get("RRS_LBL_AccountNumber");
-			String strRRS_LBL_AccountName = (String) row.get("RRS_LBL_AccountName");
-			String strRRS_LBL_QFREffectiveDate = (String) row.get("RRS_LBL_QFREffectiveDate");
-			String strRRS_LBL_State = (String) row.get("RRS_LBL_State");
 			
-			
-			String strRRS_LBL_CPCurrentTermAnnPremium = (String) row.get("RRS_LBL_CPCurrentTermAnnPremium");
-			String strRRS_LBL_CPQFROldExposure = (String) row.get("RRS_LBL_CPQFROldExposure");
-			String strRRS_LBL_CPQFRExposure = (String) row.get("RRS_LBL_CPQFRExposure");
-			String strRRS_LBL_CPPremiumDifference = (String) row.get("RRS_LBL_CPPremiumDifference");
-			String strRRS_LBL_CPRateDifference = (String) row.get("RRS_LBL_CPRateDifference");
-			String strRRS_LBL_CPExposureDifference = (String) row.get("RRS_LBL_CPExposureDifference");
-			
-			String strRRS_LBL_AutoExposureDifference = (String) row.get("RRS_LBL_AutoExposureDifference");
-			String strRRS_LBL_AutoRateDifference = (String) row.get("RRS_LBL_AutoRateDifference");
-			String strRRS_LBL_AutoPremiumDifference = (String) row.get("RRS_LBL_AutoPremiumDifference");
-			String strRRS_LBL_AutoQFRExposure = (String) row.get("RRS_LBL_AutoQFRExposure");
-			String strRRS_LBL_AutoQFROldExposure = (String) row.get("RRS_LBL_AutoQFROldExposure");
-			String strRRS_LBL_AutoCurrentTermAnnPremium = (String) row.get("RRS_LBL_AutoCurrentTermAnnPremium");
-			
-			String strRRS_LBL_WCExposureDifference = (String) row.get("RRS_LBL_WCExposureDifference");
-			String strRRS_LBL_WCRateDifference = (String) row.get("RRS_LBL_WCRateDifference");
-			String strRRS_LBL_WCPremiumDifference = (String) row.get("RRS_LBL_WCPremiumDifference");
-			String strRRS_LBL_WCQFRExposure = (String) row.get("RRS_LBL_WCQFRExposure");
-			String strRRS_LBL_WCQFROldExposure = (String) row.get("RRS_LBL_WCQFROldExposure");
-			String strRRS_LBL_WCCurrentTermAnnPremium = (String) row.get("RRS_LBL_WCCurrentTermAnnPremium");
 			try{
 				se.log().logTestStep("Navigated to Rate Renewal Sheet");
 				test.log(LogStatus.INFO, "Navigated to Rate Renewal Sheet","Transaction Step : "+ transaction + "<br>" +"Page : Rate Renewal Sheet");
@@ -77,9 +46,10 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				se.verify().verifyEquals("Rate Renewal Sheet Screen ", getRRS_LBL_RRS().isDisplayed(),true, true,test);
 				//strRRS_TXT_SearchPolicy= "4166449";
 				se.element().enterOrValidateText(getRRS_TXT_SearchPolicy(strPW_TXT_LeadPolicy), strPW_TXT_LeadPolicy, test);			
-				
+				se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 60);
 				
 				boolean ele = se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
+				boolean ele2 = se.element().waitForElementIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy), 30);
 				
 				while(!ele) {
 				if(se.element().getText(RRS_LBL_NoPoliciesFound).equalsIgnoreCase("No policies found.")) {
@@ -95,7 +65,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				
 				}		
 						
-				if(transaction.equalsIgnoreCase("RRSValidationOne")) {
+				if(transaction.equalsIgnoreCase("BPRRSValidationOne")) {
 					
 				String RRS_LBL_ExCPCurrentTermAnnPremium = se.element().getText(RRS_LBL_CPCurrentTermAnnPremium);
 				String Premium_LBL_TotalPremium= hm.get("Premium_LBL_TotalPremium");
@@ -207,7 +177,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				
 				//==============OLDQFR======//
 				
-				if(transaction.equalsIgnoreCase("RRSValidationThree")) {
+				if(transaction.equalsIgnoreCase("BPRRSValidationThree")) {
 				
 				String RRS_LBL_ExCPQFROldExposure = se.element().getText(RRS_LBL_CPQFROldExposure);
 				String Premium_LBL_TotalPremium= hm.get("Premium_LBL_TotalPremium");
@@ -320,7 +290,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				
 				//=====QFR=======//
 				
-				if(transaction.equalsIgnoreCase("RRSValidationTwo")) {
+				if(transaction.equalsIgnoreCase("BPRRSValidationTwo")) {
 					
 					String RRS_LBL_ExCPQFROldExposure = se.element().getText(RRS_LBL_CPQFRExposure);
 					String Premium_LBL_TotalPremium= hm.get("Premium_LBL_TotalPremium");
@@ -430,13 +400,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 					
 					}
 					 
-				 
-				 
-				 
-				 
 			
-				
-				
 			} catch(Exception e){
 				se.verify().verifyEquals("Failed to get details of RRS ", true, false, true, test);
 				}

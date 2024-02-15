@@ -24,7 +24,10 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 
 	String total ="";
 	String path ="";
-	public static String policyNumber="";
+	public static String policyNumberPackage="";
+	public static String policyNumberCA="";
+	public static String policyNumberWC="";
+	public static String policyNumberUM="";
 	public void PWQuoteForRenewal(LinkedHashMap<String, String> CurrentTermPremiums,LinkedHashMap<String, String> QFR,LinkedHashMap<String, String> CurrentTermPremiumsCA, LinkedHashMap<String, String> CurrentTermPremiumsWC,LinkedHashMap<String, String> CurrentTermPremiumsUM,LinkedHashMap<String, String> QFRPremiumsCA,LinkedHashMap<String, String> QFRPremiumsWC,LinkedHashMap<String, String> QFRPremiumsUM,String strRegressionID, String transaction, ExtentTest test) throws IOException {
 		try{
 			PWValidations PWValidationsPage = TestPageFactory.initElements(se, PWValidations.class);
@@ -51,7 +54,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 				test.log(LogStatus.INFO, "Navigated to PW Home screen","Transaction Step : "+ transaction + "<br>" +"Page : Rate Renewal Sheet");
 
 				
-				policyNumber = strRRS_TXT_SearchPolicy;
+				policyNumberPackage = strRRS_TXT_SearchPolicy;
 				//strRRS_TXT_SearchPolicy ="4166449";
 				se.element().switchToFrame(getPW_Frm_FrameSearch());
 				se.element().enterOrValidateText(getPW_TXT_Search(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy,test);
@@ -65,18 +68,22 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 				
 				
 				
-				if(transaction.equalsIgnoreCase("PWPremiums")) {				
+				if(transaction.equalsIgnoreCase("BPPWPremiums")) {				
 					
 					if(strPW_TXT_QuoteTransaction.equals("Package")) {
+						policyNumberPackage = strRRS_TXT_SearchPolicy;
 						getTransaction(CurrentTermPremiums,QFR,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);
 					}
 					else if(strPW_TXT_QuoteTransaction.equals("CA")) {
+						policyNumberCA = strRRS_TXT_SearchPolicy;
 						getTransaction(CurrentTermPremiumsCA,QFRPremiumsCA,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);	
 					}
 					else if(strPW_TXT_QuoteTransaction.equals("WC")) {
+						policyNumberWC = strRRS_TXT_SearchPolicy;
 						getTransaction(CurrentTermPremiumsWC,QFRPremiumsWC,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);	
 					}
 					else if(strPW_TXT_QuoteTransaction.equals("UM")) {
+						policyNumberUM = strRRS_TXT_SearchPolicy;
 						getTransaction(CurrentTermPremiumsUM,QFRPremiumsUM,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);	
 					}
 					
@@ -98,7 +105,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 							Status = se.element().getText(PW_LBL_DashboardStatus);
 						}
 						if(Status.equalsIgnoreCase("Pending Quote")) {
-							moveFile(path);
+							//moveFile(path);
 							break;
 						}
 						Thread.sleep(5000);
@@ -158,7 +165,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		se.element().Click(getCalprem(),test);
 		driver.switchTo().defaultContent();
 		se.element().waitForElementIsDisplayed(getPW_Frm_Summarypremiums());
-		se.element().switchToFrame(getPW_Frm_Summarypremiums());					
+							
 		
 	}
 	
@@ -296,7 +303,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		driver.switchTo().defaultContent();
 		se.element().Click(getCommon_BTN_PremiumSummary(),test);									
 		se.element().waitForElementIsDisplayed(getPW_Frm_Summarypremiums());
-		se.element().switchToFrame(getPW_Frm_Summarypremiums());					
+						
 		getPremiums(CTPremiums,strPW_TXT_QuoteTransaction);					
 		driver.switchTo().defaultContent();
 		se.element().Click(getCommon_EXIT_button(),test);
@@ -377,7 +384,8 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 	
 	public LinkedHashMap<String, String> getPremiums(LinkedHashMap<String, String> mp, String strPW_TXT_QuoteTransaction) {
 			
-			
+		se.element().switchToFrame(getPW_Frm_Summarypremiums());	
+		
 			if(strPW_TXT_QuoteTransaction.equalsIgnoreCase("Package")) {
 			String Premium_LBL_ExTotalPremium = se.element().getText(Premium_LBL_TotalPremium);				
 			mp.put("Premium_LBL_TotalPremium", stringMod(Premium_LBL_ExTotalPremium));
@@ -471,7 +479,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		driver.switchTo().defaultContent();
 		Thread.sleep(3000);
 		
-		se.element().Click(getPW_TAB_ScheduleRatingScreen(), test);
+		//se.element().Click(getPW_TAB_ScheduleRatingScreen(), test);
 	}
 	
 }
