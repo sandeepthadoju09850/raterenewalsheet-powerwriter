@@ -60,6 +60,7 @@ import pw.pages.PLCM.CP_ProfessionalLiabilityClaims;
 import pw.pages.PLCM.ProfLiab_MiscellaneousCoverage;
 import pw.pages.WC.WC_ScheduleRating;
 import pw.pages.WC.WC_WCRatingPeriod;
+import pw.pages.WC.WC_WaiverOfSubrogation;
 import rrs.pages.MainScreen.RateRenewalSheet;
 import rrs.pages.MainScreen.PWQuoteOpen;
 import rrs.pages.MainScreen.PWValidations;
@@ -117,6 +118,7 @@ public class RRS_Regression_01 extends BaseTest {
 		PWQuoteOpen PWQuoteOpenPage = TestPageFactory.initElements(se, PWQuoteOpen.class);
 		WC_WCRatingPeriod WC_WCRatingPeriodPage = TestPageFactory.initElements(se, WC_WCRatingPeriod.class);
 		WC_ScheduleRating ScheduleRating = TestPageFactory.initElements(se, WC_ScheduleRating.class);
+		WC_WaiverOfSubrogation WCWaiverOfSubrogation = TestPageFactory.initElements(se, WC_WaiverOfSubrogation.class);
 		
 		try {
 			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
@@ -142,9 +144,8 @@ public class RRS_Regression_01 extends BaseTest {
 			}
 			
 			
-			if (transactionsList.contains("BPPWPremiums")) {
+			if (transactionsList.contains("BPPWPremiums1")) {
 				String transaction = "BPPWPremiums";		
-				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);								
 			}
 			
@@ -159,8 +160,9 @@ public class RRS_Regression_01 extends BaseTest {
 				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);
 			}
 			
-			if(transactionsList.contains("BPReviseQuote")){				
+			if(transactionsList.contains("BPReviseQuote1")){				
 				String transaction = "BPReviseQuote";
+				CommonFunPage.PWAppStartUp(test);
 				String policyNum = PWQuoteOpen.policyNumberPackage;
 				//String policyNum = "4165167";
 				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);
@@ -174,7 +176,7 @@ public class RRS_Regression_01 extends BaseTest {
 				
 			}
 			
-			if(transactionsList.contains("CAReviseQuote")){				
+			if(transactionsList.contains("CAReviseQuote1")){				
 				String transaction = "CAReviseQuote";
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				String policyNum = PWQuoteOpen.policyNumberCA;
@@ -189,29 +191,28 @@ public class RRS_Regression_01 extends BaseTest {
 				
 			}
 			
-			if(transactionsList.contains("WCReviseQuote")){				
-				String transaction = "CAReviseQuote";
+			if(transactionsList.contains("WCReviseQuote1")){				
+				String transaction = "WCReviseQuote";
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
-				String policyNum = PWQuoteOpen.policyNumberWC;
-				//String policyNum = "4165167";
+				//String policyNum = PWQuoteOpen.policyNumberWC;
+				String policyNum = "4166700";
 				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);				
 				CommonMethods.NavigateTo("Workers Compensation", test);
 				CommonMethods.NavigateTo("State Information (3)", test);
-				CommonMethods.NavigateTo("Colorado", test);
-				CommonMethods.NavigateTo("Rating Periods (1)", test);
-				CommonMethods.NavigateTo("1 - Policy Effective",test);
-				CommonMethods.NavigateTo("Schedule Rating (1)",test);
-				ScheduleRating.WC_ScheduleRatingPage(strRegressionID,transaction, suspendSheet,test);
+				CommonMethods.NavigateTo("Wisconsin", test);
+				CommonMethods.NavigateTo("Waiver of Subrogation", test);
+				WCWaiverOfSubrogation.WaiverOfSubrogation(strRegressionID, transaction, suspendSheet, test);
+				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);	
 				PWQuoteOpenPage.getPremiums(NewQFRPremiumWC,"WC");
 				CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
 				
 			}
 			
-			if (transactionsList.contains("BPRRSValidationThree1")) {
-				String transaction = "BPRRSValidationTwo";  //its valid
+			if (transactionsList.contains("BPRRSValidationThree")) {
+				
 				CommonFunPage.RRSAppStartUp(test, constants.Env);
-				RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID, transaction, test);				
 				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, "BPRRSValidationThree", test);
+				RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID,"BPRRSValidationTwo", test);				
 				
 			}
 			
@@ -219,7 +220,7 @@ public class RRS_Regression_01 extends BaseTest {
 				} 
 				catch (Exception e) {
 					e.printStackTrace();
-					se.verify().verifyEquals("AZ_BPRegression test  failed", true, false);
+					se.verify().verifyEquals("CU BP CA WC Regression test  failed", true, false);
 					testTearDown(se);
 				}
 				

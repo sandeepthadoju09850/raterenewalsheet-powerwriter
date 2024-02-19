@@ -37,6 +37,11 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 			
 			String strPW_TXT_LeadPolicy = (String) row.get("PW_TXT_LeadPolicy");
 			String strRRS_TXT_SearchPolicy = (String) row.get("RRS_TXT_SearchPolicy");
+			String strRevisionSelectPackage = (String) row.get("RevisionSelectPackage");
+			String strRevisionSelectCA = (String) row.get("RevisionSelectCA");
+			String strRevisionSelectWC = (String) row.get("RevisionSelectWC");
+			String strRevisionSelectUM = (String) row.get("RevisionSelectUM");
+			String strRefreshData = (String) row.get("RefreshData");
 			
 			try{
 				se.log().logTestStep("Navigated to Rate Renewal Sheet");
@@ -64,7 +69,35 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				ele = se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
 				
 				}		
-						
+					
+				
+				se.element().waitUntiltextIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy);
+				se.element().waitUntiltextIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy);
+				se.element().waitUntiltextIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy);
+				
+				if(strRefreshData.equalsIgnoreCase("Yes")) {
+					se.element().Click(getRRS_BTN_RefreshData(),test);
+					se.element().waitForElementIsDisplayed(RRS_LBL_SelectRevisionText, 30);
+					if(!strRevisionSelectPackage.contains("N/A")) {
+						se.element().Click(getRRS_BTN_SelectRevision("Package"),test);
+						se.element().Click(getRRS_BTN_SelectRevisionValue(strRevisionSelectPackage),test);
+					}
+					if(!strRevisionSelectCA.contains("N/A")) {
+						se.element().Click(getRRS_BTN_SelectRevision("Auto"),test);
+						se.element().Click(getRRS_BTN_SelectRevisionValue(strRevisionSelectCA),test);
+					}
+					if(!strRevisionSelectWC.contains("N/A")) {
+						se.element().clickElement(getRRS_BTN_SelectRevision("Worker"),test);
+						se.element().clickElement(getRRS_BTN_SelectRevisionValue(strRevisionSelectWC),test);
+					}
+					if(!strRevisionSelectUM.contains("N/A")) {
+						se.element().clickElement(getRRS_BTN_SelectRevision("Umbrella"),test);
+						se.element().clickElement(getRRS_BTN_SelectRevisionValue(strRevisionSelectUM),test);
+					}
+					se.element().clickElement(getRRS_BTN_RefreshData(),test);
+				}
+				
+			 	
 				if(transaction.equalsIgnoreCase("BPRRSValidationOne")) {
 					
 				String RRS_LBL_ExCPCurrentTermAnnPremium = se.element().getText(RRS_LBL_CPCurrentTermAnnPremium);

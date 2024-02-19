@@ -94,13 +94,34 @@ public class OR_RRS_MainScreen extends OR_Common{
 	return se.element().getElement(RRS_LBL_State,dataVal);
 	}
 	
-	public By RRS_BTN_RefreshData =By.xpath("//span[contains(text(),'Refresh Data')]");
+	public By RRS_BTN_RefreshData =By.xpath("//span[contains(text(),'Refresh')]");
 	public WebElement getRRS_BTN_RefreshData()
 	{
 	se.element().waitForElement(RRS_BTN_RefreshData);
 	return se.element().getElement(RRS_BTN_RefreshData);
 	}
 	
+	public By RRS_LBL_SelectRevisionText =By.xpath("//h3[contains(text(),'Please select your revision(s) below')]");
+	public WebElement getRRS_LBL_SelectRevisionText()
+	{
+	se.element().waitForElement(RRS_LBL_SelectRevisionText);
+	return se.element().getElement(RRS_LBL_SelectRevisionText);
+	}
+	
+	public By RRS_BTN_SelectRevision;
+	public WebElement getRRS_BTN_SelectRevision(String testData)
+	{
+		RRS_BTN_SelectRevision =By.xpath("//span[contains(text(),'"+testData+"')]//..//..//..//div[2]//div[@class='mud-select']");
+	se.element().waitForElement(RRS_BTN_SelectRevision,testData);
+	return se.element().getElement(RRS_BTN_SelectRevision,testData);
+	}
+	public By RRS_BTN_SelectRevisionValue;
+	public WebElement getRRS_BTN_SelectRevisionValue(String testData)
+	{
+		RRS_BTN_SelectRevisionValue =By.xpath("//p[@class='mud-typography mud-typography-body1' and contains(text(),'"+testData+"')]");
+	se.element().waitForElement(RRS_BTN_SelectRevisionValue,testData);
+	return se.element().getElement(RRS_BTN_SelectRevisionValue,testData);
+	}
 	
 	public By RRS_BTN_Reset =By.xpath("//span[contains(text(),'Reset')]");
 	public WebElement getRRS_BTN_Reset()

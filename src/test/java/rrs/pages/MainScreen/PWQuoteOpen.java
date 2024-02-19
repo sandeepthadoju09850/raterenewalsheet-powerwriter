@@ -54,7 +54,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 				test.log(LogStatus.INFO, "Navigated to PW Home screen","Transaction Step : "+ transaction + "<br>" +"Page : Rate Renewal Sheet");
 
 				
-				policyNumberPackage = strRRS_TXT_SearchPolicy;
+				
 				//strRRS_TXT_SearchPolicy ="4166449";
 				se.element().switchToFrame(getPW_Frm_FrameSearch());
 				se.element().enterOrValidateText(getPW_TXT_Search(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy,test);
@@ -105,7 +105,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 							Status = se.element().getText(PW_LBL_DashboardStatus);
 						}
 						if(Status.equalsIgnoreCase("Pending Quote")) {
-							//moveFile(path);
+							moveFile(path);
 							break;
 						}
 						Thread.sleep(5000);
@@ -317,7 +317,9 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		
 	 	se.element().switchToFrame(getPW_Frm_QuoteDetails());
 	 	//se.element().waitForElementIsDisplayed(getCommon_BTN_Inquire(), 120);
-	 	
+	 	se.element().waitUntiltextIsDisplayed(getCommon_BTN_Inquire(),"Inquire");
+	 	se.element().waitUntiltextIsDisplayed(getCommon_BTN_Inquire(),"Inquire");
+	 	se.element().waitUntiltextIsDisplayed(getCommon_BTN_Inquire(),"Inquire");
 	 	se.element().waitUntiltextIsDisplayed(getCommon_BTN_Inquire(),"Inquire");
 	 	se.element().waitUntiltextIsDisplayed(getCommon_BTN_Inquire(),"Inquire");
 		se.element().Click(getCommon_BTN_Inquire(),test);				
