@@ -135,7 +135,7 @@ public class RRS_Regression_01 extends BaseTest {
 			LinkedHashMap<String, String> NewQFRPremiumWC= new LinkedHashMap<String, String>();
 			
 			//int iteration = 0;
-		
+		//4174850
 
 			if (transactionsList.contains("BPNewQuote")) {
 			String transaction = "BPNewQuote";
@@ -144,27 +144,27 @@ public class RRS_Regression_01 extends BaseTest {
 			}
 			
 			
-			if (transactionsList.contains("BPPWPremiums1")) {
+			if (transactionsList.contains("BPPWPremiums")) {
 				String transaction = "BPPWPremiums";		
 				PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);								
 			}
 			
-			if (transactionsList.contains("BPRRSValidationOne1")) {
+			if (transactionsList.contains("BPRRSValidationOne")) {
 				String transaction = "BPRRSValidationOne";				
 				CommonFunPage.RRSAppStartUp(test, constants.Env);				
 				RateRenewalSheet.RateRenewalSheetMethod(CurrentTermPremiums,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,strRegressionID, transaction, test);							
 			}
 			
-			if (transactionsList.contains("BPRRSValidationTwo1")) {
+			if (transactionsList.contains("BPRRSValidationTwo")) {
 				String transaction = "BPRRSValidationTwo";				
 				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);
 			}
 			
-			if(transactionsList.contains("BPReviseQuote1")){				
+			if(transactionsList.contains("BPReviseQuote")){				
 				String transaction = "BPReviseQuote";
 				CommonFunPage.PWAppStartUp(test);
 				String policyNum = PWQuoteOpen.policyNumberPackage;
-				//String policyNum = "4165167";
+				//String policyNum = "4166696";
 				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);
 				CommonMethods.CollapseAllAndNavigateTo("Business Protector Policy", "20-BP", test);
 				CommonMethods.NavigateTo("Cyber Security", test);
@@ -176,11 +176,11 @@ public class RRS_Regression_01 extends BaseTest {
 				
 			}
 			
-			if(transactionsList.contains("CAReviseQuote1")){				
+			if(transactionsList.contains("CAReviseQuote")){				
 				String transaction = "CAReviseQuote";
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				String policyNum = PWQuoteOpen.policyNumberCA;
-				//String policyNum = "4165167";
+				//String policyNum = "4166698";
 				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);				
 				CommonMethods.NavigateTo("Commercial Auto",test);
 				CommonMethods.NavigateTo("Schedule Rating (1)",test);					
@@ -191,11 +191,11 @@ public class RRS_Regression_01 extends BaseTest {
 				
 			}
 			
-			if(transactionsList.contains("WCReviseQuote1")){				
+			if(transactionsList.contains("WCReviseQuote")){				
 				String transaction = "WCReviseQuote";
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
-				//String policyNum = PWQuoteOpen.policyNumberWC;
-				String policyNum = "4166700";
+				String policyNum = PWQuoteOpen.policyNumberWC;
+				//String policyNum = "4166700";
 				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, test);				
 				CommonMethods.NavigateTo("Workers Compensation", test);
 				CommonMethods.NavigateTo("State Information (3)", test);

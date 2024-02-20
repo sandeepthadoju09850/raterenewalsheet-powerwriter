@@ -468,7 +468,8 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		boolean ele = se.element().isElementPresent(getPW_Btn_SearchResultTwo());
 		if(ele) {
 			se.element().Click(getPW_Btn_SearchResultTwo(),test);
-		}						
+		}	
+		Thread.sleep(2000);
 		driver.switchTo().defaultContent();
 		/*se.element().switchToFrame(getPW_FRM_iFrameStatus());
 		Thread.sleep(2000);
@@ -477,12 +478,14 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		driver.switchTo().defaultContent();
 		
 		*/
+		Thread.sleep(2000);
 		se.element().switchToFrame(getPW_Frm_QuoteDetails());
 		Thread.sleep(2000);
 		se.element().Click(getCommon_BTN_Revise(),test);
 		Thread.sleep(2000);
 		driver.switchTo().defaultContent();
 		Thread.sleep(2000);
+		test.log(LogStatus.PASS, "Navigated to Quote which is in Pending Quote status");	
 		
 		//se.element().Click(getPW_TAB_ScheduleRatingScreen(), test);
 	}
