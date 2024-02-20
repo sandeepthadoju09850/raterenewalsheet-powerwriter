@@ -3492,12 +3492,12 @@ public class OR_Common extends Page {
 	}
 	
 	
-	public By PW_Btn_SearchResult = By.xpath("//table[@id='DataTables_Table_0']//tbody//tr[1]//a");
+	public By PW_Btn_SearchResult = By.xpath("//table[contains(@id,'DataTables_Table')]//tbody//tr[1]//a");
 	public WebElement getPW_Btn_SearchResult(){
 	se.element().waitForElement(PW_Btn_SearchResult);
 	return se.element().getElement(PW_Btn_SearchResult);
 	}
-	public By PW_Btn_SearchResultTwo = By.xpath("//table[@id='DataTables_Table_0']//tbody//tr[2]//a");
+	public By PW_Btn_SearchResultTwo = By.xpath("//table[contains(@id,'DataTables_Table')]//tbody//tr[2]//a");
 	public WebElement getPW_Btn_SearchResultTwo(){
 	se.element().waitForElement(PW_Btn_SearchResultTwo);
 	return se.element().getElement(PW_Btn_SearchResultTwo);

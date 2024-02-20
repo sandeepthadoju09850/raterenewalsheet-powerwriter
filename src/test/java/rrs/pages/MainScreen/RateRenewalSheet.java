@@ -36,7 +36,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 		
 			
 			String strPW_TXT_LeadPolicy = (String) row.get("PW_TXT_LeadPolicy");
-			String strRRS_TXT_SearchPolicy = (String) row.get("RRS_TXT_SearchPolicy");
+			String strWaitCycles = (String) row.get("WaitCycles");
 			String strRevisionSelectPackage = (String) row.get("RevisionSelectPackage");
 			String strRevisionSelectCA = (String) row.get("RevisionSelectCA");
 			String strRevisionSelectWC = (String) row.get("RevisionSelectWC");
@@ -53,29 +53,21 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				se.element().enterOrValidateText(getRRS_TXT_SearchPolicy(strPW_TXT_LeadPolicy), strPW_TXT_LeadPolicy, test);			
 				se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 60);
 				
-				boolean ele = se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
-				boolean ele2 = se.element().waitForElementIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy), 30);
+				//boolean ele = se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
+				int wait=Integer.parseInt(strWaitCycles);  		
+				int i=0;
+				while( i<=wait) {
 				
-				while(!ele) {
-				if(se.element().getText(RRS_LBL_NoPoliciesFound).equalsIgnoreCase("No policies found.")) {
 					driver.navigate().refresh();
-					Thread.sleep(30000);
+					Thread.sleep(15000);
 					
 					se.element().enterOrValidateText(getRRS_TXT_SearchPolicy(strPW_TXT_LeadPolicy), strPW_TXT_LeadPolicy, test);
 					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
 					se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
-					
-				}
-				ele = se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
+			i++;
+				}i=0;	
 				
-				}		
-					
-				
-				se.element().waitUntiltextIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy);
-				se.element().waitUntiltextIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy);
-				se.element().waitUntiltextIsDisplayed(getRRS_LBL_AccountNumberSearch(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy);
-				
-				if(strRefreshData.equalsIgnoreCase("Yes")) {
+					if(strRefreshData.equalsIgnoreCase("Yes")) {
 					se.element().Click(getRRS_BTN_RefreshData(),test);
 					se.element().waitForElementIsDisplayed(RRS_LBL_SelectRevisionText, 30);
 					if(!strRevisionSelectPackage.contains("N/A")) {
@@ -95,9 +87,20 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 						se.element().clickElement(getRRS_BTN_SelectRevisionValue(strRevisionSelectUM),test);
 					}
 					se.element().clickElement(getRRS_BTN_RefreshData(),test);
+					while(i<2) {
+					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
+					Thread.sleep(15000);
+					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
+					Thread.sleep(15000);
+					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
+					Thread.sleep(15000);
+					i++;
+					}
 				}
 				
-			 	
+				
+					
+					
 				if(transaction.equalsIgnoreCase("BPRRSValidationOne")) {
 					
 				String RRS_LBL_ExCPCurrentTermAnnPremium = se.element().getText(RRS_LBL_CPCurrentTermAnnPremium);

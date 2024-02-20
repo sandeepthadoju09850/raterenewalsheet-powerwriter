@@ -461,25 +461,28 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		}
 
 	public void openPendingQuoteInPW(String strRRS_TXT_SearchPolicy,ExtentTest test) throws InterruptedException {	
-	
+		driver.switchTo().defaultContent();
 		se.element().switchToFrame(getPW_Frm_FrameSearch());
 		se.element().enterOrValidateText(getPW_TXT_Search(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy,test);
 		se.element().Click(getPW_Btn_Search(),test);
-		boolean ele = se.element().isElementPresent(getPW_Btn_SearchResult());
+		boolean ele = se.element().isElementPresent(getPW_Btn_SearchResultTwo());
 		if(ele) {
-			se.element().Click(getPW_Btn_SearchResult(),test);
+			se.element().Click(getPW_Btn_SearchResultTwo(),test);
 		}						
 		driver.switchTo().defaultContent();
-		se.element().switchToFrame(getPW_FRM_iFrameStatus());
+		/*se.element().switchToFrame(getPW_FRM_iFrameStatus());
+		Thread.sleep(2000);
 		se.element().Click(getPW_LNK_PendingQuotePolicyHS(),test);
 		Thread.sleep(2000);
 		driver.switchTo().defaultContent();
 		
+		*/
 		se.element().switchToFrame(getPW_Frm_QuoteDetails());
+		Thread.sleep(2000);
 		se.element().Click(getCommon_BTN_Revise(),test);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		driver.switchTo().defaultContent();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		
 		//se.element().Click(getPW_TAB_ScheduleRatingScreen(), test);
 	}
