@@ -1,11 +1,14 @@
 package pw.pages.COMMON;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.server.handler.SwitchToFrame;
 
 import com.relevantcodes.extentreports.ExtentTest;
@@ -1259,6 +1262,27 @@ public void getDashboardStatus(String strRegressionID, String transaction, Exten
 		}
 	}
 
+	public void switchWindow(int tab,ExtentTest test) {
+		
+	    try {
+	    	ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		    driver.switchTo().window(tabs.get(tab));	
+		} catch (Exception e) {
+			test.log(LogStatus.INFO, "Failed to Switch Tab" );
+		}
+	}
+	
+	public void newTab(ExtentTest test) {
+		
+		try {
+			((JavascriptExecutor)getDriver()).executeScript("window.open()");	
+		} catch (Exception e) {
+			test.log(LogStatus.INFO, "Failed to add New Tab" );
+		}
+		
+		
+	}
+	
 	public void NavigateToPageContaingText(String Page, ExtentTest test) throws IOException {
 		try {
 			se.element().Click(getNavigatetoPagecontainingtext(Page), test);

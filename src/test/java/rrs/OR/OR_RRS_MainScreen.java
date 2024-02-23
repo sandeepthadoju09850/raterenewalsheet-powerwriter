@@ -670,4 +670,18 @@ public class OR_RRS_MainScreen extends OR_Common{
 	se.element().waitForElement(RRS_LBL_AccountNumberSearch);
 	return se.element().getElement(RRS_LBL_AccountNumberSearch);
 	}
+	
+	public By RRS_LBL_PackageControlDate =By.xpath("//tbody[2]//em[contains(text(),'Control Date')]//..//..//td[4]//strong");
+	public WebElement getRRS_LBL_PackageControlDate()
+	{
+	se.element().waitForElement(RRS_LBL_PackageControlDate);
+	return se.element().getElement(RRS_LBL_PackageControlDate);
+	}
+	
+	public By RRS_LBL_SRPDQFR =By.xpath("//*[@id='numericField_13e9590f']/div/div/input");
+	public WebElement getRRS_LBL_SRPDQFR()
+	{
+	se.element().waitForElement(RRS_LBL_SRPDQFR);
+	return se.element().getElement(RRS_LBL_SRPDQFR);
+	}
 }

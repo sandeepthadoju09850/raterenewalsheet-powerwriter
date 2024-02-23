@@ -18,6 +18,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver.WindowType;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -349,6 +350,8 @@ public class Element extends OR_CP{
 	
 	public boolean enterOrValidateText(WebElement element,String testdata, ExtentTest test)
 	{
+		
+		
 		try
 		{
 		if(!testdata.equalsIgnoreCase("N/A"))
@@ -450,6 +453,8 @@ public class Element extends OR_CP{
 			return false;
 
 	}
+	
+	
 	
 	public boolean enterText(WebElement element, String elementname,String testdata, ExtentTest test) {
 		// se.log().logSeStep("Enter Text '" + testdata + "' in Element: " +

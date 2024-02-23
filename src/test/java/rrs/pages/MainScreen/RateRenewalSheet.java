@@ -19,8 +19,8 @@ import rrs.OR.OR_RRS_MainScreen;
 
 public class RateRenewalSheet extends OR_RRS_MainScreen{
 
-
-	public void RateRenewalSheetMethod(LinkedHashMap<String, String> hm, LinkedHashMap<String, String> CA,LinkedHashMap<String, String> WC,LinkedHashMap<String, String> UM,String strRegressionID, String transaction, ExtentTest test) throws IOException {
+	public String ControlDate="";
+	public void RateRenewalSheetMethod(LinkedHashMap<String, String> hm, LinkedHashMap<String, String> CA,LinkedHashMap<String, String> WC,LinkedHashMap<String, String> UM,String strRegressionID, String transaction,String Row ,ExtentTest test) throws IOException {
 		try{
 			PWValidations PWValidationsPage = TestPageFactory.initElements(se, PWValidations.class);
 			
@@ -56,7 +56,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				//boolean ele = se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
 				int wait=Integer.parseInt(strWaitCycles);  		
 				int i=0;
-				while( i<=wait) {
+				while( i<wait) {
 				
 					driver.navigate().refresh();
 					Thread.sleep(15000);
@@ -64,7 +64,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 					se.element().enterOrValidateText(getRRS_TXT_SearchPolicy(strPW_TXT_LeadPolicy), strPW_TXT_LeadPolicy, test);
 					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
 					se.element().waitForElementIsDisplayed(RRS_LBL_AccountNumber, 30);
-			i++;
+					i++;
 				}i=0;	
 				
 					if(strRefreshData.equalsIgnoreCase("Yes")) {
@@ -89,19 +89,21 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 					se.element().clickElement(getRRS_BTN_RefreshData(),test);
 					while(i<2) {
 					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
-					Thread.sleep(15000);
 					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
-					Thread.sleep(15000);
 					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
-					Thread.sleep(15000);
+					
+					se.element().waitForElementToDisappear(RRS_LBL_LoadingPleaseWait, 30);
+					
+					
 					i++;
+					
 					}
 				}
 				
 				
 					
 					
-				if(transaction.equalsIgnoreCase("BPRRSValidationOne")) {
+				if(Row.equalsIgnoreCase("CurrentTerm")) {
 					
 				String RRS_LBL_ExCPCurrentTermAnnPremium = se.element().getText(RRS_LBL_CPCurrentTermAnnPremium);
 				String Premium_LBL_TotalPremium= hm.get("Premium_LBL_TotalPremium");
@@ -213,7 +215,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				
 				//==============OLDQFR======//
 				
-				if(transaction.equalsIgnoreCase("BPRRSValidationThree")) {
+				if(Row.equalsIgnoreCase("OldQFR")) {
 				
 				String RRS_LBL_ExCPQFROldExposure = se.element().getText(RRS_LBL_CPQFROldExposure);
 				String Premium_LBL_TotalPremium= hm.get("Premium_LBL_TotalPremium");
@@ -326,7 +328,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 				
 				//=====QFR=======//
 				
-				if(transaction.equalsIgnoreCase("BPRRSValidationTwo")) {
+				if(Row.equalsIgnoreCase("QFR")) {
 					
 					String RRS_LBL_ExCPQFROldExposure = se.element().getText(RRS_LBL_CPQFRExposure);
 					String Premium_LBL_TotalPremium= hm.get("Premium_LBL_TotalPremium");
@@ -400,7 +402,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 						test.log(LogStatus.FAIL, "Verifying the Text of the element : ","PW CA SRLiability QFR: "+ PW_SRCALiability + " " +" <br> " +"RRS CA SRLiability QFR: "+RRS_SRLiabilityCT+" " );	
 					}
 					
-
+					
 					String RRS_SRPhysicalDamageCT = se.element().getText(RRS_LBL_SRPhysicalDamageQFR);
 					String PW_SRCAPhysicalDamage= CA.get("PW_LBL_SRCAPhysicalDamage");
 					if(RRS_SRPhysicalDamageCT.equalsIgnoreCase(PW_SRCAPhysicalDamage)) {
@@ -434,6 +436,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 						test.log(LogStatus.FAIL, "Verifying the Text of the element : ","PW UM Total Premium QFR: "+ PW_TotalTransactionPremiumUM + " " +" <br> " +"RRS UM Total Premium QFR: "+RRS_UMTotalPremiumQFR);	
 					}
 					
+					ControlDate = se.element().getText(RRS_LBL_PackageControlDate);
 					}
 					 
 			

@@ -988,5 +988,26 @@ public class Util {
 		}
 		return regressionName;
 	}
+	public static long DiffInTime(Date d1, Date d2) {
+		  long difference_In_Minutes = 0;
+   try {
+
+       long difference_In_Time
+           = d2.getTime() - d1.getTime();
+
+    
+       difference_In_Minutes   = TimeUnit
+                 .MILLISECONDS
+                 .toMinutes(difference_In_Time)
+             % 60;
+      
+   }
+   catch (Exception e) {
+       e.printStackTrace();
+   }
+   return difference_In_Minutes;
+	
+
+	}
 
 }

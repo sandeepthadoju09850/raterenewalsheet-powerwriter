@@ -114,24 +114,6 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 					}
 				}
 				
-				else if(transaction.equalsIgnoreCase("ReviseQuote")) {
-					se.element().switchToFrame(getPW_Frame_RenderDashboard());	
-					se.element().Click(getPW_BTN_RenewalQuote(),test);	
-					driver.switchTo().defaultContent();
-					se.element().switchToFrame(getPW_Frm_QuoteDetails());					
-					se.element().Click(getCommon_BTN_Revise(),test);					
-					driver.switchTo().defaultContent();
-					String ControlDate = ExcelOperations.getControlDate(strRegressionID, transaction);
-					ControlDate = Util.getCurrentDate1();
-					System.out.println(ControlDate);
-					se.element().clearTheField(getProductInfo_TXT_ControlDate(ControlDate));
-					se.element().enterOrValidateText(getProductInfo_TXT_ControlDate(ControlDate),ControlDate,test);
-					se.util().sleep(500);
-					se.element().Click(getCalprem(),test);
-					driver.switchTo().defaultContent();
-					se.element().waitForElementIsDisplayed(getPW_Frm_Summarypremiums());
-					se.element().switchToFrame(getPW_Frm_Summarypremiums());
-				}
 				
 				
 			
@@ -296,10 +278,12 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		}else {
 			path = "Q:\\USERS\\FTP\\TEST\\CM\\RatemonExtract\\PCMW0009_CM5078_RATEMON.TXT";
 		}
-		
-		driver.switchTo().defaultContent();					
+		Thread.sleep(2000);
+		driver.switchTo().defaultContent();	
+		Thread.sleep(2000);
 	 	se.element().switchToFrame(getPW_Frm_QuoteDetails());
 		se.element().Click(getCommon_BTN_Inquire(),test);
+		Thread.sleep(2000);
 		driver.switchTo().defaultContent();
 		se.element().Click(getCommon_BTN_PremiumSummary(),test);									
 		se.element().waitForElementIsDisplayed(getPW_Frm_Summarypremiums());
@@ -460,7 +444,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 			 
 		}
 
-	public void openPendingQuoteInPW(String strRRS_TXT_SearchPolicy,ExtentTest test) throws InterruptedException {	
+	public void openPendingQuoteInPW(String strRRS_TXT_SearchPolicy,String controlDate,ExtentTest test) throws InterruptedException {	
 		driver.switchTo().defaultContent();
 		se.element().switchToFrame(getPW_Frm_FrameSearch());
 		se.element().enterOrValidateText(getPW_TXT_Search(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy,test);
@@ -485,7 +469,10 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		Thread.sleep(2000);
 		driver.switchTo().defaultContent();
 		Thread.sleep(2000);
-		test.log(LogStatus.PASS, "Navigated to Quote which is in Pending Quote status");	
+		test.log(LogStatus.PASS, "Navigated to Quote which is in Pending Quote status");
+		if(!controlDate.equals("N/A")) {
+		se.element().enterOrValidateText(getProductInfo_TXT_ControlDate(controlDate), controlDate, test);
+		}
 		
 		//se.element().Click(getPW_TAB_ScheduleRatingScreen(), test);
 	}
