@@ -18,6 +18,7 @@ public class constants {
 		public static String CA = "CA";
 		public static String WC = "WC";
 		public static String PM = "PM";
+		public static String BL = "BL";
 
 		//------------------ Scenario Selection Sheet Headers ----------------------------------//
 		public static String LOBName = "LOB";
