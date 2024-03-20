@@ -98,7 +98,7 @@ public class AP_AccountCreation extends BL_OR_CP {
 					}
 					else*/ if(transaction.equalsIgnoreCase("NewQuote")) 
 					{
-						se.element().enterOrValidateText(getGI_AppInfo_TXT_EffectiveDate(eff_date),eff_date,test);
+						se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_EffectiveDate(eff_date),eff_date,test);
 							se.util().sleep(2000);
 						se.element().waitBasedOnCount(PleaseWaitPopup,40);
 					}
@@ -118,7 +118,7 @@ public class AP_AccountCreation extends BL_OR_CP {
 					se.element().checkUncheckOrValidate(getAccount_CHK_DoesApplicantRatingLocations_No(strAccount_CHK_DoesApplicantRatingLocations_No),strAccount_CHK_DoesApplicantRatingLocations_No,test);
 					se.element().checkUncheckOrValidate(getAccount_CHK_DoesApplicantRatingLocations_Yes(strAccount_CHK_DoesApplicantRatingLocations_Yes),strAccount_CHK_DoesApplicantRatingLocations_Yes,test);
 					
-					se.element().enterOrValidateText(getAccount_TXT_DateBusinessStart(strAccount_TXT_DateBusinessStart),strAccount_TXT_DateBusinessStart,test);
+					se.element().enterOrValidateTextDate(getAccount_TXT_DateBusinessStart(strAccount_TXT_DateBusinessStart),strAccount_TXT_DateBusinessStart,test);
 					
 					se.util().sleep(3000);
 					if(!strAccount_TXT_TotalNumberofEmployees.contains("N/A"))

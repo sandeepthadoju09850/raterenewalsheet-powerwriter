@@ -396,6 +396,38 @@ public class Element extends OR_CP{
 		}
 	}
 	
+	public boolean enterOrValidateTextDate(WebElement element, String testdata, ExtentTest test) {
+		try {
+			if (!testdata.equalsIgnoreCase("N/A")) {
+			
+				if (testdata.contains("validate2")) {
+
+					String[] strtestdata = testdata.split("=");
+					String[] strActualTD = strtestdata[1].split("\\|");
+					if (strActualTD[1].equalsIgnoreCase("E")) {
+						verifyTextIsEnabled(element, strActualTD[0].trim(), test);
+					}
+					if (strActualTD[1].equalsIgnoreCase("D")) {
+						verifyTextIsDisabled(element, strActualTD[0].trim(), test);
+
+					}
+				} else {
+
+					enterTextBL(element, testdata, test);
+				}
+				return true;
+			}
+
+			else {
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public boolean enterOrValidateText(WebElement element,String testdata, ExtentTest test)
 	{
 		
@@ -558,6 +590,71 @@ public class Element extends OR_CP{
 
 	}
 
+	public boolean enterTextBL(WebElement element, String testdata, ExtentTest test) {
+		// se.log().logSeStep("Enter Text '" + testdata + "' in Element: " +
+		// element.toString());
+		String str = element.toString();
+
+		String[] arrOfStr = str.split("->", 2);
+		if (!testdata.equalsIgnoreCase("N/A")) {	
+			if (element != null && element.isDisplayed() && element.isEnabled()) {
+				try {
+					if ("input".equals(element.getTagName())) {
+						element.sendKeys("");
+
+					} else {
+						new Actions(se.driver()).moveToElement(element).perform();
+					}
+					if (testdata.equals("N/A")) {
+						enterTAB(element);
+					} else {
+						element.clear();
+
+						//						try {
+						//							se.element().waitForElement(element);
+						//						} catch (InterruptedException e) {
+						//							e.printStackTrace();
+						//						}
+						se.element().waitForElementToDisappear_One(BLprogressBar,120);
+						
+
+						se.element().Click(element, test);
+						se.element().clearTheField(element);
+						//se.element().waitForElementToDisappear_One(progressBar, 5000);
+						se.element().clearTheField(element);
+						element.sendKeys(testdata);
+						//se.element().waitForElementToDisappear_One(progressBar, 5000);
+						se.element().Click(element, test);
+						enterTAB(element);
+						se.element().waitForElementToDisappear_One(BLprogressBar,120);
+						test.log(LogStatus.INFO, "Entering text in the field: " + arrOfStr[1],
+								"Entered the text: " + testdata);
+					}
+					
+					return true;
+
+				} catch (InvalidElementStateException e) {
+				
+					test.log(LogStatus.WARNING, "Could not Enter text in the field: " + arrOfStr[1],
+							"Could not Enter the text: " + testdata);
+					return false;
+				} catch (Exception e) {
+					test.log(LogStatus.WARNING, "Could not Enter text in the field: " + arrOfStr[1],
+							"Could not Enter the text: " + testdata);
+					return false;
+				}
+			} else
+				test.log(LogStatus.WARNING, "Could not Enter text in the field: " + arrOfStr[1],
+						"Could not Enter the text: " + testdata);
+				return false;
+		} else
+			test.log(LogStatus.WARNING, "Could not Enter text in the field: " + arrOfStr[1],
+					"Could not Enter the text: " + testdata);
+			return false;
+
+	}
+
+	
 	public void enter_textRich(final WebElement element, String testdata,ExtentTest test) {
 try{
 		WebDriverWait wait = new WebDriverWait(se.driver(), 30);
