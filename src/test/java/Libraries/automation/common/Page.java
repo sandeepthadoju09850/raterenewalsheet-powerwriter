@@ -1,7 +1,6 @@
 package Libraries.automation.common;
 
-import Libraries.automation.common.CommonTestMethods;
-import Libraries.automation.common.SeHelper;
+
 
 public abstract class Page extends CommonPage{
 	public CommonTestMethods commonTestMethods;

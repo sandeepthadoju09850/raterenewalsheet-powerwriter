@@ -151,7 +151,7 @@ public class CURunner extends BaseTest {
 	String RegressionName = Util.getRegressionName(strRegressionId);
 	System.out.println(RegressionName);
 	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	RRS_Regression_01.RRS_RegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
+	RRS_Regression_01.RRS_RegressionMethod(myBrowser, se, params, strRegressionId,RegressionName, premiumsFile, workbook, test);
 	test.setEndedTime(Util.getTime());
 	extent.endTest(test);
 	}

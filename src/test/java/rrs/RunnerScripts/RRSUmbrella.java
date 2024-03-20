@@ -133,7 +133,7 @@ public class RRSUmbrella  extends BaseTest {
 		String RegressionName = Util.getRegressionName(strRegressionId);
 		ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
 		
-		RRS_Regression_01.RRS_RegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
+		RRS_Regression_01.RRS_RegressionMethod(myBrowser, se, params, strRegressionId,RegressionName ,premiumsFile, workbook, test);
 		test.setEndedTime(Util.getTime());
 		extent.endTest(test);
 	}

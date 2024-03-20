@@ -18,7 +18,6 @@ import Libraries.ap.automation.common.SystemPropertyUtil;
 import Libraries.ap.automation.common.Utils.TestPageFactory;
 import Libraries.ap.automation.common.framework.Util;
 import ap.Constants.constants;
-
 import ap.OR.OR_CP;
 import ap.pages.common.APPW_CommonMethods;
 import ap.pages.common.AddressValidation;
