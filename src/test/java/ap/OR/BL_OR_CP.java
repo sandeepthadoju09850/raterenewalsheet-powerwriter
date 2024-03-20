@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 
 import com.relevantcodes.extentreports.ExtentTest;
 
-import Libraries.ap.automation.common.Page;
-import Libraries.ap.automation.common.SeHelper;
-import Libraries.ap.automation.common.framework.Util;
-public class OR_CP extends Page {
+import Libraries.automation.common.Page;
+import Libraries.automation.common.SeHelper;
+import Libraries.automation.common.framework.Util;
+public class BL_OR_CP extends Page {
 	
 	
 	public By GI_AI_Click_AgencyName =By.id("s2id_AgencyName");
@@ -644,7 +644,32 @@ public class OR_CP extends Page {
 	se.element().waitForElement(GI_NatOfBusi_Is_tree_trimming_more_than_25_of_total_receipts,dataVal);
 	return se.element().getElement(GI_NatOfBusi_Is_tree_trimming_more_than_25_of_total_receipts,dataVal);
 	}
-	                            
+	
+	public By GI_EQ_TreeTrimmingOrTreeRemoval_Yes =By.xpath("//input[contains(@id,'TreeTrimmingOrTreeRemoval_0')]");
+	public WebElement getGI_EQ_TreeTrimmingOrTreeRemoval_Yes(String dataVal)
+	{
+	se.element().waitForElement(GI_EQ_TreeTrimmingOrTreeRemoval_Yes ,dataVal);
+	return se.element().getElement(GI_EQ_TreeTrimmingOrTreeRemoval_Yes,dataVal);
+	}
+	public By GI_EQ_TreeTrimmingOrTreeRemoval_No =By.xpath("//input[contains(@id,'TreeTrimmingOrTreeRemoval_1')]");
+	public WebElement getGI_EQ_TreeTrimmingOrTreeRemoval_No(String dataVal)
+	{
+	se.element().waitForElement(GI_EQ_TreeTrimmingOrTreeRemoval_No ,dataVal);
+	return se.element().getElement(GI_EQ_TreeTrimmingOrTreeRemoval_No,dataVal);
+	} 
+	public By GI_EQ_BunkedCribs_No =By.xpath("//input[contains(@id,'BunkedCribs_1')]");
+	public WebElement getGI_EQ_BunkedCribs_No(String dataVal)
+	{
+	se.element().waitForElement(GI_EQ_BunkedCribs_No ,dataVal);
+	return se.element().getElement(GI_EQ_BunkedCribs_No,dataVal);
+	}
+	public By GI_EQ_BunkedCribs_Yes =By.xpath("//input[contains(@id,'BunkedCribs_0')]");
+	public WebElement getGI_EQ_BunkedCribs_Yes(String dataVal)
+	{
+	se.element().waitForElement(GI_EQ_BunkedCribs_Yes ,dataVal);
+	return se.element().getElement(GI_EQ_BunkedCribs_Yes,dataVal);
+	}
+	
 	public By GI_NatOfBusi_Additional_Description_of_Operations;
 	public WebElement getGI_NatOfBusi_Additional_Description_of_Operations(String dataVal)
 	{
@@ -2737,6 +2762,7 @@ public class OR_CP extends Page {
 	se.element().waitForElement(GI_EQ_GreenhousePropertyCoverage_No ,dataVal);
 	return se.element().getElement(GI_EQ_GreenhousePropertyCoverage_No,dataVal);
 	}
+	
 	public By GI_EQ_Minimum2YearOfHistory_Yes =By.xpath("//input[contains(@id,'Minimum2YearOfHistory_0')]");
 	public WebElement getGI_EQ_Minimum2YearOfHistory_Yes(String dataVal)
 	{
@@ -4813,6 +4839,42 @@ public By quotehomepage = By.cssSelector(".noaction");
 		{
 		se.element().waitForElement(PropCovs_CHK_WindandHailDeductible ,dataVal);
 		return se.element().getElement(PropCovs_CHK_WindandHailDeductible,dataVal);
+		}
+		public By Summary_Coverages_Property = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Property')]/parent::div/following-sibling::div//h2[contains(text(),'Property Coverages')]/parent::div/following-sibling::table//tbody//tr/td");
+		public List<WebElement> getSummary_Coverages_Property(String dataValue){
+			 
+			se.element().waitForElement(Summary_Coverages_Property,dataValue);
+			return se.element().getElements(Summary_Coverages_Property,dataValue);	
+		}
+		public By Summary_Coverages_Crime = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Crime')]/parent::div/following-sibling::div//h2[contains(text(),'Crime')]/parent::div/following-sibling::table//tbody//tr/td[1]");
+		public List<WebElement> getSummary_Coverages_Crime(String dataValue){
+			 
+			se.element().waitForElement(Summary_Coverages_Crime,dataValue);
+			return se.element().getElements(Summary_Coverages_Crime,dataValue);	
+		}
+		public By Summary_Coverages_Cyber = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Cyber')]/parent::div/following-sibling::div//h2[contains(text(),'Cyber')]/parent::div/following-sibling::table//tbody//tr/td[1]");
+		public List<WebElement> getSummary_Coverages_Cyber(String dataValue){
+			 
+			se.element().waitForElement(Summary_Coverages_Cyber,dataValue);
+			return se.element().getElements(Summary_Coverages_Cyber,dataValue);	
+		}
+		public By Summary_Coverages_Inland = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Inland')]/parent::div/following-sibling::div//h2[contains(text(),'Inland')]/parent::div/following-sibling::table//tbody//tr/td[1]");
+		public List<WebElement> getSummary_Coverages_Inland(String dataValue){
+			 
+			se.element().waitForElement(Summary_Coverages_Inland,dataValue);
+			return se.element().getElements(Summary_Coverages_Inland,dataValue);	
+		}
+		public By Summary_Coverages_Liability = By.xpath("//h1[@class='panel-title' and contains(text(),'Total General Liability')]/parent::div/following-sibling::div//h2[contains(text(),'Liability Coverages')]/parent::div/following-sibling::table//tbody//tr/td");
+		public List<WebElement> getSummary_Coverages_Liability(String dataValue){
+			 
+			se.element().waitForElement(Summary_Coverages_Liability,dataValue);
+			return se.element().getElements(Summary_Coverages_Liability,dataValue);	
+		}
+		public By Summary_Coverages_EPLI = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Employment')]/parent::div/following-sibling::div//h2[contains(text(),'Liability Coverage')]/parent::div/following-sibling::table//tbody//tr/td[1]");
+		public List<WebElement> getSummary_Coverages_EPLI(String dataValue){
+			 
+			se.element().waitForElement(Summary_Coverages_EPLI,dataValue);
+			return se.element().getElements(Summary_Coverages_EPLI,dataValue);	
 		}
 		public By PropCovs_CHK_WindandHailDeductible_percent =By.xpath("//select[contains(@id,'WindHailDeductiblePct')]");
 		public WebElement getPropCovs_CHK_WindandHailDeductible_percent(String dataVal)
@@ -12810,6 +12872,84 @@ public By quotehomepage = By.cssSelector(".noaction");
 		return se.element().getElement(UW_CHK_Hastheapplicanthadpriorinsurance_No,dataVal);
 		}
 		
+		public By  UW_CHK_Doesapplicantperformleadpaintremoval_Yes =By.id("HazardousRemoval_0");
+		public WebElement  getUW_CHK_Doesapplicantperformleadpaintremoval_Yes(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Doesapplicantperformleadpaintremoval_Yes ,dataVal);
+		return se.element().getElement(UW_CHK_Doesapplicantperformleadpaintremoval_Yes,dataVal);
+		}
+		public By  UW_CHK_Doesapplicantperformleadpaintremoval_No =By.id("HazardousRemoval_1");
+		public WebElement  getUW_CHK_Doesapplicantperformleadpaintremoval_No(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Doesapplicantperformleadpaintremoval_No ,dataVal);
+		return se.element().getElement(UW_CHK_Doesapplicantperformleadpaintremoval_No,dataVal);
+		}
+		public By  UW_CHK_Anypowerwashingorsandblastingoperations_Yes =By.id("PowerWashingPainting_0");
+		public WebElement  getUW_CHK_Anypowerwashingorsandblastingoperations_Yes(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Anypowerwashingorsandblastingoperations_Yes ,dataVal);
+		return se.element().getElement(UW_CHK_Anypowerwashingorsandblastingoperations_Yes,dataVal);
+		}
+		public By  UW_CHK_Anypowerwashingorsandblastingoperations_No =By.id("PowerWashingPainting_1");
+		public WebElement  getUW_CHK_Anypowerwashingorsandblastingoperations_No(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Anypowerwashingorsandblastingoperations_No ,dataVal);
+		return se.element().getElement(UW_CHK_Anypowerwashingorsandblastingoperations_No,dataVal);
+		}
+		
+		public By  UW_CHK_Anyrooftopinstallationorrepair_Yes =By.id("RooftopRepair_0");
+		public WebElement  getUW_CHK_Anyrooftopinstallationorrepair_Yes(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Anyrooftopinstallationorrepair_Yes ,dataVal);
+		return se.element().getElement(UW_CHK_Anyrooftopinstallationorrepair_Yes,dataVal);
+		}
+		public By  UW_CHK_Anyrooftopinstallationorrepair_No =By.id("RooftopRepair_1");
+		public WebElement  getUW_CHK_Anyrooftopinstallationorrepair_No(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Anyrooftopinstallationorrepair_No ,dataVal);
+		return se.element().getElement(UW_CHK_Anyrooftopinstallationorrepair_No,dataVal);
+		}
+		
+		public By  UW_CHK_Industrialorwarehouserefrigerationsystems_Yes =By.id("WarehouseRefrigeration_0");
+		public WebElement  getUW_CHK_Industrialorwarehouserefrigerationsystems_Yes(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Industrialorwarehouserefrigerationsystems_Yes ,dataVal);
+		return se.element().getElement(UW_CHK_Industrialorwarehouserefrigerationsystems_Yes,dataVal);
+		}
+		public By  UW_CHK_Industrialorwarehouserefrigerationsystems_No =By.id("WarehouseRefrigeration_1");
+		public WebElement  getUW_CHK_Industrialorwarehouserefrigerationsystems_No(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Industrialorwarehouserefrigerationsystems_No ,dataVal);
+		return se.element().getElement(UW_CHK_Industrialorwarehouserefrigerationsystems_No,dataVal);
+		}
+		
+		public By  UW_CHK_Anyworkotherthansidewalksparkinglots_Yes =By.id("OtherWorkPaving_0");
+		public WebElement  getUW_CHK_Anyworkotherthansidewalksparkinglots_Yes(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Anyworkotherthansidewalksparkinglots_Yes ,dataVal);
+		return se.element().getElement(UW_CHK_Anyworkotherthansidewalksparkinglots_Yes,dataVal);
+		}
+		public By  UW_CHK_Anyworkotherthansidewalksparkinglots_No =By.id("OtherWorkPaving_1");
+		public WebElement  getUW_CHK_Anyworkotherthansidewalksparkinglots_No(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_Anyworkotherthansidewalksparkinglots_No ,dataVal);
+		return se.element().getElement(UW_CHK_Anyworkotherthansidewalksparkinglots_No,dataVal);
+		}
+		
+		public By  UW_CHK_AnytowerworkTC_Yes =By.id("TowerWork_0");
+		public WebElement  getUW_CHK_AnytowerworkTC_Yes(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_AnytowerworkTC_Yes ,dataVal);
+		return se.element().getElement(UW_CHK_AnytowerworkTC_Yes,dataVal);
+		}
+		public By  UW_CHK_AnytowerworkTC_No =By.id("TowerWork_1");
+		public WebElement  getUW_CHK_AnytowerworkTC_No(String dataVal)
+		{
+		se.element().waitForElement(UW_CHK_AnytowerworkTC_No ,dataVal);
+		return se.element().getElement(UW_CHK_AnytowerworkTC_No,dataVal);
+		}
+		
+		
 		public By  UW_CHK_Doestheapplicantperformanydrywall_Yes =By.id("CpntrPDryPlumbing_0");
 		public WebElement  getUW_CHK_Doestheapplicantperformanydrywall_Yes(String dataVal)
 		{
@@ -13266,12 +13406,7 @@ public By quotehomepage = By.cssSelector(".noaction");
 			se.element().waitForElement(Summary_LNK_propcSectionIcon,dataValue);
 			return se.element().getElement(Summary_LNK_propcSectionIcon,dataValue);	
 		}
-		public By Summary_Coverages_Property = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Property')]/parent::div/following-sibling::div//h2[contains(text(),'Property Coverages')]/parent::div/following-sibling::table//tbody//tr/td");
-		public List<WebElement> getSummary_Coverages_Property(String dataValue){
-			 
-			se.element().waitForElement(Summary_Coverages_Property,dataValue);
-			return se.element().getElements(Summary_Coverages_Property,dataValue);	
-		}
+		
 		
 		public By Summary_label_TotalLiabilityPrem = By.xpath("//h1[@class='panel-title' and contains(text(),'Total General Liability')]");
 		public WebElement getSummary_label_TotalLiabilityPrem(String dataValue){
@@ -13291,12 +13426,7 @@ public By quotehomepage = By.cssSelector(".noaction");
 			se.element().waitForElement(Summary_Surcharge_Liability,dataValue);
 			return se.element().getElement(Summary_Surcharge_Liability,dataValue);	
 		}
-		public By Summary_Coverages_Liability = By.xpath("//h1[@class='panel-title' and contains(text(),'Total General Liability')]/parent::div/following-sibling::div//h2[contains(text(),'Liability Coverages')]/parent::div/following-sibling::table//tbody//tr/td");
-		public List<WebElement> getSummary_Coverages_Liability(String dataValue){
-			 
-			se.element().waitForElement(Summary_Coverages_Liability,dataValue);
-			return se.element().getElements(Summary_Coverages_Liability,dataValue);	
-		}
+		
 		public By Summary_label_TotalEmploymentLiabPrem = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Employment')]");
 		public WebElement getSummary_label_TotalEmploymentLiabPrem(String dataValue){
 			 
@@ -13309,12 +13439,7 @@ public By quotehomepage = By.cssSelector(".noaction");
 			se.element().waitForElement(Summary_LNK_EPLISectionIcon,dataValue);
 			return se.element().getElement(Summary_LNK_EPLISectionIcon,dataValue);	
 		}
-		public By Summary_Coverages_EPLI = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Employment')]/parent::div/following-sibling::div//h2[contains(text(),'Liability Coverage')]/parent::div/following-sibling::table//tbody//tr/td[1]");
-		public List<WebElement> getSummary_Coverages_EPLI(String dataValue){
-			 
-			se.element().waitForElement(Summary_Coverages_EPLI,dataValue);
-			return se.element().getElements(Summary_Coverages_EPLI,dataValue);	
-		}
+		
 		public By Summary_label_TotalCyberPrem = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Cyber')]");
 		public WebElement getSummary_label_TotalCyberPrem(String dataValue){
 			 
@@ -13327,12 +13452,7 @@ public By quotehomepage = By.cssSelector(".noaction");
 			se.element().waitForElement(Summary_LNK_CyberSectionIcon,dataValue);
 			return se.element().getElement(Summary_LNK_CyberSectionIcon,dataValue);	
 		}
-		public By Summary_Coverages_Cyber = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Cyber')]/parent::div/following-sibling::div//h2[contains(text(),'Cyber')]/parent::div/following-sibling::table//tbody//tr/td[1]");
-		public List<WebElement> getSummary_Coverages_Cyber(String dataValue){
-			 
-			se.element().waitForElement(Summary_Coverages_Cyber,dataValue);
-			return se.element().getElements(Summary_Coverages_Cyber,dataValue);	
-		}
+		
 		public By Summary_label_TotalCrimePrem = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Crime')]");
 		public WebElement getSummary_label_TotalCrimePrem(String dataValue){
 			 
@@ -13345,12 +13465,7 @@ public By quotehomepage = By.cssSelector(".noaction");
 			se.element().waitForElement(Summary_LNK_CrimeSectionIcon,dataValue);
 			return se.element().getElement(Summary_LNK_CrimeSectionIcon,dataValue);	
 		}
-		public By Summary_Coverages_Crime = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Crime')]/parent::div/following-sibling::div//h2[contains(text(),'Crime')]/parent::div/following-sibling::table//tbody//tr/td[1]");
-		public List<WebElement> getSummary_Coverages_Crime(String dataValue){
-			 
-			se.element().waitForElement(Summary_Coverages_Crime,dataValue);
-			return se.element().getElements(Summary_Coverages_Crime,dataValue);	
-		}
+		
 		public By Summary_label_TotalInlandPrem = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Inland')]");
 		public WebElement getSummary_label_TotalInlandPrem(String dataValue){
 			 
@@ -13362,12 +13477,6 @@ public By quotehomepage = By.cssSelector(".noaction");
 			 
 			se.element().waitForElement(Summary_LNK_InlandSectionIcon,dataValue);
 			return se.element().getElement(Summary_LNK_InlandSectionIcon,dataValue);	
-		}
-		public By Summary_Coverages_Inland = By.xpath("//h1[@class='panel-title' and contains(text(),'Total Inland')]/parent::div/following-sibling::div//h2[contains(text(),'Inland')]/parent::div/following-sibling::table//tbody//tr/td[1]");
-		public List<WebElement> getSummary_Coverages_Inland(String dataValue){
-			 
-			se.element().waitForElement(Summary_Coverages_Inland,dataValue);
-			return se.element().getElements(Summary_Coverages_Inland,dataValue);	
 		}
 		
 		// Service Center section

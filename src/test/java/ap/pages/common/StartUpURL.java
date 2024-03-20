@@ -7,17 +7,17 @@ import java.util.Map;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.Page;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import ap.OR.OR_CP;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.Page;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import ap.OR.BL_OR_CP;
 
 public class StartUpURL extends Page{
 	AP_Login login;
 	public void APStartUp(String strRegressionID, String transaction, ExtentTest test)
 	{
-		OR_CP ORCP = TestPageFactory.initElements(se, OR_CP.class);
+		BL_OR_CP ORCP = TestPageFactory.initElements(se, BL_OR_CP.class);
 		try {
 			List<Map<String, String>> table = ExcelOperations.getPagesData("Startup", strRegressionID,transaction);
 			int iteration = 0;

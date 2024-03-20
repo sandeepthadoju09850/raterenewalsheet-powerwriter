@@ -2,7 +2,7 @@
 
 public class constants {
 	
-		
+	public static String Execute = System.getProperty("Execute");	
 	public static String TESTDATA_PATH = "../../resources/testData/";
 	public static String TESTDATA_PATH_ALT = ".//resources//testData///";
 	//------------------Common QuoteNumbers sheet----------------------------------//

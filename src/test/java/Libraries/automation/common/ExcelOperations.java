@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import Libraries.automation.common.CommonBaseTest;
 import Libraries.automation.common.framework.Util;
 import pw.Constants.constants;
 
@@ -107,6 +108,31 @@ return table;
 //New Method to get pages data
 
 @SuppressWarnings("unchecked")
+public static List<Map<String, String>> getBLPagesData(String page,String strRegressionID,String transaction) {
+	LinkedHashMap<String, Object> getRowsSheet;
+	
+	//String sheetname ="R2_AP_TestData_"+ System.getProperty("Environment");
+	
+	String sheetname =System.getProperty("Testdata")+"_Bizlink_TestData"; 
+	getRowsSheet = CommonBaseTest.getXLSTestDataByRow("../../resources/test_data/"+sheetname+".xlsx", "new", page);
+
+	List<Map<String, String>> pageTable = new ArrayList<Map<String, String>>();
+	List<Map<String, String>> table = new ArrayList<Map<String, String>>();
+	for (String name : getRowsSheet.keySet()) {
+		pageTable = (List<Map<String, String>>) getRowsSheet.get(name);
+		int iteration = 0;
+		while (iteration < pageTable.size()) {
+			LinkedHashMap<String, String> pageSheetRow = (LinkedHashMap<String, String>) pageTable.get(iteration);
+			if (pageSheetRow.get("LOB").equalsIgnoreCase(strRegressionID)&&pageSheetRow.get("Transaction Name").equalsIgnoreCase(transaction)) { 			
+				table.add(pageSheetRow);
+			}
+		iteration++	;
+	}
+}
+return table;
+}
+
+@SuppressWarnings("unchecked")
 public static List<Map<String, String>> getPagesData(String page,String strRegressionID,String transaction) {
 	LinkedHashMap<String, Object> getRowsSheet = null;
 	if(strRegressionID.contains(constants.CA)||(strRegressionID.contains(constants.WC))){
@@ -122,12 +148,12 @@ public static List<Map<String, String>> getPagesData(String page,String strRegre
 		else if(transaction.contains(constants.CA)||(transaction.contains(constants.WC))){
 			getRowsSheet = CommonBaseTest.getXLSTestDataByRow(constants.NA, "../../resources/testData/CAWCPages.xlsx", "new", page);
 		}
-		else{
+		else if(transaction.contains(constants.CU)){
 			 getRowsSheet = CommonBaseTest.getXLSTestDataByRow( constants.NA,"../../resources/testData/CUPages.xlsx", "new", page);
 		}
-	}else if(strRegressionID.contains(constants.BL)) {
-		 getRowsSheet = CommonBaseTest.getXLSTestDataByRow( constants.NA,"../../resources/testData/E2EFlow_Bizlink_TestData.xlsx", "new", page);
-			
+		else{
+			 getRowsSheet = CommonBaseTest.getXLSTestDataByRow("../../resources/testData/E2EFlow_Bizlink_TestData.xlsx", "new", page);
+		}
 	}
 	List<Map<String, String>> pageTable = new ArrayList<Map<String, String>>();
 	List<Map<String, String>> table = new ArrayList<Map<String, String>>();
@@ -164,7 +190,37 @@ public static List<Map<String, String>> getBuildingPagesData(String page,String 
 return table;
 }
 
+@SuppressWarnings("unchecked")
+public static List<String> getBLTransactionsList(String strRegressionID) {
+	
+	LinkedHashMap<String, Object> getRowsSheet = CommonBaseTest.getXLSTestDataByRow("../../resources/test_data/Scenario_Selection", "new", "SuspendSheet");
+	List<Map<String, String>> pageTable = new ArrayList<Map<String, String>>();
+	List<String> TransactionList = new ArrayList<String>();
+	String execute = constants.Execute;
+	for (String name : getRowsSheet.keySet()) {
+		pageTable = (List<Map<String, String>>) getRowsSheet.get(name);
+		int iteration = 0;
+		while (iteration < pageTable.size()) {
+			LinkedHashMap<String, String> pageSheetRow = (LinkedHashMap<String, String>) pageTable.get(iteration);
+			if (pageSheetRow.get("Reg_ID").equalsIgnoreCase(strRegressionID)&&pageSheetRow.get("Execute").equalsIgnoreCase("Yes")) {
+				if(execute.equalsIgnoreCase("Bizlink")) {
+					if(pageSheetRow.get("Transaction Name").contains("NewQuote")) {
+						TransactionList.add(pageSheetRow.get("Transaction Name"));
+					}
+					
+				}else if(execute.equalsIgnoreCase("PW")){
+					TransactionList.add(pageSheetRow.get("Transaction Name"));
+				}
+					
+			}
+		iteration++	;
+	
+		}
+}
+return TransactionList;
+}
 
+@SuppressWarnings("unchecked")
 public static List<String> getTransactionsList(String strRegressionID) {
 	
 	LinkedHashMap<String, Object> getRowsSheet = CommonBaseTest.getXLSTestDataByRow(

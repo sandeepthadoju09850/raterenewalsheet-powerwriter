@@ -16,6 +16,7 @@ import com.google.common.base.Function;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import Libraries.automation.common.SystemPropertyUtil;
 import Libraries.automation.common.CommonBaseTest;
 import Libraries.automation.common.SeHelper;
 import pw.Constants.constants;
@@ -250,6 +251,24 @@ public class Util {
 		String convertedDate=dateOnly.format(cal.getTime());		
 		return  convertedDate;
 		
+		
+		
+	}
+	
+	public static String FutureDate(int data){
+		try {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dateOnly = new SimpleDateFormat("MM-dd-yyyy");
+		String d =SystemPropertyUtil.getEffectiveDate();
+		cal.setTime(dateOnly.parse(d));
+		cal.add(Calendar.DAY_OF_MONTH, data);
+		String convertedDate=dateOnly.format(cal.getTime());    
+		return  convertedDate;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 		
 		
 	}
@@ -987,6 +1006,28 @@ public class Util {
 			iteration++;
 		}
 		return regressionName;
+	}
+	
+@SuppressWarnings("unchecked")
+public static String getBLRegressionName(String regressionID) {
+		
+	 
+    int iteration = 0;
+    String  regressionName = "";
+    Map<String, Object> getRowsSheet = CommonBaseTest
+                  .getXLSTestDataByRow("../../resources/test_data/Scenario_Selection", "new", "Scenario_Selection");
+    List<Map<String, String>> scenarioSelectionData = new ArrayList<Map<String, String>>();
+    scenarioSelectionData = (List<Map<String, String>>) getRowsSheet.get(getRowsSheet.keySet().iterator().next());
+    while (iteration < scenarioSelectionData.size()) {
+           LinkedHashMap<String, String> pageSheetRow = (LinkedHashMap<String, String>) scenarioSelectionData
+                        .get(iteration);
+           if (pageSheetRow.get("Reg_ID").equalsIgnoreCase(regressionID)) {
+                 regressionName = pageSheetRow.get("Scenario_Name");
+                 break;
+           }
+           iteration++;
+    }
+    return regressionName;
 	}
 	public static long DiffInTime(Date d1, Date d2) {
 		  long difference_In_Minutes = 0;

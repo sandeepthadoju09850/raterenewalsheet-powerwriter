@@ -22,7 +22,12 @@ public class OR_CP extends OR_Common {
 	/*****************************************
 	 * Start of Commercial Package page locators
 	 ******************************************/
-	
+	public By BLprogressBar = By.xpath("//div[@class='secura-progress-bar invisible']");
+	//div[@class='progress-bar invisible']
+	public WebElement BLgetprogressBar() {
+		se.element().waitForElement(BLprogressBar);
+		return se.element().getElement(BLprogressBar);
+	}
 	public By Prodcut_LabelName = By
 			.xpath("//div[contains(@id,'policy_prd')]");
 

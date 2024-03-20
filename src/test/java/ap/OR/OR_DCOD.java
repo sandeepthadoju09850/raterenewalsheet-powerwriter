@@ -3,7 +3,7 @@ package ap.OR;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import Libraries.ap.automation.common.Page;
+import Libraries.automation.common.Page;
 
 public class OR_DCOD extends Page {
 	

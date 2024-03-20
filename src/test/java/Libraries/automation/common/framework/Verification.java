@@ -3,6 +3,7 @@ package Libraries.automation.common.framework;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import Libraries.automation.common.framework.Util;
 import Libraries.automation.common.SeHelper;
 import Libraries.automation.common.framework.NoAssertionsException;
 import pw.pages.COMMON.PW_Login;
@@ -26,6 +27,29 @@ public class Verification {
 
 	private final String SETTING_SCREEN_SHOT_ON_FAIL_ONLY = "screenShotOnFailOnly";
 
+	public boolean verifyEquals(String testname, String actual, String expected,ExtentTest test) throws IOException {
+		String vpName = getFormattedVPTestName(testname);
+		String screenshot = Util.captureScreenshot(testname, se);
+		String image = "";
+		se.log().logSeStep(String.format("%s: Verify Strings Equal Actual: '%s' Expected: '%s'", vpName, actual, expected));
+		try {
+			Assert.assertEquals(actual, expected, vpName);
+			logPass(testname);
+			test.log(LogStatus.PASS, vpName, "<br> Actual: "+actual+"<br> Expected: "+expected);
+			return true;
+		} catch (AssertionError e) {
+			image = test.addScreenCapture(screenshot);
+			logFail(testname, e.getMessage());
+			test.log(LogStatus.FAIL, vpName, "<br> Actual: "+actual+"<br> Expected: "+expected+"<br>"+image);
+			return false;
+		} catch (Exception e) {
+			image = test.addScreenCapture(screenshot);
+			logFail(testname, e.getMessage());
+			test.log(LogStatus.FAIL, vpName, "<br> Actual: "+actual+"<br> Expected: "+expected+"<br>"+image);
+			return false;
+		}
+	}
+	
 	public Verification(SeHelper se) {
 		this.se = se;
 	}
@@ -215,6 +239,78 @@ public class Verification {
 			logFail(testname, e.getMessage());
 			test.log(LogStatus.FAIL, vpName+ " is <b style='color:red;'>NOT displayed </b>", "<br> Actual: "+actual+"<br> Expected: "+expected+"<br>");
 			test.log(LogStatus.FAIL,testname,test.addScreenCapture(Util.getScreenshotDestinationPath(testname, se)));
+			return false;
+		}
+	}
+	public boolean verifyAsPassOrWarninig(String testname, int actual, int expected, boolean noscreenshot, ExtentTest test) throws IOException {
+		String vpName = getFormattedVPTestName(testname);
+		
+		se.log().logSeStep(
+				String.format("%s: verify boolean Actual: '%s' Expected: '%s'", vpName, actual, expected));
+		try {
+			Assert.assertEquals(actual, expected, vpName);
+			logPass(testname, noscreenshot);
+			test.log(LogStatus.PASS, vpName+" is displayed", "<br>Actual: "+actual+"<br>Expected: "+expected);
+			return true;
+		} catch (AssertionError e) {
+			
+			logFail(testname, e.getMessage());
+			test.log(LogStatus.WARNING, vpName+ " is <b style='color:red;'>NOT displayed </b>", "<br>Actual: "+actual+"<br>Expected: "+expected+"<br>");
+			test.log(LogStatus.WARNING,testname,test.addScreenCapture(Util.captureScreenshot(testname, se)));
+			return false;
+			
+		} catch (Exception e) {
+			
+			
+			logFail(testname, e.getMessage());
+			test.log(LogStatus.WARNING, vpName+ " is <b style='color:red;'>NOT displayed </b>", "<br> Actual: "+actual+"<br> Expected: "+expected+"<br>");
+			test.log(LogStatus.WARNING,testname,test.addScreenCapture(Util.captureScreenshot(testname, se)));
+			
+			return false;
+		
+		}
+	}
+	public boolean verifyAsPassOrWarninig(String testname, boolean actual, boolean expected, boolean noscreenshot, ExtentTest test) throws IOException {
+		String vpName = getFormattedVPTestName(testname);
+		
+		se.log().logSeStep(
+				String.format("%s: verify boolean Actual: '%s' Expected: '%s'", vpName, actual, expected));
+		try {
+			Assert.assertEquals(actual, expected, vpName);
+			logPass(testname, noscreenshot);
+			test.log(LogStatus.PASS, vpName+" is displayed", "<br>Actual: "+actual+"<br>Expected: "+expected);
+			return true;
+		} catch (AssertionError e) {
+			
+			logFail(testname, e.getMessage());
+			test.log(LogStatus.WARNING, vpName+ " is <b style='color:red;'>NOT displayed </b>", "<br>Actual: "+actual+"<br>Expected: "+expected+"<br>");
+			test.log(LogStatus.WARNING,testname,test.addScreenCapture(Util.captureScreenshot(testname, se)));
+			return false;
+			
+		} catch (Exception e) {
+			
+			
+			logFail(testname, e.getMessage());
+			test.log(LogStatus.WARNING, vpName+ " is <b style='color:red;'>NOT displayed </b>", "<br> Actual: "+actual+"<br> Expected: "+expected+"<br>");
+			test.log(LogStatus.WARNING,testname,test.addScreenCapture(Util.captureScreenshot(testname, se)));
+			
+			return false;
+		
+		}
+	}
+	
+	public boolean verifyEqualsNoScreenshot(String testname, boolean actual, boolean expected) throws IOException {
+		String vpName = getFormattedVPTestName(testname);
+		se.log().logSeStep(String.format("%s: verify boolean Actual: '%s' Expected: '%s'", vpName, actual, expected));
+		try {
+			Assert.assertEquals(actual, expected, vpName);
+			logPass(testname);
+			return true;
+		} catch (AssertionError e) {
+			logFail(testname, e.getMessage());
+			return false;
+		} catch (Exception e) {
+			logFail(testname, e.getMessage());
 			return false;
 		}
 	}

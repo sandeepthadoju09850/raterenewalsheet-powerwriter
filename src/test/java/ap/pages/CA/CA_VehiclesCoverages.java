@@ -10,12 +10,12 @@ import org.openqa.selenium.By;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 
-public class CA_VehiclesCoverages extends OR_CP {
+public class CA_VehiclesCoverages extends BL_OR_CP {
 	public void CA_VehiclesCoverages_Details(String strRegressionID, String transaction,String suspendSheet,  ExtentTest test) throws IOException
 	{
 		try{

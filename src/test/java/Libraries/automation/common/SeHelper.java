@@ -17,8 +17,10 @@ import Libraries.automation.common.framework.Browser.Browsers;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.net.InetAddress;
 //import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
@@ -432,6 +434,30 @@ public class SeHelper {
 		else
 			return "none";
 	}
+	
+	public void getHost(ExtentTest test) {
+		 
+		
+	       
+	       
+        try {
+        	InetAddress ip = InetAddress.getLocalHost();
+        	String hostname = ip.getHostName();
+        	
+        	if(hostname.equalsIgnoreCase("HO-AP-D98"))
+        	{
+            test.log(LogStatus.INFO,"<b style='color:green;'>Executing  Scripts in Jenkins machine #</b>", "<b style='background-color : yellow;'>"+hostname+"</b>");
+        	}
+        	else
+        	{
+	            test.log(LogStatus.INFO,"<b style='color:green;'>Executing  Scripts in local machine #</b>", "<b style='background-color : yellow;'>"+hostname+"</b>");
+
+        	}
+        } catch (UnknownHostException e) {
+ 
+            e.printStackTrace();
+        }
+    }
 	
 	
 }

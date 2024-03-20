@@ -21,8 +21,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import Libraries.automation.common.CommonBaseTest.TestDataXLS;
+import Libraries.automation.common.SeHelper;
+import Libraries.automation.common.framework.Util;
 import Libraries.automation.common.SystemPropertyUtil;
 import Libraries.automation.common.framework.Data;
 import Libraries.automation.common.framework.XlsData;
@@ -50,7 +54,11 @@ public class CommonBaseTest {
 		
 		
 	}
-	
+
+	protected static void testTearDown(SeHelper se, ExtentTest test) {
+		 test.setEndedTime(Util.getTime());
+		se.verify().checkForFail();
+	}
 	public String getEnv() {
 		
 		String Strurl = SystemPropertyUtil.getBaseStoreUrl();
@@ -280,6 +288,73 @@ public class CommonBaseTest {
 		return map;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@DataProvider(name = "browserXlsByRowBL", parallel = true)
+	public Object[][] XLSDataProviderByRowBL(Method method) {
+		//Array of browsers to parameterize test with
+		Object[][] browsersParameters = Data.createDataProviderFromDelimitedString(SystemPropertyUtil.getBrowsers(), ",");
+		//List of parameters to weave in with browsers
+		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+		//get annotation from test method
+		TestDataXLS testData = method.getAnnotation(TestDataXLS.class);
+		
+		//check for annotation for filename
+		if(testData == null ||  testData.fileName() == null || testData.fileName().length() == 0)
+		{
+			throw new SkipException(method.getName() + " : TEST REQUIRES DATA FILE TO BE DEFINED");
+		}
+		
+		//sFileName = testData.fileName();
+		
+		
+		
+		Object testObject = getXLSTestDataByRow(testData.fileName(), testData.sheetVersion(), testData.sheetName()).get("test");
+		
+		//if there are more than one rows / iterations in XLS
+		if (testObject instanceof String[][]) {
+			String[][] obj = (String[][]) testObject;
+			List<Map<String, String>> table = new ArrayList<Map<String, String>>();	
+			HashMap<String, String> row = null;
+			System.out.println();
+			for(int i=1; i<obj.length; i++){
+			     // System.out.print(obj[i][0] + ": ");
+				row = new HashMap<String, String>();
+			      for (int j = 0; j < obj[i].length; j++) {
+			    		  row.put(obj[0][j], obj[i][j]);
+			      }
+			      System.out.println();	
+			      table.add(row);
+			    }
+			Map<String, Object> xlsMap = new HashMap<String, Object>();
+			xlsMap.put("xlsMap", table);
+
+			dataList.add((Map<String, Object>) xlsMap);
+		} else if(testObject instanceof List) {
+
+			Map<String, Object> xlsMap = new HashMap<String, Object>();
+			xlsMap.put("xlsMap", testObject);
+	
+			dataList.add((Map<String, Object>) xlsMap);
+		}
+		//something is wrong with the file
+		else {
+			throw new SkipException(method.getName() + " : TEST FORMAT IS INCORRECT");
+		}
+		
+		//add sehelper
+		Object[][] returnDataWithSeHelper  = weaveInSeHelpers(browsersParameters);
+		
+		//run each set of test parameters in each browser
+		Object[][] returnData  = weaveInParameters(returnDataWithSeHelper, dataList);
+		
+		return returnData;
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * DataProvider to each set of Excel blocks, against each comma separated browsers list
 	 * @author saiGnapika
@@ -353,6 +428,49 @@ public class CommonBaseTest {
 	 * @param sheetName
 	 * @return
 	 */
+	
+	public static LinkedHashMap<String, Object> getXLSTestDataByRow(String filename, String sheetVersion, String sheetName){
+		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+		XlsData xlsdata = new XlsData();
+		String filenam = null;
+		if(sheetVersion.equalsIgnoreCase("new")){
+			List<LinkedHashMap<String, String>> testTable = null;
+			try{
+				if(filename.contains("Scenario_Selection")){
+					String sheetname = System.getProperty("ScenariosheetName");
+					String scenario ="";
+					if(sheetname.length()==2) {
+						scenario = "_"+"E2ERegression"+".xlsx";
+						filenam = "../../resources/test_data/" + filename+scenario;
+					}else {
+						 scenario = "_"+System.getProperty("ScenariosheetName")+".xlsx";
+						 filenam = "../../resources/test_data/" + filename+scenario;
+					}
+				} else{
+					filenam = "../../resources/test_data/" + filename;
+				}
+		          testTable = xlsdata.BLparseXLSXSheetTypeByRow(filenam, sheetName);
+			}catch(Exception e){				 
+				if(filename.contains("Scenario_Selection")){
+					String sheetname = System.getProperty("ScenariosheetName");
+					String scenario ="";
+					if(sheetname.length()==2) {
+						scenario = "_"+"E2ERegression"+".xlsx";
+						filenam = ".//resources//test_data///" + filename+scenario;
+					}else {
+						 scenario = "_"+System.getProperty("ScenariosheetName")+".xlsx";
+						 filenam = ".//resources//test_data///" + filename+scenario;
+					}} else{
+					//String scenario = "_"+LOB;
+					filenam = ".//resources//test_data///" + filename;
+				}
+		          testTable = xlsdata.BLparseXLSXSheetTypeByRow(filenam, sheetName);
+			}
+			map.put("test", testTable);
+		}			
+		sFileName = filename;		
+		return map;
+	}
 	
 	public static LinkedHashMap<String, Object> getXLSTestDataByRow(String LOB,String filename, String sheetVersion, String sheetName){
 		LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();

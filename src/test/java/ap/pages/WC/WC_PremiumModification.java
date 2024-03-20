@@ -11,16 +11,16 @@ import org.openqa.selenium.StaleElementReferenceException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.CommonAPMethods;
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.CommonAPMethods;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 import ap.pages.common.AP_Login;
 
-public class WC_PremiumModification extends OR_CP {
+public class WC_PremiumModification extends BL_OR_CP {
 	String text="";
 	public void WC_PremiumModification_Details(String strRegressionID, String transaction,String suspendSheet,String strAgentLink, String strLOB,String strRelease_SelectRelease,String strRole_SelectRoleAs,ExtentTest test) throws IOException
 	{
@@ -76,6 +76,7 @@ public class WC_PremiumModification extends OR_CP {
 					se.util().sleep(6000);
 					se.element().SelectElement(WC_PremiumModification_DD_MedFacilitiesReason,strWC_PremiumModification_DD_MedFacilitiesReason, test);
 					se.element().SelectElement(WC_PremiumModification_DD_SafetyDevices, strWC_PremiumModification_DD_SafetyDevices,test);
+					se.util().sleep(6000);
 					se.element().SelectElement(WC_PremiumModification_DD_SafetyDevicesReason,strWC_PremiumModification_DD_SafetyDevicesReason, test);
 					se.element().SelectElement(WC_PremiumModification_DD_Employees, strWC_PremiumModification_DD_Employees,test);
 					se.element().SelectElement(WC_PremiumModification_DD_EmployeesReason,strWC_PremiumModification_DD_EmployeesReason, test);

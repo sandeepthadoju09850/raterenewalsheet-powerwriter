@@ -11,15 +11,15 @@ import org.openqa.selenium.StaleElementReferenceException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 import ap.pages.common.AP_Login;
 
-public class CP_ExtendedNamedInsured extends OR_CP{
+public class CP_ExtendedNamedInsured extends BL_OR_CP{
 	public void CP_ExtendedNamedInsured_Details(String strRegressionID, String transaction,String suspendSheet, String strAgentLink, String strLOB,String strRelease_SelectRelease,String strRole_SelectRoleAs,ExtentTest test) throws IOException
 	{
 		try{

@@ -13,16 +13,17 @@ import org.openqa.selenium.JavascriptExecutor;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+
+import ap.OR.BL_OR_CP;
 import ap.pages.common.APPW_CommonMethods;
 import ap.pages.common.AddressValidation;
 
-public class CP_GenInfo extends OR_CP {
+public class CP_GenInfo extends BL_OR_CP {
 	
 	public   void CP_GenInfo_Details(String strRegressionID, String transaction,String suspendSheet, String strAgentLink, String strLOB,String strRelease_SelectRelease,String strRole_SelectRoleAs,ExtentTest test) throws IOException
 	{
@@ -573,6 +574,8 @@ public class CP_GenInfo extends OR_CP {
 		
 		String strGI_CHK_CPCLGLOnly_Yes = (String) row.get("GI_CHK_CPCLGLOnly_Yes");
 		String strGI_CHK_CPCLGLOnly_No = (String) row.get("GI_CHK_CPCLGLOnly_No");
+		String strGI_EQ_TreeTrimmingOrTreeRemoval_Yes = (String) row.get("GI_EQ_TreeTrimmingOrTreeRemoval_Yes");
+		String strGI_EQ_TreeTrimmingOrTreeRemoval_No = (String) row.get("GI_EQ_TreeTrimmingOrTreeRemoval_No");
 		
 		String strGI_NatOfBusi_DunkTank_Yes = (String) row.get("GI_NatOfBusi_DunkTank_Yes");
 		String strGI_NatOfBusi_DunkTank_No = (String) row.get("GI_NatOfBusi_DunkTank_No");
@@ -736,6 +739,10 @@ public class CP_GenInfo extends OR_CP {
 			
 			se.element().checkUncheckOrValidate(getGI_NatOfBusi_CHK_TreeTrimmingLessThan25Perc_Yes(strGI_NatOfBusi_CHK_TreeTrimmingLessThan25Perc_Yes), strGI_NatOfBusi_CHK_TreeTrimmingLessThan25Perc_Yes, test);
 			se.element().checkUncheckOrValidate(getGI_NatOfBusi_CHK_TreeTrimmingLessThan25Perc_No(strGI_NatOfBusi_CHK_TreeTrimmingLessThan25Perc_No), strGI_NatOfBusi_CHK_TreeTrimmingLessThan25Perc_No, test);
+			
+			se.element().checkUncheckOrValidate(getGI_EQ_TreeTrimmingOrTreeRemoval_Yes(strGI_EQ_TreeTrimmingOrTreeRemoval_Yes), strGI_EQ_TreeTrimmingOrTreeRemoval_Yes, test);
+			se.element().checkUncheckOrValidate(getGI_EQ_TreeTrimmingOrTreeRemoval_No(strGI_EQ_TreeTrimmingOrTreeRemoval_No), strGI_EQ_TreeTrimmingOrTreeRemoval_No, test);
+			
 			
 			
 		}catch(Exception e){
@@ -966,9 +973,12 @@ public class CP_GenInfo extends OR_CP {
 		
 		String strUW_TXT_TerritoryUnderwriter = (String) row.get("UW_TXT_TerritoryUnderwriter");
 		
-		
+
 		String strUW_RBTN_GuideTreeStands_No = (String) row.get("UW_RBTN_GuideTreeStands_No");
 		String strUW_RBTN_GuideTreeStands_Yes = (String) row.get("UW_RBTN_GuideTreeStands_Yes");
+		
+		String strGI_EQ_BunkedCribs_No = (String) row.get("GI_EQ_BunkedCribs_No");
+		String strGI_EQ_BunkedCribs_Yes = (String) row.get("GI_EQ_BunkedCribs_Yes");
 		
 		//String strGI_EQ_CHK_Isapplicantinvolvedinanysignificantwoodworkingmanufacturingorprocessing_Yes = (String) row.get("GI_EQ_CHK_Isapplicantinvolvedinanysignificantwoodworkingmanufacturingorprocessing_Yes");
 		//String strGI_EQ_CHK_Isapplicantinvolvedinanysignificantwoodworkingmanufacturingorprocessing_No = (String) row.get("GI_EQ_CHK_Isapplicantinvolvedinanysignificantwoodworkingmanufacturingorprocessing_No");
@@ -1264,6 +1274,11 @@ public class CP_GenInfo extends OR_CP {
 				
 				se.element().checkUncheckOrValidate(getUW_RBTN_GuideTreeStands_No(strUW_RBTN_GuideTreeStands_No),strUW_RBTN_GuideTreeStands_No,test);
 				se.element().checkUncheckOrValidate(getUW_RBTN_GuideTreeStands_Yes(strUW_RBTN_GuideTreeStands_Yes),strUW_RBTN_GuideTreeStands_Yes,test);
+				
+				
+				se.element().checkUncheckOrValidate(getGI_EQ_BunkedCribs_No(strGI_EQ_BunkedCribs_No),strGI_EQ_BunkedCribs_No,test);
+				se.element().checkUncheckOrValidate(getGI_EQ_BunkedCribs_Yes(strGI_EQ_BunkedCribs_Yes),strGI_EQ_BunkedCribs_Yes,test);
+				
 				
 				if(!strUW_TXT_TerritoryUnderwriter.equals("N/A")) {
 					se.element().Click(getUW_BTN_TerritoryUnderwriter(), test);

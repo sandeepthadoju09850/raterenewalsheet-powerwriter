@@ -12,18 +12,18 @@ import org.openqa.selenium.JavascriptExecutor;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 
-public class AP_AccountCreation extends OR_CP {
+public class AP_AccountCreation extends BL_OR_CP {
 	public void AccountCreation(String strRegressionID, String transaction,  ExtentTest test) throws IOException
 	{
 		AddressValidation AddressValidation=TestPageFactory.initElements(se, AddressValidation.class);	
-			List<Map<String, String>> table = ExcelOperations.getPagesData(constants.AccountCreation, strRegressionID, transaction);
+			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.AccountCreation, strRegressionID, transaction);
 			int iteration = 0;
 			JavascriptExecutor executor = (JavascriptExecutor) se.driver();
 			while (iteration < table.size()) {

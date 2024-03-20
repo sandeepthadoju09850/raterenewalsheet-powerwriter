@@ -10,15 +10,15 @@ import org.openqa.selenium.interactions.Actions;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 import ap.pages.common.APPW_CommonMethods;
 
-public class AP_Login extends OR_CP{
+public class AP_Login extends BL_OR_CP{
 	String CP = "Commercial Package";
 	String SE = "Special Events";
 	String CA = "Commercial Auto";
@@ -31,7 +31,7 @@ public class AP_Login extends OR_CP{
 
 	public void APAppLogin(String strRegressionID, String transaction,String FullApplication, ExtentTest test) throws IOException {
 		try {
-			List<Map<String, String>> table = ExcelOperations.getPagesData(constants.loginPageName, strRegressionID,transaction);
+			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
 			
 			int iteration = 0;
 			while (iteration < table.size()) {
@@ -50,33 +50,9 @@ public class AP_Login extends OR_CP{
 					//String strstpFlag = (String) row.get("stpFlag");
 					se.log().logTestStep("Log into the AgencyPortal");
 					test.log(LogStatus.INFO, "Executing","Transaction Step : " + transaction + "<br>" + "Page : Login");
-					if(transaction.equalsIgnoreCase("NewQuote"))
-					{
-						se.getHost(test);
-					}
-					if(transaction.equalsIgnoreCase("BookPolicyInPW")||transaction.equalsIgnoreCase("VerifyPolicyInPW"))
-					{
-						se.log().logTestStep("Access PW Application");	
-						test.log(LogStatus.INFO, "Access PW Application", "<br> URL : "+SystemPropertyUtil.getPwUrl());
-						se.browser().get(SystemPropertyUtil.getPwUrl(),test);
-						//se.verify().verifyEquals("login page for PowerWriter ", getLogin_LBL_Login().isDisplayed(), true, true,test);
-						if(se.element().isElementPresent(Login_LBL_Login)) {
-							se.element().enterText(getLogin_TXT_UserName(strPWLogin_TXT_UserName), strPWLogin_TXT_UserName);
-							se.element().enterText(getLogin_TXT_Password(strPWLogin_TXT_Password), strPWLogin_TXT_Password);
-							se.log().logSeStep("Entering username as: " + strPWLogin_TXT_Password);
-							se.log().logSeStep("Entering password as: " + strPWLogin_TXT_Password);
-							
-							se.element().enterTAB(getLogin_TXT_Password(strPWLogin_TXT_Password));
-							/*se.util().sleep(2000);
-							se.element().Click(getcookieConsent_CHK(),  test);
-							*/
-							se.element().Click(getLgnCommit(), test);
-							
-						}
-						se.util().sleep(5000);
-						se.verify().verifyEquals("User logs in Successfully", getpwHomescreen().isDisplayed(), true, true, test);
-					}
-					else if(strAgentLink.equalsIgnoreCase("Yes")&& !strSelect_Release.equalsIgnoreCase("R2 Performance")) {
+					
+					
+					if(strAgentLink.equalsIgnoreCase("Yes")&& !strSelect_Release.equalsIgnoreCase("R2 Performance")) {
 					
 						se.log().logTestStep("Access AP Application");	
 						test.log(LogStatus.INFO, "Access Agency Port Application", "<br> URL : "+SystemPropertyUtil.getBaseStoreUrl());
@@ -86,19 +62,7 @@ public class AP_Login extends OR_CP{
 						if (constants.Env.equals("stage") )
 							
 						{
-								
-						/*se.browser().get(SystemPropertyUtil.getBaseStoreUrl(),test);
-						se.element().waitForElementIsDisplayed(getQAALUsername());
-						se.verify().verifyEquals("Login Page is displayed", getQAALUsername().isDisplayed(), true, true, test);
-						se.element().enterText(getQAALUsername(), strLgnUsername);
-						se.element().enterText(getQAALPassword(), strLgnPassword);
-						se.log().logSeStep("Entering username as: " + strLgnUsername);
-						se.log().logSeStep("Entering password as: " + strLgnPassword);
-						test.log(LogStatus.INFO, "Entering text in USERNAME & PASSWORD fields", "<b>USERNAME : "+strLgnUsername+"<br> <b>PASSWORD : "+strLgnPassword); 
-						//se.util().sleep(1000);
-						se.element().waitForElement(Qaagentlink_btn_login);
-						se.element().Click(getQAALLogin(), test);
-						test.log(LogStatus.INFO, "Clicking on the button", "Click on LOGIN");*/
+						
 						
 						se.browser().get(SystemPropertyUtil.getBaseStoreUrl(),test);
 						se.element().waitForElementIsDisplayed(getALUsername());
@@ -116,22 +80,7 @@ public class AP_Login extends OR_CP{
 						
 						se.util().sleep(3000);
 					
-						
-						/*se.util().sleep(3000);
-						se.verify().verifyEquals("Agent Link page is displayed", getALCommercial().isDisplayed(), true,true, test);
-						se.log().logSeStep("Selecting Rating Tools link from Commercial dropdown");
-						se.element().MovetoElement(getALCommercial(),test);
-						se.element().waitForElement(agentlink_lnk_RatingTools);
-						se.element().MovetoElement(getALRatingTools(),test);
-//						se.element().waitForElement(agentlink_lnk_CommercialPackage);
-//						se.element().MovetoElement(getALCommercialPackage(),test);
-						se.element().waitForElement(agentlink_lnk_SECURABizLink);
-						se.element().MovetoElement(getALSECURABizLink(),test);
-						///**********Commented as part of Cut-over************//*
-						//se.element().waitForElement(agentlink_lnk_CommercialPackageR2);
-						//se.element().Click(getALCommercialPackageR2(strSelect_Release),test);
-						
-						*/}
+						}
 						
 						else 
 						{
@@ -153,21 +102,7 @@ public class AP_Login extends OR_CP{
 								//se.element().Click(getALInernal(), test);
 								test.log(LogStatus.INFO, "Clicking on the button", "Click on LOGIN");
 								
-								/*se.util().sleep(3000);
-								se.verify().verifyEquals("Agent Link page is displayed", getALCommercial().isDisplayed(), true,true, test);
-								se.log().logSeStep("Selecting Rating Tools link from Commercial dropdown");
-								se.element().MovetoElement(getALCommercial(),test);
-								se.element().waitForElement(agentlink_lnk_RatingTools);
-								se.element().MovetoElement(getALRatingTools(),test);
-//								se.element().waitForElement(agentlink_lnk_CommercialPackage);
-//								se.element().MovetoElement(getALCommercialPackage(),test);
-								se.element().waitForElement(agentlink_lnk_SECURABizLink);
-								se.element().MovetoElement(getALSECURABizLink(),test);
-								//**********Commented as part of Cut-over************//*
-								//se.element().waitForElement(agentlink_lnk_CommercialPackageR2);
-								//se.element().Click(getALCommercialPackageR2(strSelect_Release),test);
-								test.log(LogStatus.INFO, "Click on Commercial dropdown", "Selecting Agency Portal link from Rating system dropdown");
-								*/
+								
 							}
 							
 						}
@@ -232,12 +167,7 @@ public class AP_Login extends OR_CP{
 							se.browser().get(SystemPropertyUtil.getPopupuwaUrl(),test);
 							test.log(LogStatus.INFO, "Access Agency Port Application", "<br> URL : "+SystemPropertyUtil.getPopupUrl());
 							}*/
-						else if(strSelect_RoleAs.equalsIgnoreCase(CSS))
-						{
-							se.browser().deleteCookies();
-							se.browser().get(SystemPropertyUtil.getCSSUrl(),test);
-							test.log(LogStatus.INFO, "Access Agency Port Application", "<br> URL : "+SystemPropertyUtil.getCSSUrl());
-							}
+						
 						/*else if(strSelect_RoleAs.equalsIgnoreCase(SLM)) {
 							se.browser().deleteCookies();
 							se.browser().get(SystemPropertyUtil.getSLMUrl(),test);

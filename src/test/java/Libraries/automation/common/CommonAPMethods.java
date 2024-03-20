@@ -1,4 +1,4 @@
-package Libraries.ap.automation.common;
+package Libraries.automation.common;
 
 import java.io.IOException;
 
@@ -6,9 +6,9 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import com.relevantcodes.extentreports.ExtentTest;
 
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 
-public class CommonAPMethods extends OR_CP {
+public class CommonAPMethods extends BL_OR_CP {
 	
 	public static String PN;
 	public static Boolean flag;

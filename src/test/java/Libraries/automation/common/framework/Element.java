@@ -3,6 +3,7 @@ package Libraries.automation.common.framework;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -20,14 +21,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver.WindowType;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import Libraries.automation.common.framework.Util;
 import Libraries.automation.common.SeHelper;
 import pw.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 import pw.OR.OR_Common;
 
 /**
@@ -281,6 +285,50 @@ public class Element extends OR_CP{
 		}
 	}
 
+	public boolean enterText(WebElement element, String testdata) {
+		// se.log().logSeStep("Enter Text '" + testdata + "' in Element: " +
+		// element.toString());
+		if (element != null && element.isDisplayed() && element.isEnabled()) {
+			try {
+				if ("input".equals(element.getTagName())) {
+					element.sendKeys("");
+				} else {
+					new Actions(se.driver()).moveToElement(element).perform();
+				}
+				if (testdata.equals("N/A") || testdata.equals("NA")) {
+					enterTAB(element);
+				} else {
+					element.clear();
+					/*se.util().sleep(1000);
+					try {
+						se.util().sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}*/
+					se.element().clearTheField(element);
+					element.sendKeys(testdata);
+					enterTAB(element);
+				}
+
+				return true;
+			} catch (InvalidElementStateException e) {
+				// se.log().logSeStep("Could not enter text in " +
+				// element.toString() + ", element not visible or not enabled");
+				// se.verify().reportError("Could not enter text, element not
+				// visible or not enabled");
+				return false;
+			} catch (Exception e) {
+				// se.log().logSeStep("Could not enter text in " +
+				// element.toString());
+				// se.verify().reportError("Could not enter text");
+				return false;
+			}
+		} else
+			return false;
+
+	}
+
+	
 	public By lnk_home = By.partialLinkText("Contract Home");
 
 	public WebElement getHome() {
@@ -987,6 +1035,29 @@ public void clear(By locator) {
 
 	}
 
+	public List<WebElement> getElements(final By locator, String testData) {
+		if (!testData.equalsIgnoreCase("N/A")) {
+			try {
+				return se.driver().findElements(locator);
+			} catch (NoSuchElementException e) {
+				String errorName = "NoSuchElementException Exception in getElement:";
+				se.log().logSeStep(errorName + e.getMessage());
+				se.log().logTcError(errorName, se.browser().takeScreenShot());
+				return null;
+			} catch (Exception e) {
+				e.getMessage();
+				e.printStackTrace();
+				String errorName = "Un-handled Exception in getElement:";
+				se.log().logSeStep(errorName + e.getMessage());
+				se.log().logTcError(errorName, se.browser().takeScreenShot());
+				return null;
+			}
+		} else {
+			return null;
+		}
+
+	}
+	
 	/*
 	 * public void selectRadioByValue(final By locator, String value) {
 	 * 
@@ -1085,6 +1156,19 @@ public void clear(By locator) {
 		test.log(LogStatus.INFO, "Click on the Element: "+ elementname,"Clicked on "+elementname);
 
 	}
+	
+	public void clickelement(WebElement Element, ExtentTest test) {
+		try{
+			JavascriptExecutor executor = (JavascriptExecutor) se.driver();
+			executor.executeScript("arguments[0].click();", Element);
+			test.log(LogStatus.INFO,"Clicked on element - " ,Element.toString());
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			test.log(LogStatus.WARNING, "Could not Click on element - " ,Element.toString());
+		}
+		
+	}
 
 	public boolean clickSearchIcon(WebElement Element,ExtentTest test) {
 		try {
@@ -1124,6 +1208,151 @@ catch (Exception e) {
 		} else
 			return false;
 	}
+	
+	public boolean waitForElementToClickable(WebElement element, int timeoutSeconds) {
+		boolean elementIsFound = true;
+		//int timeout = 0;
+		// se.log().logSeStep("Waiting for element: " + locator.toString() + "
+		// to disappear");
+
+		try {
+
+			(new WebDriverWait(se.driver(), timeoutSeconds)).until(ExpectedConditions.elementToBeClickable(element));
+			elementIsFound = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+			elementIsFound = false;
+
+		}
+
+
+		return elementIsFound;
+	}
+	public boolean isElementEnabled(By locator) {
+		try {
+		 se.driver().findElement(locator).isEnabled();
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean Click1(final By locator) {
+		//WebDriverWait wait = new WebDriverWait(se.driver(), 120);
+		WebElement Element = searchForElement(locator);
+		if (Element != null && Element.isDisplayed() && Element.isEnabled()) {
+			try {
+				// se.log().logSeStep("Click Element : " + Element.toString());
+				//se.element().waitForElementToDisappear1(progressBar, 5000);
+				Element.click();
+				se.log().logSeStep("Clicked on the element " + Element.toString() + ", element is  visible");
+				//se.util().sleep(4000);
+				//se.element().waitForElementToDisappear1(progressBar, 5000);
+				return true;
+			} catch (InvalidElementStateException e) {
+				e.printStackTrace();
+
+				se.log().logSeStep("Could not click on " + Element.toString() + ", element not visible");
+				return false;
+			}
+		} else
+			se.log().logSeStep("Could not click on " + Element.toString() + ", element id disable and not clickable");
+		return false;
+	}
+
+
+	
+	public void MovetoElement(WebElement Element,ExtentTest test) {
+		try{
+			Actions ac1 = new Actions(se.driver());
+		
+		ac1.moveToElement(Element).perform();
+		ac1.doubleClick(Element).perform();
+		test.log(LogStatus.INFO, "Moved to element -", "element : " + Element.toString());
+		}
+		catch(Exception e){
+			test.log(LogStatus.WARNING, "Unable to move to element -", "element : " + Element.toString());
+			
+		}
+	}
+	
+	public boolean selectElement(final By locator, String selection,ExtentTest test) {
+		// se.log().logSeStep("Select " + selection + " In Element: "
+		// + locator.toString());
+		@SuppressWarnings("unused")
+		String browserName = ((RemoteWebDriver) se.driver()).getCapabilities().getBrowserName();
+
+		WebElement element = searchForElement(locator,selection);
+
+		if (selection.equalsIgnoreCase("N/A"))
+		{
+			return true;
+		}
+		else if (element != null) {
+			se.element().clickelement(element,test);
+			Select select = new Select(element);
+			try {
+				select.deselectAll();
+
+			} catch (Exception e) {
+				// ignore
+			}
+			//se.util().sleep(2000);
+
+			select.selectByVisibleText(selection);
+			//se.util().sleep(1000);
+
+			se.element().clickelement(element,test);
+			//enterTAB(element);
+			test.log(LogStatus.INFO,"Selected element with text - "+selection ,element.toString());
+			
+			return true;
+		} else
+			test.log(LogStatus.WARNING,"Could not select element with text - "+selection );
+			return false;
+	}
+
+	public boolean SelectElementByIndex(final By locator,String testdata, ExtentTest test) throws IOException {
+		// se.log().logSeStep("Select " + selection + " In Element: "
+		// + locator.toString());
+		@SuppressWarnings("unused")
+		String browserName = ((RemoteWebDriver) se.driver()).getCapabilities().getBrowserName();
+		 int Testdata=Integer.parseInt(testdata);
+
+		WebElement element = searchForElement(locator,testdata);
+
+
+				se.element().clickelement(element,test);
+				Select select = new Select(element);
+				try {
+
+					se.element().waitForElementToDisappear_One(BLprogressBar, 60);
+					select.selectByIndex(Testdata);
+					
+					se.log().logSeStep("selected the text: " + testdata + ", element is  selected");
+					
+					se.element().clickelement(element,test);
+					test.log(LogStatus.INFO, "selected the text: " + testdata + ", element is  selected");
+
+
+
+
+				} catch (Exception e) {
+					se.log().logSeStep("could not select the text: " + testdata + ", element is  not selected");
+					test.log(LogStatus.INFO, "could not select the text: " + testdata + ", element is  selected");
+
+
+					e.getMessage();
+					e.printStackTrace();
+				}
+				//se.util().sleep(2000);
+
+				return true;
+				
+	}
+
 	
 	public boolean Click(WebElement Element,String elementname, ExtentTest test) {
 		WebDriverWait wait = new WebDriverWait(se.driver(), 30);
@@ -1166,7 +1395,295 @@ catch (Exception e) {
 		} else
 			return false;
 	}
+	public WebElement searchForElement(final By locator,String testdata) {
+		return searchForElement(locator, testdata,globalSeTimeOut);
+	}
+	private WebElement searchForElement(final By locator,  String testdata,final int timeOutInSeconds) {
+
+		if (waitForElement(locator, timeOutInSeconds,testdata)) {
+			return getElement(locator,testdata);
+		}
+		return null;
+	}
 	
+	public String getSelectedValue(final By locator,String selection,ExtentTest test) throws IOException {
+		WebElement element;
+		String text = "";
+
+		element = searchForElement(locator,selection);
+		if (selection.equalsIgnoreCase("N/A"))
+		{
+			return text;
+		}
+
+		else if (element != null) {
+			try {
+				Select select =new Select(element);
+				se.element().waitForElementToDisappear_One(BLprogressBar, 60);
+				WebElement option=select.getFirstSelectedOption();
+				text = option.getText().trim();
+				if(text.equalsIgnoreCase(selection))
+				{
+					test.log(LogStatus.PASS, "Verifying the Dropdown of the element : " ,
+							"Actual Value: " + text + " (Protected)" + "<br> " + "Expected Value: "
+									+ selection + " (Protected)");
+				}
+				else
+				{
+					test.log(LogStatus.FAIL, "Verifying the Dropdown of the element : " ,
+							"Actual Value: " + text + " (Protected)" + "<br> " + "Expected Value: "
+									+ selection + " (Protected)");
+					test.log(LogStatus.FAIL,"validating the Dropdown of the element",test.addScreenCapture(Util.captureScreenshot("validatingtheDropdownoftheelement", se)));
+
+
+				}
+			} catch (InvalidElementStateException e) {
+				se.log().logSeStep(
+						"Could not get text from " + locator.toString() + ", elemet not visible or not enabled");
+				se.verify().reportError("Could not get text from, element not visible or not enabled");
+			} catch (Exception e) {
+				se.log().logSeStep("Could not get text from " + locator.toString());
+				se.verify().reportError("Could not get text");
+				test.log(LogStatus.FAIL,"validating the Dropdown of the element",test.addScreenCapture(Util.captureScreenshot("validatingtheDropdownoftheelement", se)));
+
+			}
+			return text;
+		} else
+			return text;
+
+	}
+	
+	
+	public boolean SelectElement(final By locator,String testdata, ExtentTest test) throws IOException, InterruptedException {
+		// se.log().logSeStep("Select " + selection + " In Element: "
+		// + locator.toString());
+		@SuppressWarnings("unused")
+		String browserName = ((RemoteWebDriver) se.driver()).getCapabilities().getBrowserName();
+
+		WebElement element = searchForElement(locator,testdata);
+
+		if (!testdata.equalsIgnoreCase("N/A"))
+		{
+			if (testdata.contains("validate2")) {
+
+				String[] strtestdata = testdata.split("=");
+				String[] strActualTD = strtestdata[1].split("\\|");
+				if (strActualTD[1].equalsIgnoreCase("DDV")) {
+					getSelectedValue(locator, strActualTD[0].trim(), test);
+
+				}
+			}
+
+			else  if(element!=null) {
+				//se.element().waitForElementtoText(element,120,testdata);
+				se.element().clickelement(element,test);
+				Select select = new Select(element);
+				try {
+
+					se.element().waitForElementToDisappear_One(BLprogressBar,120);
+					select.selectByVisibleText(testdata);
+					
+					se.element().waitForElementToDisappear_One(BLprogressBar,120);
+
+					se.log().logSeStep("selected the text: " + testdata + ", element is  selected");
+					test.log(LogStatus.INFO,"selected the text: ", "<br>Actual: "+ testdata +"<br>Expected: "+" element is  selected"+"<br>");
+					se.element().clickelement(element,test);
+					return true;
+
+				} catch (Exception e) {
+					se.log().logSeStep("selected the text: " + testdata + ", element is  not selected");
+					test.log(LogStatus.WARNING,"could not select the text: " + testdata + ", element is  not selected",test.addScreenCapture(Util.captureScreenshot("UnexpectedError while selecting " , se)));
+					e.getMessage();
+					e.printStackTrace();
+					return false;
+				}
+				//se.util().sleep(2000);
+
+				
+			} 
+		}
+
+
+		return true;
+	}
+
+
+	public boolean waitForElementToDisappear_One(final By locator, int timeoutSeconds) {
+		
+		//int timeout = 0;
+		// se.log().logSeStep("Waiting for element: " + locator.toString() + "
+		// to disappear");
+
+		try {
+
+			(new WebDriverWait(se.driver(), timeoutSeconds)).until(ExpectedConditions.invisibilityOfElementLocated(locator));
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+			return false;
+
+		}
+	}
+	public boolean waitForElementToAppear_One(String dataVal,final By locator, int timeoutSeconds) {
+		
+		//int timeout = 0;
+		// se.log().logSeStep("Waiting for element: " + locator.toString() + "
+		// to disappear");
+
+		try {
+			if(dataVal.equalsIgnoreCase("N/A")) {
+				return true;
+			}else {
+				(new WebDriverWait(se.driver(), timeoutSeconds)).until(ExpectedConditions.presenceOfElementLocated(locator));
+				(new WebDriverWait(se.driver(), timeoutSeconds)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+				return true;
+			}
+
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+			return false;
+
+		}
+
+
+
+}
+	public boolean Click(String elementname,WebElement Element,ExtentTest test) {
+		//WebDriverWait wait = new WebDriverWait(se.driver(), 120);
+		if (Element != null && Element.isDisplayed() && Element.isEnabled()) {
+			try {
+				// se.log().logSeStep("Click Element : " + Element.toString());
+				//se.element().waitForElementToDisappear1(progressBar, 5000);
+
+				Element.click();
+				se.log().logSeStep("Clicked on the element " + Element.toString() + ", element is  visible");
+				test.log(LogStatus.INFO, "Clicked on the element - " , Element.toString() );
+				//se.util().sleep(4000);
+				//se.element().waitForElementToDisappear1(progressBar, 5000);
+				return true;
+			} catch (InvalidElementStateException e) {
+				e.printStackTrace();
+
+				se.log().logSeStep("Could not click on " + Element.toString() + ", element not visible");
+				test.log(LogStatus.WARNING, "Could not click on - " , Element.toString() );
+				return false;
+			}
+			catch ( Exception e) {
+				e.printStackTrace();
+
+
+				return false;
+			}
+		} else
+			se.log().logSeStep("Could not click on " + Element.toString() + ", element id disable and not clickable");
+		return false;
+	}
+	
+	public boolean clearTheField1(final By locator) {
+		WebElement element = searchForElement(locator);
+		if (element != null) {
+			try {
+				String value = element.getAttribute("value");
+				System.out.println(value.length());
+				if (value.length() >= 1) {
+					for (int i = 0; i <= value.length(); i++) {
+						System.out.println(i);
+						element.sendKeys(Keys.BACK_SPACE);
+						element.sendKeys(Keys.TAB);
+					}
+				}
+				return true;
+			} catch (InvalidElementStateException e) {
+				return false;
+			} catch (Exception e) {
+				return false;
+			}
+		} else
+			return false;
+
+	}
+	public void chkElement(WebElement Element, String testdata,ExtentTest test) {
+		try{
+			JavascriptExecutor executor = (JavascriptExecutor) se.driver();
+			
+			if (testdata.equalsIgnoreCase("YES") || testdata.equalsIgnoreCase("NO")) {
+				
+				executor.executeScript("arguments[0].click();", Element);
+				test.log(LogStatus.INFO,"Clicked on element - " ,Element.toString());	
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			test.log(LogStatus.WARNING, "Could not Click on element - " ,Element.toString());
+		}
+		
+	}
+	
+	public boolean waitForAlertPresent( int timeoutSeconds) {
+		boolean elementIsFound = true;
+		//int timeout = 0;
+		// se.log().logSeStep("Waiting for element: " + locator.toString() + "
+		// to disappear");
+
+		try {
+
+			(new WebDriverWait(se.driver(), timeoutSeconds)).until(ExpectedConditions.alertIsPresent());
+			elementIsFound = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+			elementIsFound = false;
+
+		}
+
+
+		return elementIsFound;
+	}
+	public boolean waitBasedOnCount(final By locator, int maxcount){
+		
+		try {
+
+			int count=0;
+			do{
+				se.util().sleep(3000);
+				if(count>=maxcount){
+					break;
+				}
+				count++;
+			}
+			while (se.element().isElementPresent(locator));
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+			return false;
+
+		}
+		
+	}
+
+public boolean waitForLoad(int timeOutInSeconds) {
+	try {
+
+
+		WebDriverWait wait = new WebDriverWait(se.driver(), timeOutInSeconds);
+
+
+		((JavascriptExecutor)se.driver()).executeScript("return document.readyState").equals("complete");
+		return true;
+	}
+	catch (Exception e) {
+		e.getMessage();
+	}
+	return false;
+}
 	public boolean ClickQuote(WebElement Element,String strRegressionID, ExtentTest test) {
 		WebDriverWait wait = new WebDriverWait(se.driver(), 30);
 		if (Element != null && Element.isDisplayed() && Element.isEnabled()) {
@@ -1994,6 +2511,52 @@ catch (Exception e) {
 		}
 	
 	}
+	public String gettext(WebElement element) {
+		//WebElement element;
+		String text = "";
+		// se.log().logSeStep("Get Text From Element: " + locator.toString());
+		//element = searchForElement(locator);
+		if (element != null) {
+			try {
+				text = element.getText();
+			} catch (InvalidElementStateException e) {
+				se.log().logSeStep(
+						"Could not get text from " + element.toString() + ", elemet not visible or not enabled");
+				se.verify().reportError("Could not get text from, element not visible or not enabled");
+			} catch (Exception e) {
+				se.log().logSeStep("Could not get text from " + element.toString());
+				se.verify().reportError("Could not get text");
+			}
+			return text;
+		} else
+			return text;
+
+	}
+	public String getSelectedText(final By locator) {
+		WebElement element;
+		String text = "";
+
+		element = searchForElement(locator);
+
+		if (element != null) {
+			try {
+				
+				text = element.getText().trim();
+
+
+			} catch (InvalidElementStateException e) {
+				se.log().logSeStep("Could not get text from " + locator.toString() + ", elemet not visible or not enabled");
+				se.verify().reportError("Could not get text from, element not visible or not enabled");
+			} catch (Exception e) {
+				se.log().logSeStep("Could not get text from " + locator.toString());
+				se.verify().reportError("Could not get text");
+			}
+			return text;
+		} else
+			return text;
+
+	}
+
 	
 	public void selectClasscode(WebElement ORMainTxtBox,String strFilterNeeded,String StrClasscodeTXT,
 			String StrDescriptionTXT,String StrPopupFilterTXT3,String StrPopupFilterTXT4, ExtentTest test) {

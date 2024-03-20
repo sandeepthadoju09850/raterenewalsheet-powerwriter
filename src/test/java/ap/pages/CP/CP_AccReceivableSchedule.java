@@ -8,12 +8,12 @@ import java.util.Map;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 
-public class CP_AccReceivableSchedule extends OR_CP {
+public class CP_AccReceivableSchedule extends BL_OR_CP {
 
 	public void CP_AccReceivableSchedule_Details(String strRegressionID, String transaction,String suspendSheet,  ExtentTest test) throws IOException
 	{
@@ -23,7 +23,7 @@ public class CP_AccReceivableSchedule extends OR_CP {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.AccReceivableSchedule, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.AccReceivableSchedule, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);

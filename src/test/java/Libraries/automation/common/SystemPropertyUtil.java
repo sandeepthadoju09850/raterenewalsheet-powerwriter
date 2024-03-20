@@ -23,12 +23,17 @@ public class SystemPropertyUtil {
 	private final static String rrsStageUrlDefault ="https://stage-web.intranet.secura.net/renewalrateworksheet/Commercial/Account";
 	private final static String rrsQAUrlDefault ="https://qa-web.intranet.secura.net/renewalrateworksheet/Commercial/Search";
 	//Default values
+	private final static String ControlDateDefault = "";
+	private final static String ControlDate = "Control.Date";
+	private final static String popupUrlDefault = "";
+	private final static String popupUrlKey = "pop.url";
 	private final static int windowWidthDefault = 1920;
 	private final static int windowHeightDefault = 1080;
 	private final static String testDataDirectoryDefault = "target/test-classes";
 	private final static String httpCredentialsDefault = "true";
 	private final static String browsersDefault = "Chrome";
-
+	private final static String EffectiveDateDefault = "";
+	private final static String EffectiveDate = "Effective.Date";
 	
 	private final static int windowWidth = System.getProperties().containsKey(windowWidthKey) ? Integer.parseInt(System.getProperty(windowWidthKey)) : windowWidthDefault;		
 	private final static int windowHeight =System.getProperties().containsKey(windowHeightKey) ? Integer.parseInt(System.getProperty(windowHeightKey)) : windowHeightDefault;
@@ -40,9 +45,12 @@ public class SystemPropertyUtil {
 	
 	private final static String baseUrl = System.getProperties().containsKey(baseUrlKey) ? System.getProperty(baseUrlKey) : baseUrlDefault;
 	private final static String localeUrl = System.getProperties().containsKey(localeUrlKey) ? System.getProperty(localeUrlKey) : localeUrlDefault;
+	private final static String popupUrl = System.getProperties().containsKey(popupUrlKey) ? System.getProperty(popupUrlKey) : popupUrlDefault;
 	
 	private final static String rrsdevUrl = System.getProperties().containsKey(rrsdevKey) ? System.getProperty(rrsdevKey) : rrsDevUrlDefault;
-	
+	private final static String effectivedate = System.getProperties().containsKey(EffectiveDate) ? System.getProperty(EffectiveDate) : EffectiveDateDefault;
+	private final static String controldate = System.getProperties().containsKey(ControlDate) ? System.getProperty(ControlDate) : ControlDateDefault;
+
 	private final static String rrsqaUrl = System.getProperties().containsKey(rrsQAKey) ? System.getProperty(rrsQAKey) : rrsQAUrlDefault;
 	private final static String rrsstageUrl = System.getProperties().containsKey(rrsstageKey) ? System.getProperty(rrsstageKey) : rrsStageUrlDefault;
 	
@@ -67,10 +75,15 @@ public class SystemPropertyUtil {
 		return windowWidth;
 	}
 	
+	public static String getEff_Date() {
+		return effectivedate;
+	}
 	public static int getWindowHeight() {
 		return windowHeight;
 	}
-	
+	public static String getCont_Date() {
+		return controldate;
+	}
 	public static String getTestDataDirectory() {
 		return testDataDirectory;
 	}
@@ -79,6 +92,9 @@ public class SystemPropertyUtil {
 		return httpCredentials;
 	}
 	
+	public static String getPopup() {
+		return popupUrl;
+	}
 	
 	public static String getBrowsers() {
 		//translate old style to new SeHelper enums		
@@ -102,6 +118,17 @@ public class SystemPropertyUtil {
 	{
 		return getrrsStageUrl();
 	}
-	
+	public static String getEffectiveDate()
+	{
+		return getEff_Date();
+	}
+	public static String getPopupUrl()
+	{
+		return getPopup();
+	}
+	public static String getControlDate()
+	{
+		return getCont_Date();
+	}
 
 }

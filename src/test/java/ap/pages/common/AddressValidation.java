@@ -9,9 +9,9 @@ import org.openqa.selenium.WebElement;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 
-public class AddressValidation extends OR_CP {
+public class AddressValidation extends BL_OR_CP {
 	
 	
 	public void AddressStandardization (LinkedHashMap<String, String> row,ExtentTest test) throws IOException{

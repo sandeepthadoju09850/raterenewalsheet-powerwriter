@@ -14,16 +14,16 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.BaseTest;
-import Libraries.ap.automation.common.CommonAPMethods;
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SeHelper;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
-import Libraries.ap.automation.common.framework.Browser.Browsers;
+import Libraries.automation.common.BaseTest;
+import Libraries.automation.common.CommonAPMethods;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SeHelper;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
+import Libraries.automation.common.framework.Browser.Browsers;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 import ap.pages.CA.CA_AdditionalCoverages;
 import ap.pages.CA.CA_Drivers;
 import ap.pages.CA.CA_Garagekeepers;
@@ -92,7 +92,7 @@ public class CU15_WI_CURegression extends BaseTest{
 	public static void CU15_WI_CURegressionMethod(Browsers myBrowser, SeHelper se, Map<String, Object> params,String strRegressionID,String strRegressionName, File file,XSSFWorkbook workbook, ExtentTest test) throws IOException 
 	{
 		JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		OR_CP ORCP = TestPageFactory.initElements(se, OR_CP.class);
+		BL_OR_CP ORCP = TestPageFactory.initElements(se, BL_OR_CP.class);
 
 		CommonAPMethods BT=TestPageFactory.initElements(se, CommonAPMethods.class);
 		AP_Login  LoginPage = TestPageFactory.initElements(se, AP_Login.class);
@@ -306,111 +306,9 @@ public class CU15_WI_CURegression extends BaseTest{
 			Date PWstartTime = Util.getTime();
 			
 			// Booking Underlying Quote (WI BP) in PW
-			transaction = "BookPolicyInPW";
-			String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 			
-			if (transactionsList.contains("BookPolicyInPW")) {
-				strRegressionIDUnderlined = "CUBP_17";
-				LoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"No", test);
-				APPW_CommonMethods.PW_Search_Details(test,quote,"BP");
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				APPW_CommonMethods.getCalculatePremium(strRegressionIDUnderlined,"N/A", transaction, test);
-				PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
-				CP_Summary.CP_Summary_Details(strAgentLink,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberBP, test, file,  workbook);
-				APPW_CommonMethods.getCompleteTransaction(strRegressionIDUnderlined, transaction, test);
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, "PWConvertToPolicy",suspendSheet, test);
-
-			}
 			
-			// Booking Underlying Quote (WI CA) in PW
-			if (transactionsList.contains("BookPolicyInPW")) {
-
-				strRegressionIDUnderlined = "CUCA_14";
-				se.browser().get(SystemPropertyUtil.getPwUrl(),test);
-				APPW_CommonMethods.PW_Search_Details(test,quote,"A");
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				APPW_CommonMethods.getCalculatePremium(strRegressionIDUnderlined,"50", transaction, test);
-				PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
-				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberCA, test, file,  workbook);
-				APPW_CommonMethods.getCompleteTransaction(strRegressionIDUnderlined, transaction, test);
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, "PWConvertToPolicy",suspendSheet, test);
-
-			}
-
-			// Booking Underlying Quote (WI WC) in PW
-			if (transactionsList.contains("BookPolicyInPW")) {
-
-				strRegressionIDUnderlined = "CUWC_14";
-				se.browser().get(SystemPropertyUtil.getPwUrl(),test);
-				APPW_CommonMethods.PW_Search_Details(test,quote,"WC");
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				APPW_CommonMethods.getCalculatePremium(strRegressionIDUnderlined,"N/A", transaction, test);
-				PolicyNumberWC = APPW_CommonMethods.retrievePolicyNumber(test);
-				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberWC, test, file,  workbook);
-				APPW_CommonMethods.getCompleteTransaction(strRegressionIDUnderlined, transaction, test);
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, "PWConvertToPolicy",suspendSheet, test);
-
-			}
-
-			// Booking CU Quote (WI CU) in PW
-			if (transactionsList.contains("BookPolicyInPW")) {
-
-				se.browser().get(SystemPropertyUtil.getPwUrl(),test);
-				APPW_CommonMethods.PW_Search_Details(test,quote,"CU");
-				APPW_CommonMethods.getDashboardActions(strRegressionID, transaction, suspendSheet, test);
-				APPW_CommonMethods.getCalculatePremium(strRegressionID,"N/A", transaction, test);
-				PolicyNumberCU = APPW_CommonMethods.retrievePolicyNumber(test);
-				CP_Summary.CP_Summary_Details(strRegressionID,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberCU, test, file,  workbook);
-				APPW_CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
-				APPW_CommonMethods.getDashboardActions(strRegressionID, "PWConvertToPolicy", suspendSheet, test);
-
-			}
-			test.log(LogStatus.INFO, "PW Elapsed Time", "<b>Started Time : "+PWstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PWstartTime, Util.getTime())); 
-			Date PolicyVerificationstartTime = Util.getTime();
 			
-			// Policy Issuance of Underlying Quote (WI BP)
-			 transaction = "PolicyIssuanceOnAP"; 
-			 suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
-				
-
-			if (transactionsList.contains("PolicyIssuanceOnAP")) {
-				 	strRegressionIDUnderlined = "CUBP_17";
-				se.util().sleep(60000);
-				LoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"No", test);
-				APPW_CommonMethods.APSearchPolicyNumber(PolicyNumberBP,test);
-				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "Package", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberBP, test, file,  workbook);
-
-			}
-			
-			// Policy Issuance of Underlying Quote (WI CA)
-			if (transactionsList.contains("PolicyIssuanceOnAP")) {
-				strRegressionIDUnderlined = "CUCA_14";
-				
-				APPW_CommonMethods.APSearchPolicyNumber(PolicyNumberCA,test);
-				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "Commercial Auto", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberCA, test, file,  workbook);
-
-			}
-			
-			// Policy Issuance of Underlying Quote (WI WC)
-			if (transactionsList.contains("PolicyIssuanceOnAP")) {
-				strRegressionIDUnderlined = "CUWC_14";
-				
-				APPW_CommonMethods.APSearchPolicyNumber(PolicyNumberWC,test);
-				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "Workers Comp", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberWC, test, file,  workbook);
-
-			}
-			
-			// Policy Issuance of CU Quote (WI CU) 
-			if (transactionsList.contains("PolicyIssuanceOnAP")) {
-
-				
-				APPW_CommonMethods.APSearchPolicyNumber(PolicyNumberCU,test);
-				CP_Summary.CP_Summary_Details(strRegressionID,strRegressionName, transaction, suspendSheet, strAgentLink, "Umbrella", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberCU,test, file,  workbook);
-
-			}
-
-			test.log(LogStatus.INFO, "Elapsed Time for PolicyVerification in Bizlink", "<b>Started Time : "+PolicyVerificationstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PolicyVerificationstartTime, Util.getTime())); 
-
 		}
 		catch (Exception e) {
 			e.printStackTrace();

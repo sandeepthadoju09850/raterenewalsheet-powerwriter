@@ -14,16 +14,17 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.BaseTest;
-import Libraries.ap.automation.common.CommonAPMethods;
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SeHelper;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
-import Libraries.ap.automation.common.framework.Browser.Browsers;
+import Libraries.automation.common.BaseTest;
+import Libraries.automation.common.CommonAPMethods;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SeHelper;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
+import Libraries.automation.common.framework.Browser.Browsers;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
+import pw.OR.OR_CP;
 import ap.pages.CA.CA_AdditionalCoverages;
 import ap.pages.CA.CA_Drivers;
 import ap.pages.CA.CA_Garagekeepers;
@@ -92,7 +93,7 @@ public class CU13_CO_CURegression extends BaseTest{
 	public static void CU13_CO_CURegressionMethod(Browsers myBrowser, SeHelper se, Map<String, Object> params,String strRegressionID,String strRegressionName, File file,XSSFWorkbook workbook, ExtentTest test) throws IOException 
 	{
 		JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		OR_CP ORCP = TestPageFactory.initElements(se, OR_CP.class);
+		BL_OR_CP ORCP = TestPageFactory.initElements(se, BL_OR_CP.class);
 
 		CommonAPMethods BT=TestPageFactory.initElements(se, CommonAPMethods.class);
 		AP_Login  LoginPage = TestPageFactory.initElements(se, AP_Login.class);
@@ -153,15 +154,16 @@ public class CU13_CO_CURegression extends BaseTest{
 		try {
 			String transaction = "NewQuote";
 			String strRegressionIDUnderlined = "CUBP_15";
-			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
-			List<Map<String, String>> table = ExcelOperations.getPagesData(constants.loginPageName, strRegressionID,transaction);
+			List<String> transactionsList = ExcelOperations.getBLTransactionsList(strRegressionID);
+			System.out.println(transactionsList.size());
+			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(0);
 			String strAgentLink = (String) row.get("AgentLink");
 			String strLOB = (String) row.get("LOB_Select");
 			String strRole_SelectRoleAs = (String) row.get("Select_RoleAs");
 			String strRelease_SelectRelease = (String) row.get("Select_Release");
 			
-			List<Map<String, String>> tableBP = ExcelOperations.getPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
+			List<Map<String, String>> tableBP = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
 			LinkedHashMap<String, String> rowBP = (LinkedHashMap<String, String>) tableBP.get(0);
 			String strAgentLinkBP = (String) rowBP.get("AgentLink");
 			String strLOBBP = (String) rowBP.get("LOB_Select");
@@ -297,49 +299,10 @@ public class CU13_CO_CURegression extends BaseTest{
 
 			}
 			
-			// Booking Underlying Quote (CO CA) in PW
-			if (transactionsList.contains("BookPolicyInPW")) {
+			
 
-				strRegressionIDUnderlined = "CUCA_12";
-				se.browser().get(SystemPropertyUtil.getPwUrl(),test);
-				APPW_CommonMethods.PW_Search_Details(test,quote,"A");
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				APPW_CommonMethods.getCalculatePremium(strRegressionIDUnderlined,"50", transaction, test);
-				PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
-				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberCA, test, file,  workbook);
-				APPW_CommonMethods.getCompleteTransaction(strRegressionIDUnderlined, transaction, test);
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, "PWConvertToPolicy",suspendSheet, test);
-
-			}
-
-			// Booking Underlying Quote (CO WC) in PW
-			if (transactionsList.contains("BookPolicyInPW")) {
-
-				strRegressionIDUnderlined = "CUWC_12";
-				se.browser().get(SystemPropertyUtil.getPwUrl(),test);
-				APPW_CommonMethods.PW_Search_Details(test,quote,"WC");
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				APPW_CommonMethods.getCalculatePremium(strRegressionIDUnderlined,"N/A", transaction, test);
-				PolicyNumberWC = APPW_CommonMethods.retrievePolicyNumber(test);
-				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberWC, test, file,  workbook);
-				APPW_CommonMethods.getCompleteTransaction(strRegressionIDUnderlined, transaction, test);
-				APPW_CommonMethods.getDashboardActions(strRegressionIDUnderlined, "PWConvertToPolicy",suspendSheet, test);
-
-			}
-
-			// Booking CU Quote (CO CU) in PW
-			if (transactionsList.contains("BookPolicyInPW")) {
-
-				se.browser().get(SystemPropertyUtil.getPwUrl(),test);
-				APPW_CommonMethods.PW_Search_Details(test,quote,"CU");
-				APPW_CommonMethods.getDashboardActions(strRegressionID, transaction, suspendSheet, test);
-				APPW_CommonMethods.getCalculatePremium(strRegressionID,"N/A", transaction, test);
-				PolicyNumberCU = APPW_CommonMethods.retrievePolicyNumber(test);
-				CP_Summary.CP_Summary_Details(strRegressionID,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumberCU, test, file,  workbook);
-				APPW_CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
-				APPW_CommonMethods.getDashboardActions(strRegressionID, "PWConvertToPolicy", suspendSheet, test);
-
-			}
+			
+			
 			test.log(LogStatus.INFO, "PW Elapsed Time", "<b>Started Time : "+PWstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PWstartTime, Util.getTime())); 
 			Date PolicyVerificationstartTime = Util.getTime();
 			

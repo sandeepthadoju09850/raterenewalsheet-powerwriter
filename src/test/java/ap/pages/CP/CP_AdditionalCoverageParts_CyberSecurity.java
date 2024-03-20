@@ -8,11 +8,11 @@ import java.util.Map;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.framework.Util;
-import ap.OR.OR_CP;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.framework.Util;
+import ap.OR.BL_OR_CP;
 
-public class CP_AdditionalCoverageParts_CyberSecurity extends OR_CP {
+public class CP_AdditionalCoverageParts_CyberSecurity extends BL_OR_CP {
 	public void CP_AdditionalCoverageParts_CyberSecurity_Details(String strRegressionID, String transaction,String suspendSheet,  ExtentTest test) throws IOException
 	{
 		try{
@@ -21,7 +21,7 @@ public class CP_AdditionalCoverageParts_CyberSecurity extends OR_CP {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData("AddCovParts_CyberSecurity", strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData("AddCovParts_CyberSecurity", strRegressionID, transaction);
 		int iteration = 0;
 
 		while (iteration < table.size()) {

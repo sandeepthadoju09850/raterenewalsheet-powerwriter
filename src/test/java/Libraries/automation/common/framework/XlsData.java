@@ -127,7 +127,67 @@ public class XlsData extends Page {
 
 		return data;
 	}
+	public List<LinkedHashMap<String, String>> BLparseXLSXSheetTypeByRow(String filename, String sheetName) {
+	// System.out.println("Inside parseXLSXSheet");
+		openWorkbk(filename);
+	XSSFSheet sheet = workbk.getSheet(sheetName);
+	XSSFRow row = null;
+	XSSFCell cell = null;
+	List<LinkedHashMap<String, String>> table = new ArrayList<LinkedHashMap<String, String>>();
+	LinkedHashMap<String, String> rowMap = null;
+	List<String> firstRow = new ArrayList<String>();
 
+	int i = 0;
+	for (int rownum = sheet.getFirstRowNum(); rownum <= sheet.getLastRowNum(); rownum++) {
+		row = sheet.getRow(rownum);
+		if (row != null) {
+			rowMap = new LinkedHashMap<String, String>();
+			int j = 0;
+			for (int cellnum = row.getFirstCellNum(); cellnum < row.getLastCellNum(); cellnum++) {
+				cell = row.getCell(cellnum);
+				 if (cell == null) {
+					 System.out.println("Row"+rownum+"Has Blank Value at Cell Number"+cellnum);
+				 }
+				 if (cell != null) {
+					 cell.setCellType(Cell.CELL_TYPE_STRING); 
+					 }
+				
+				/*
+				 * if(cell.getStringCellValue() == null ||
+				 * cell.getRawValue() == null){ continue; }else{
+				 */
+				if (rownum == sheet.getFirstRowNum()) {
+					firstRow.add(cell.getStringCellValue());
+				} else {
+					try {
+						
+						if (cell.getStringCellValue().length() > 0) {
+							rowMap.put(firstRow.get(j), cell.getStringCellValue());
+						}
+						if(cell.getStringCellValue().equalsIgnoreCase("Go To PageList")){
+							rownum = sheet.getLastRowNum()+1;
+							cellnum=row.getLastCellNum()+1;
+						}
+					} catch (Exception e) {
+
+					}
+				}
+				j++;
+			}
+		}
+		if (rownum != sheet.getFirstRowNum())
+			table.add(rowMap);
+
+		i++;
+	}
+
+	return table;
+}
+
+
+
+
+	
 	public List<LinkedHashMap<String, String>> parseXLSXSheetTypeByRow(String filename, String sheetName) {
 		openWorkbk(filename);
 		// System.out.println("Inside parseXLSXSheet");

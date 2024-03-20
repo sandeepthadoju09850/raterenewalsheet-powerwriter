@@ -16,18 +16,18 @@ import org.openqa.selenium.WebElement;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.CommonAPMethods;
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.SystemPropertyUtil;
-import Libraries.ap.automation.common.Utils.TestPageFactory;
-import Libraries.ap.automation.common.framework.Util;
-import Libraries.ap.automation.common.framework.XlsData;
+import Libraries.automation.common.CommonAPMethods;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.SystemPropertyUtil;
+import Libraries.automation.common.Utils.TestPageFactory;
+import Libraries.automation.common.framework.Util;
+import Libraries.automation.common.framework.XlsData;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 import ap.pages.common.APPW_CommonMethods;
 import ap.pages.common.AP_Login;
 
-public class SE_Summary extends OR_CP {
+public class SE_Summary extends BL_OR_CP {
 
 	public void SE_Summary_Details(String strRegressionID,String strRegressionName,String transaction,String suspendSheet,String strAgentLink,String strLOB,String strRelease_SelectRelease,String strRole_SelectRoleAs ,String quote, ExtentTest test,File file, XSSFWorkbook workbook) throws IOException
 	{
@@ -1132,12 +1132,7 @@ public void premiumverification(String message,String quote,String strLOB,String
 				test.log(LogStatus.INFO, "Access Agency Port Application", "<br> URL : "+SystemPropertyUtil.getPopupUrl());
 				
 			}*/
-			else if(strRole_SelectRoleAs.equalsIgnoreCase(CSS))
-			{
-				se.browser().get(SystemPropertyUtil.getCSSUrl(),test);
-				test.log(LogStatus.INFO, "Access Agency Port Application", "<br> URL : "+SystemPropertyUtil.getCSSUrl());
-				
-			}
+			
 			/*else if(strRole_SelectRoleAs.equalsIgnoreCase(SLM))
 			{
 				se.browser().get(SystemPropertyUtil.getSLMUrl(),test);
@@ -1189,17 +1184,7 @@ public void premiumverification(String message,String quote,String strLOB,String
 				test.log(LogStatus.INFO, "Access Agency Port Application", "<br> URL : "+SystemPropertyUtil.getPopupUrl());
 				
 			}*/
-			else if(strRole_SelectRoleAs.equalsIgnoreCase(CSS))
-			{
-				se.browser().get(SystemPropertyUtil.getCSSUrl(),test);
-				se.element().Click(getMyWork(), test);
-				se.browser().deleteCookies();
-				
-				test.log(LogStatus.INFO, "Access Agency Port Application", "<br> URL : "+SystemPropertyUtil.getCSSUrl());
-				se.browser().navigateurl(SystemPropertyUtil.getPopupUrl(),test);
-				
-				
-			}
+			
 			
 			/*else if(strRole_SelectRoleAs.equalsIgnoreCase(SLM))
 			{

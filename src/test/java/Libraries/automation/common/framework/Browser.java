@@ -9,10 +9,33 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import Libraries.automation.common.framework.Util;
 import Libraries.automation.common.SeHelper;
 
 import java.io.IOException;
 import java.util.*;
+
+
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import Libraries.automation.common.SeHelper;
 
 @SuppressWarnings("unused")
 public class Browser {
@@ -189,6 +212,43 @@ public class Browser {
 		return se.driver().getTitle() != null;
 	}
 
+	public boolean get(String url,ExtentTest test) {
+		try{
+		se.log().logSeStep("Get URL: " + url);
+		if (url == null) {
+			se.log().logSeStep("url is null, nothing to get");
+			test.log(LogStatus.FAIL, "url is null, nothing to get", "null");
+			
+			return false;
+		}
+		try {
+			se.driver().get(url);
+		} catch (Exception e) {
+			System.out.println("Unhandled Exception in Browser.get " + url);
+			System.out.println(e.getMessage());
+			test.log(LogStatus.FAIL, "Unhandled Exception in Browser.get - "+ url,test.addScreenCapture(Util.captureScreenshot("UnexpectedError while loading url" , se)));
+			return false;
+		}
+		if (se.driver().getTitle() == null || se.driver().getTitle().equals("Problem loading page")
+				|| se.driver().getTitle().contains("Oops! Google Chrome could not connect to")
+				|| se.driver().getTitle().equals("Internet Explorer cannot display the webpage")) {
+			test.log(LogStatus.FAIL, "Error while loading url -"+ se.driver().getTitle(),test.addScreenCapture(Util.captureScreenshot("UnexpectedError while loading url" , se)));
+			
+			return false;
+		} else
+			test.log(LogStatus.PASS, " loaded url - "+url, se.driver().getTitle());
+		
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			test.log(LogStatus.FAIL, "Unhandled Exception in Browser.get ", "exception");
+			
+			return false;
+			
+		}
+		
+	}
+	
 	/**
 	 * Description: Load a new url in the browser. Does not log the test case
 	 * start time. Use openUrl() instead, if this is the first url loaded for

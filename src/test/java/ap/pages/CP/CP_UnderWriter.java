@@ -10,12 +10,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import Libraries.ap.automation.common.ExcelOperations;
-import Libraries.ap.automation.common.framework.Util;
+import Libraries.automation.common.ExcelOperations;
+import Libraries.automation.common.framework.Util;
 import ap.Constants.constants;
-import ap.OR.OR_CP;
+import ap.OR.BL_OR_CP;
 
-public class CP_UnderWriter extends OR_CP {
+public class CP_UnderWriter extends BL_OR_CP {
 	public void CP_UnderWriter_Details(String strRegressionID, String transaction,String suspendSheet,  ExtentTest test) throws IOException
 	{
 		try{
@@ -358,6 +358,22 @@ public class CP_UnderWriter extends OR_CP {
 			String strUW_TXT_SpasAllServicesOffered =(String) row.get("UW_TXT_SpasAllServicesOffered");	
 			String strUW_CHK_Hastheapplicanthadpriorinsurance_No =(String) row.get("UW_CHK_Hastheapplicanthadpriorinsurance_No");	
 			String strUW_CHK_Hastheapplicanthadpriorinsurance_Yes =(String) row.get("UW_CHK_Hastheapplicanthadpriorinsurance_Yes");	
+			String strUW_CHK_Doesapplicantperformleadpaintremoval_Yes =(String) row.get("UW_CHK_Doesapplicantperformleadpaintremoval_Yes");	
+			String strUW_CHK_Doesapplicantperformleadpaintremoval_No =(String) row.get("UW_CHK_Doesapplicantperformleadpaintremoval_No");
+			String strUW_CHK_Anypowerwashingorsandblastingoperations_Yes =(String) row.get("UW_CHK_Anypowerwashingorsandblastingoperations_Yes");	
+			String strUW_CHK_Anypowerwashingorsandblastingoperations_No =(String) row.get("UW_CHK_Anypowerwashingorsandblastingoperations_No");
+			String strUW_CHK_Anyrooftopinstallationorrepair_Yes =(String) row.get("UW_CHK_Anyrooftopinstallationorrepair_Yes");	
+			String strUW_CHK_Anyrooftopinstallationorrepair_No =(String) row.get("UW_CHK_Anyrooftopinstallationorrepair_No");
+			String strUW_CHK_Industrialorwarehouserefrigerationsystems_Yes =(String) row.get("UW_CHK_Industrialorwarehouserefrigerationsystems_Yes");	
+			String strUW_CHK_Industrialorwarehouserefrigerationsystems_No =(String) row.get("UW_CHK_Industrialorwarehouserefrigerationsystems_No");
+			String strUW_CHK_Anyworkotherthansidewalksparkinglots_Yes =(String) row.get("UW_CHK_Anyworkotherthansidewalksparkinglots_Yes");	
+			String strUW_CHK_Anyworkotherthansidewalksparkinglots_No =(String) row.get("UW_CHK_Anyworkotherthansidewalksparkinglots_No");
+			String strUW_CHK_AnytowerworkTC_Yes =(String) row.get("UW_CHK_AnytowerworkTC_Yes");	
+			String strUW_CHK_AnytowerworkTC_No =(String) row.get("UW_CHK_AnytowerworkTC_No");
+			
+			
+			
+			
 			String strUW_CHK_Doestheapplicantperformanydrywall_No =(String) row.get("UW_CHK_Doestheapplicantperformanydrywall_No");	
 			String strUW_CHK_Doestheapplicantperformanydrywall_Yes =(String) row.get("UW_CHK_Doestheapplicantperformanydrywall_Yes");	
 			String strUW_TXT_Explaintheoperations =(String) row.get("UW_TXT_Explaintheoperations");	
@@ -1267,6 +1283,20 @@ public class CP_UnderWriter extends OR_CP {
 				se.element().enterOrValidateText(getUW_TXT_SpasAllServicesOffered(strUW_TXT_SpasAllServicesOffered),strUW_TXT_SpasAllServicesOffered,test);
 				se.element().checkUncheckOrValidate( getUW_CHK_Hastheapplicanthadpriorinsurance_Yes(strUW_CHK_Hastheapplicanthadpriorinsurance_Yes),strUW_CHK_Hastheapplicanthadpriorinsurance_Yes,test);
 				se.element().checkUncheckOrValidate( getUW_CHK_Hastheapplicanthadpriorinsurance_No(strUW_CHK_Hastheapplicanthadpriorinsurance_No),strUW_CHK_Hastheapplicanthadpriorinsurance_No,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Doesapplicantperformleadpaintremoval_Yes(strUW_CHK_Doesapplicantperformleadpaintremoval_Yes),strUW_CHK_Doesapplicantperformleadpaintremoval_Yes,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Doesapplicantperformleadpaintremoval_No(strUW_CHK_Doesapplicantperformleadpaintremoval_No),strUW_CHK_Doesapplicantperformleadpaintremoval_No,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Anypowerwashingorsandblastingoperations_Yes(strUW_CHK_Anypowerwashingorsandblastingoperations_Yes),strUW_CHK_Anypowerwashingorsandblastingoperations_Yes,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Anypowerwashingorsandblastingoperations_No(strUW_CHK_Anypowerwashingorsandblastingoperations_No),strUW_CHK_Anypowerwashingorsandblastingoperations_No,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Anyrooftopinstallationorrepair_Yes(strUW_CHK_Anyrooftopinstallationorrepair_Yes),strUW_CHK_Anyrooftopinstallationorrepair_Yes,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Anyrooftopinstallationorrepair_No(strUW_CHK_Anyrooftopinstallationorrepair_No),strUW_CHK_Anyrooftopinstallationorrepair_No,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Industrialorwarehouserefrigerationsystems_Yes(strUW_CHK_Industrialorwarehouserefrigerationsystems_Yes),strUW_CHK_Industrialorwarehouserefrigerationsystems_Yes,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Industrialorwarehouserefrigerationsystems_No(strUW_CHK_Industrialorwarehouserefrigerationsystems_No),strUW_CHK_Industrialorwarehouserefrigerationsystems_No,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Anyworkotherthansidewalksparkinglots_Yes(strUW_CHK_Anyworkotherthansidewalksparkinglots_Yes),strUW_CHK_Anyworkotherthansidewalksparkinglots_Yes,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_Anyworkotherthansidewalksparkinglots_No(strUW_CHK_Anyworkotherthansidewalksparkinglots_No),strUW_CHK_Anyworkotherthansidewalksparkinglots_No,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_AnytowerworkTC_Yes(strUW_CHK_AnytowerworkTC_Yes),strUW_CHK_AnytowerworkTC_Yes,test);
+				se.element().checkUncheckOrValidate( getUW_CHK_AnytowerworkTC_No(strUW_CHK_AnytowerworkTC_No),strUW_CHK_AnytowerworkTC_No,test);
+				
+				
 				se.element().checkUncheckOrValidate( getUW_CHK_Doestheapplicantperformanydrywall_Yes(strUW_CHK_Doestheapplicantperformanydrywall_Yes),strUW_CHK_Doestheapplicantperformanydrywall_Yes,test);
 				se.element().checkUncheckOrValidate( getUW_CHK_Doestheapplicantperformanydrywall_No(strUW_CHK_Doestheapplicantperformanydrywall_No),strUW_CHK_Doestheapplicantperformanydrywall_No,test);
 				se.element().enterOrValidateText(getUW_TXT_Explaintheoperations(strUW_TXT_Explaintheoperations),strUW_TXT_Explaintheoperations,test);
