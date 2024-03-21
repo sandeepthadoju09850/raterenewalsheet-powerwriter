@@ -72,7 +72,7 @@ public class UMRunner extends BaseTest {
             CU13_CO_CURegression.CU13_CO_CURegressionMethod(myBrowser, se,params, strRegressionId,RegressionName, premiumsFile, workbook, test);
             test.setEndedTime(Util.getTime());  
      }
-     @Test(description = "CU_14 KY CU Regression testing", dataProvider ="browserXlsByRow", groups = {"AgencyPortal" }, timeOut = 500000000,priority=1)
+     @Test(description = "CU_14 KY CU Regression testing", dataProvider ="browserXlsByRowBL", groups = {"AgencyPortal" }, timeOut = 500000000,priority=1)
 
      @TestDataXLS(fileName ="../../resources/test_data/Scenario_Selection", sheetVersion = "new",sheetName = "Scenario_Selection") 
      public void CU_14(Browsers myBrowser,SeHelper se, Map<String, Object> params) throws IOException 
@@ -83,7 +83,7 @@ public class UMRunner extends BaseTest {
             CU14_KY_CURegression.CU14_KY_CURegressionMethod(myBrowser, se,params, strRegressionId,RegressionName, premiumsFile, workbook, test);
             test.setEndedTime(Util.getTime());  
      }
-     @Test(description = "CU_15 WI CU Regression testing", dataProvider ="browserXlsByRow", groups = {"AgencyPortal" }, timeOut = 500000000,priority=1)
+     @Test(description = "CU_15 WI CU Regression testing", dataProvider ="browserXlsByRowBL", groups = {"AgencyPortal" }, timeOut = 500000000,priority=1)
 
      @TestDataXLS(fileName ="../../resources/test_data/Scenario_Selection", sheetVersion = "new",sheetName = "Scenario_Selection") 
      public void CU_15(Browsers myBrowser,SeHelper se, Map<String, Object> params) throws IOException 

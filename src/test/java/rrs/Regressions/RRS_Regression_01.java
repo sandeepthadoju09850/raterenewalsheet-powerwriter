@@ -81,10 +81,10 @@ public class RRS_Regression_01 extends BaseTest {
 			
 				String transaction = "NewQuote";
 				String strRegressionIDUnderlined = "CUSL_01";
-				
+				System.out.println(strRegressionID);
 				
 				//List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
-				List<Map<String, String>> table = ExcelOperations.getPagesData(constants.loginPageName, strRegressionID,transaction);
+				List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
 				LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(0);
 				String strAgentLink = (String) row.get("AgentLink");
 				String strLOB = (String) row.get("LOB_Select");
@@ -92,13 +92,13 @@ public class RRS_Regression_01 extends BaseTest {
 				String strRelease_SelectRelease = (String) row.get("Select_Release");
 				
 
-				List<Map<String, String>> tableSL = ExcelOperations.getPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
-				LinkedHashMap<String, String> rowSL = (LinkedHashMap<String, String>) tableSL.get(0);
-				String strAgentLinkSL = (String) rowSL.get("AgentLink");
+				//List<Map<String, String>> tableSL = ExcelOperations.getPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
+				//LinkedHashMap<String, String> rowSL = (LinkedHashMap<String, String>) tableSL.get(0);
+				//String strAgentLinkSL = (String) rowSL.get("AgentLink");
 
 				// UNDERLYING POLICY (SL CO) NEW QUOTE TRANSACTION
 				
-						if (transactionsList.contains("NewQuote")) {
+						if (transactionsList.contains("BLNewQuote")) {
 							String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 							
 						BLLoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"Yes", test);
