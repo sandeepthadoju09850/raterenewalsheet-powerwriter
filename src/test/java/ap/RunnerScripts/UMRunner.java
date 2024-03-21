@@ -89,7 +89,7 @@ public class UMRunner extends BaseTest {
      public void CU_14(Browsers myBrowser,SeHelper se, Map<String, Object> params) throws IOException 
      { 
             String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-            String RegressionName = Util.getRegressionName(strRegressionId); 
+            String RegressionName = Util.getBLRegressionName(strRegressionId); 
             ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " +RegressionName);
             CU14_KY_CURegression.CU14_KY_CURegressionMethod(myBrowser, se,params, strRegressionId,RegressionName, premiumsFile, workbook, test);
             test.setEndedTime(Util.getTime());  
@@ -100,7 +100,7 @@ public class UMRunner extends BaseTest {
      public void CU_15(Browsers myBrowser,SeHelper se, Map<String, Object> params) throws IOException 
      { 
             String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-            String RegressionName = Util.getRegressionName(strRegressionId); 
+            String RegressionName = Util.getBLRegressionName(strRegressionId); 
             ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " +RegressionName);
             CU15_WI_CURegression.CU15_WI_CURegressionMethod(myBrowser, se,params, strRegressionId,RegressionName, premiumsFile, workbook, test);
             test.setEndedTime(Util.getTime());  
