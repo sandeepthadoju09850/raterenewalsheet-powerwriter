@@ -2523,7 +2523,13 @@ public boolean waitForLoad(int timeOutInSeconds) {
 	}
 
 	public boolean isElementVisible(By locator){
-	    return se.driver().findElement(locator).isDisplayed();
+		try {
+			 se.driver().findElement(locator).isDisplayed();
+			return true;
+			}
+			catch (Exception e) {
+				return false;
+			}
 	}
 
 	
