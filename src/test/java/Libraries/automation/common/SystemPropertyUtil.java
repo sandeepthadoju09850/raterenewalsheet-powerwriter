@@ -12,7 +12,7 @@ public class SystemPropertyUtil {
 	private final static String testDataDirectorykey = "test.data.directory";
 	private final static String httpCredentialsKey = "http.credentials";
 	private final static String browsersKey = "browsers";	
-	private final static String baseUrlKey = "base.url";
+	private final static String baseUrlKey = "basepw.url";
 	private final static String localeUrlKey = "locale.url";
 	private final static String baseUrlDefault = "https://hopw49.intranet.secura.net/";
 	private final static String localeUrlDefault = "";

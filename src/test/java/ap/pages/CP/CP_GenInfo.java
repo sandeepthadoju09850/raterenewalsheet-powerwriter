@@ -116,17 +116,17 @@ public class CP_GenInfo extends BL_OR_CP {
 				se.element().waitForElement(GI_AppInfo_TXT_EffectiveDate);
 				if (!strGI_AppInfo_TXT_EffectiveDate.contains("N/A") && transaction.contains("NewQuote"))
 				{
-					se.element().enterOrValidateText(getGI_AppInfo_TXT_EffectiveDate(strGI_AppInfo_TXT_EffectiveDate),strGI_AppInfo_TXT_EffectiveDate,test);
+					se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_EffectiveDate(strGI_AppInfo_TXT_EffectiveDate),strGI_AppInfo_TXT_EffectiveDate,test);
 					se.util().sleep(2000);
 					se.element().waitBasedOnCount(PleaseWaitPopup,40);
 				}
 				else if(transaction.equalsIgnoreCase("NewQuote")) 
 				{
-					se.element().enterOrValidateText(getGI_AppInfo_TXT_EffectiveDate(eff_date),eff_date,test);
+					se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_EffectiveDate(eff_date),eff_date,test);
 						se.util().sleep(2000);
 					se.element().waitBasedOnCount(PleaseWaitPopup,40);
 					
-					se.element().enterOrValidateText(getGI_AppInfo_TXT_ControlDate(control_date),control_date,test);
+					se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_ControlDate(control_date),control_date,test);
 					se.util().sleep(2000);
 				se.element().waitBasedOnCount(PleaseWaitPopup,40);
 				}
@@ -163,7 +163,7 @@ public class CP_GenInfo extends BL_OR_CP {
 				 if(transaction.equalsIgnoreCase("NewQuote") && !strLOB.equals(constants.CP) &&strGI_NatOfBusi_Special_Events_Type.contains("Special Events Liability") )
 				{
 					 se.util().sleep(5000);
-					se.element().enterOrValidateText(getGI_NatOfBusi_SetupBeginDate(eff_date),eff_date,test);
+					se.element().enterOrValidateTextDate(getGI_NatOfBusi_SetupBeginDate(eff_date),eff_date,test);
 
 				}
 				//Event Start Date
@@ -171,7 +171,7 @@ public class CP_GenInfo extends BL_OR_CP {
 				{
 					 se.util().sleep(5000);
 					EventStartDate= Util.FutureDate(1);
-					se.element().enterOrValidateText(getGI_NatOfBusi_EventStartDate(EventStartDate),EventStartDate,test);
+					se.element().enterOrValidateTextDate(getGI_NatOfBusi_EventStartDate(EventStartDate),EventStartDate,test);
 	
 				}
 
@@ -179,7 +179,7 @@ public class CP_GenInfo extends BL_OR_CP {
 				{
 					 se.util().sleep(5000);
 					 se.element().waitForElementToAppear_One(eff_date,GI_NatOfBusi_EventStartDate,20);
-					se.element().enterOrValidateText(getGI_NatOfBusi_EventStartDate(eff_date),eff_date,test);
+					se.element().enterOrValidateTextDate(getGI_NatOfBusi_EventStartDate(eff_date),eff_date,test);
 					se.element().waitBasedOnCount(PleaseWaitPopup,40);
 
 				}
@@ -190,7 +190,7 @@ public class CP_GenInfo extends BL_OR_CP {
 				{
 					 se.util().sleep(5000);
 					EventEnddate=Util.FutureDate(10);
-					se.element().enterOrValidateText(getGI_NatOfBusi_EventEndDate(EventEnddate),EventEnddate,test);
+					se.element().enterOrValidateTextDate(getGI_NatOfBusi_EventEndDate(EventEnddate),EventEnddate,test);
 
 				}
 				//Teardown end date
@@ -199,7 +199,7 @@ public class CP_GenInfo extends BL_OR_CP {
 				{
 						se.util().sleep(2000);
 					TeardownEndDate=Util.FutureDate(15);
-					se.element().enterOrValidateText(getGI_NatOfBusi_TeardownEndDate(TeardownEndDate),TeardownEndDate,test);
+					se.element().enterOrValidateTextDate(getGI_NatOfBusi_TeardownEndDate(TeardownEndDate),TeardownEndDate,test);
 
 				}
 				
@@ -207,12 +207,12 @@ public class CP_GenInfo extends BL_OR_CP {
 				{
 						se.util().sleep(2000);
 					se.element().waitBasedOnCount(PleaseWaitPopup,40);
-					se.element().enterOrValidateText(getGI_AppInfo_TXT_ExpirationDate(strGI_AppInfo_TXT_ExpirationDate),strGI_AppInfo_TXT_ExpirationDate,test);
+					se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_ExpirationDate(strGI_AppInfo_TXT_ExpirationDate),strGI_AppInfo_TXT_ExpirationDate,test);
 				}
 				else if(transaction.equalsIgnoreCase("NewQuote") && strLOB.equals(constants.SE)) 
 				{
 					se.element().waitBasedOnCount(PleaseWaitPopup,40);
-					se.element().enterOrValidateText(getGI_AppInfo_TXT_ExpirationDate(Tommdate),Tommdate,test);
+					se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_ExpirationDate(Tommdate),Tommdate,test);
 					test.log(LogStatus.INFO, "Actual Expiration Date is - ", test.addScreenCapture(Util.captureScreenshot("502 Error" , se)));
 					
 				}
@@ -516,7 +516,7 @@ public class CP_GenInfo extends BL_OR_CP {
 			{
 				se.element().waitForElement(GI_AppInfo_TXT_Date_Business_Started);
 				se.element().clearTheField1(GI_AppInfo_TXT_Date_Business_Started);
-				se.element().enterOrValidateText(getGI_AppInfo_TXT_Date_Business_Started (strGI_AppInfo_TXT_Date_Business_Started ),strGI_AppInfo_TXT_Date_Business_Started ,test);
+				se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_Date_Business_Started (strGI_AppInfo_TXT_Date_Business_Started ),strGI_AppInfo_TXT_Date_Business_Started ,test);
 			}
 			//se.element().enterOrValidateText(getGI_AppInfo_Years_in_Business(strGI_AppInfo_Years_in_Business),strGI_AppInfo_Years_in_Business,test);
 			se.element().enterOrValidateText(getGI_AppInfo_TXT_Business_Experience (strGI_AppInfo_TXT_Business_Experience ),strGI_AppInfo_TXT_Business_Experience ,test);
