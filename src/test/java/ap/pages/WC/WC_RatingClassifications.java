@@ -22,7 +22,7 @@ public class WC_RatingClassifications extends BL_OR_CP {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.RatingClassifications, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.RatingClassifications, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);

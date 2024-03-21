@@ -25,7 +25,7 @@ public class CA_Underwriter extends BL_OR_CP {
 		         testTearDown(se, test);
 		    }
 		JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.UnderwritingQuestions, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.UnderwritingQuestions, strRegressionID, transaction);
 		int iteration = 0;
 
 		while (iteration < table.size()) {

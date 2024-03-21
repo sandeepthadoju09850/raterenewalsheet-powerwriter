@@ -28,7 +28,7 @@ public class CP_ExtendedNamedInsured extends BL_OR_CP{
 		         testTearDown(se, test);
 		    }
 		JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.Extended_Named_Insured, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.Extended_Named_Insured, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);

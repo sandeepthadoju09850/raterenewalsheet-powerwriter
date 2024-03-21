@@ -23,7 +23,7 @@ public class CP_PropertyCoverages extends BL_OR_CP {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.Property_Coverages, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.Property_Coverages, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);

@@ -23,7 +23,7 @@ public class CA_Drivers extends BL_OR_CP {
 	         testTearDown(se, test);
 	    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.Drivers, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.Drivers, strRegressionID, transaction);
 		int iteration = 0;
 
 		while (iteration < table.size()) {

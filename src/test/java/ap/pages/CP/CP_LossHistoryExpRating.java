@@ -25,7 +25,7 @@ public class CP_LossHistoryExpRating extends BL_OR_CP{
 		         testTearDown(se, test);
 		    }
 		JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.LossHistoryExpRating, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.LossHistoryExpRating, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 			se.util().sleep(5000);

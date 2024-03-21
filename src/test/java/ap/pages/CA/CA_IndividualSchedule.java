@@ -23,7 +23,7 @@ public class CA_IndividualSchedule extends BL_OR_CP  {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.IndividualSchedule, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.IndividualSchedule, strRegressionID, transaction);
 		int iteration = 0;
 
 		while (iteration < table.size()) {

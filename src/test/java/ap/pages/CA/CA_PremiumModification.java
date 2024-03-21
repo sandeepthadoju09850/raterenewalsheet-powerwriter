@@ -25,7 +25,7 @@ public class CA_PremiumModification extends BL_OR_CP {
 		         testTearDown(se, test);
 		    }
 			JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.CA_PremiumModification, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.CA_PremiumModification, strRegressionID, transaction);
 		int iteration = 0;
 
 		while (iteration < table.size()) {

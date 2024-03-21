@@ -22,7 +22,7 @@ public class WC_IndividualsIncluded extends BL_OR_CP {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.IndividualsIncluded, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.IndividualsIncluded, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);

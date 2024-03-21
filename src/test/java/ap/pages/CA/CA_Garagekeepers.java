@@ -23,7 +23,7 @@ public class CA_Garagekeepers extends BL_OR_CP {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.Garagekeepers, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.Garagekeepers, strRegressionID, transaction);
 		int iteration = 0;
 
 		while (iteration < table.size()) {

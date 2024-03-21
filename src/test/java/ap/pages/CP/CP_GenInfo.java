@@ -35,7 +35,7 @@ public class CP_GenInfo extends BL_OR_CP {
 		APPW_CommonMethods APPW_CommonMethods=TestPageFactory.initElements(se, APPW_CommonMethods.class); 
 		JavascriptExecutor executor = (JavascriptExecutor) se.driver();
 		//applicantNameNoaddon = se.util().randomApplicantNameNo();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.GeneralInformation, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.GeneralInformation, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);

@@ -23,7 +23,7 @@ public class CA_BusinessInterruption extends BL_OR_CP  {
 		         testTearDown(se, test);
 		    }
 		//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.BusinessInterruption, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.BusinessInterruption, strRegressionID, transaction);
 		int iteration = 0;
 
 		while (iteration < table.size()) {

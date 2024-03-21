@@ -19,7 +19,7 @@ public class StartUpURL extends Page{
 	{
 		BL_OR_CP ORCP = TestPageFactory.initElements(se, BL_OR_CP.class);
 		try {
-			List<Map<String, String>> table = ExcelOperations.getPagesData("Startup", strRegressionID,transaction);
+			List<Map<String, String>> table = ExcelOperations.getBLPagesData("Startup", strRegressionID,transaction);
 			int iteration = 0;
 			while (iteration < table.size()) {
 				try {

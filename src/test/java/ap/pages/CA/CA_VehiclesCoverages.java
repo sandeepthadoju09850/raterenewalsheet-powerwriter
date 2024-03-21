@@ -24,7 +24,7 @@ public class CA_VehiclesCoverages extends BL_OR_CP {
 		         testTearDown(se, test);
 		    }
 			//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.VehiclesCoverages, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.VehiclesCoverages, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
 		se.util().sleep(8000);

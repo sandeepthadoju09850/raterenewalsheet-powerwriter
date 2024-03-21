@@ -30,7 +30,7 @@ public class CP_BuildingandOccupantSelection extends BL_OR_CP{
 		         testTearDown(se, test);
 		    }
 		JavascriptExecutor executor = (JavascriptExecutor) se.driver();
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.Building_And_Occupant_Selection, strRegressionID, transaction);
+		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.Building_And_Occupant_Selection, strRegressionID, transaction);
 		int iteration = 0;
 		APPW_CommonMethods APPW_CommonMethods=TestPageFactory.initElements(se, APPW_CommonMethods.class);
 		while (iteration < table.size()) {
