@@ -63,7 +63,7 @@ public class CP_LossHistoryExpRating extends BL_OR_CP{
 					se.util().sleep(2000);
 					se.element().enterOrValidateText( getLossHistoryExpRating_TXT_BriefDescriptionofLoss(strLossHistoryExpRating_TXT_BriefDescriptionofLoss),strLossHistoryExpRating_TXT_BriefDescriptionofLoss,test);
 					se.util().sleep(2000);
-					se.element().enterOrValidateText( getLossHistoryExpRating_TXT_DateofLoss(strLossHistoryExpRating_TXT_DateofLoss),strLossHistoryExpRating_TXT_DateofLoss,test);
+					se.element().enterOrValidateTextDate( getLossHistoryExpRating_TXT_DateofLoss(strLossHistoryExpRating_TXT_DateofLoss),strLossHistoryExpRating_TXT_DateofLoss,test);
 					se.util().sleep(2000);
 					se.element().enterOrValidateText( getLossHistoryExpRating_TXT_AmountPaid(strLossHistoryExpRating_TXT_AmountPaid),strLossHistoryExpRating_TXT_AmountPaid,test);
 					se.util().sleep(2000);
