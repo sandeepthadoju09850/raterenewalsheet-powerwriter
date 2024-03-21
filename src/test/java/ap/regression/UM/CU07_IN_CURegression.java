@@ -147,7 +147,7 @@ public class CU07_IN_CURegression extends BaseTest{
 		try {
 			String transaction = "NewQuote";
 			String strRegressionIDUnderlined = "CUTC_13";
-			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
+			List<String> transactionsList = ExcelOperations.getBLTransactionsList(strRegressionID);
 			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(0);
 			String strAgentLink = (String) row.get("AgentLink");
