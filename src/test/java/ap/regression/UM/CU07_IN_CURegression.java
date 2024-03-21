@@ -148,13 +148,13 @@ public class CU07_IN_CURegression extends BaseTest{
 			String transaction = "NewQuote";
 			String strRegressionIDUnderlined = "CUTC_13";
 			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
-			List<Map<String, String>> table = ExcelOperations.getPagesData(constants.loginPageName, strRegressionID,transaction);
+			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(0);
 			String strAgentLink = (String) row.get("AgentLink");
 			String strLOB = (String) row.get("LOB_Select");
 			String strRole_SelectRoleAs = (String) row.get("Select_RoleAs");
 			String strRelease_SelectRelease = (String) row.get("Select_Release");
-			List<Map<String, String>> tableTC = ExcelOperations.getPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
+			List<Map<String, String>> tableTC = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
 			LinkedHashMap<String, String> rowTC = (LinkedHashMap<String, String>) tableTC.get(0);
 			String strAgentLinkTC = (String) rowTC.get("AgentLink");
 			String strLOBTC = (String) rowTC.get("LOB_Select");
