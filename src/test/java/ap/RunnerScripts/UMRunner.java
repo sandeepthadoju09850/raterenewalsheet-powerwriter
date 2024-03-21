@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-import Libraries.ap.automation.common.CommonBaseTest.TestDataXLS;
+import Libraries.automation.common.CommonBaseTest.TestDataXLS;
 import Libraries.automation.common.BaseTest;
 import Libraries.automation.common.SeHelper;
 import Libraries.automation.common.Transformer;
