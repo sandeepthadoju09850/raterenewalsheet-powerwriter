@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
+import Libraries.ap.automation.common.CommonBaseTest.TestDataXLS;
 import Libraries.automation.common.BaseTest;
 import Libraries.automation.common.SeHelper;
 import Libraries.automation.common.Transformer;
@@ -23,7 +24,7 @@ import Libraries.automation.common.framework.Browser.Browsers;
 import Libraries.automation.common.framework.ExtentManager;
 import Libraries.automation.common.framework.ExtentTestManager;
 import Libraries.automation.common.framework.Util;
-
+import ap.regression.UM.CU07_IN_CURegression;
 import ap.regression.UM.CU13_CO_CURegression;
 import ap.regression.UM.CU14_KY_CURegression;
 import ap.regression.UM.CU15_WI_CURegression;
@@ -59,7 +60,17 @@ public class UMRunner extends BaseTest {
             super.afterMethod(method, result, params);
             extent.flush();
      }
-    
+     @Test(description = "CU_07 IN CU Regression testing", dataProvider ="browserXlsByRowBL", groups = {"AgencyPortal" }, timeOut = 500000000,priority=1)
+
+     @TestDataXLS(fileName ="../../resources/test_data/Scenario_Selection", sheetVersion = "new",sheetName = "Scenario_Selection") 
+     public void CU_07(Browsers myBrowser,SeHelper se, Map<String, Object> params) throws IOException 
+     { 
+            String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
+            String RegressionName = Util.getBLRegressionName(strRegressionId); 
+            ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " +RegressionName);
+            CU07_IN_CURegression.CU07_IN_CURegressionMethod(myBrowser, se,params, strRegressionId,RegressionName, premiumsFile, workbook, test);
+            test.setEndedTime(Util.getTime());
+     }
     
      @Test(description = "CU_13 CO CU Regression testing", dataProvider ="browserXlsByRowBL", groups = {"AgencyPortal" }, timeOut = 500000000,priority=1)
 
