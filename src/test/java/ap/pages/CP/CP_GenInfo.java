@@ -533,7 +533,7 @@ public class CP_GenInfo extends BL_OR_CP {
 					
 					Format f2 = new SimpleDateFormat("HHmmssmms");
 					String strDate2 = f2.format(new Date());
-					se.element().enterOrValidateText(getGI_AppInfo_TXT_Tax_ID(strDate2),strDate2,test);
+					se.element().enterOrValidateTextDate(getGI_AppInfo_TXT_Tax_ID(strDate2),strDate2,test);
 					//se.element().enterOrValidateText(getGI_AppInfo_TXT_Tax_ID(strGI_AppInfo_TXT_Tax_ID),strGI_AppInfo_TXT_Tax_ID,test);
 					
 			 

@@ -81,7 +81,7 @@ public class CA_AdditionalInterests extends BL_OR_CP {
 					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_StrAddLine2(strAutoAdditionalInterests_TXT_StrAddLine2), strAutoAdditionalInterests_TXT_StrAddLine2,test);
 					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_City(strAutoAdditionalInterests_TXT_City), strAutoAdditionalInterests_TXT_City,test);
 					se.element().SelectElement(AutoAdditionalInterests_DD_State, strAutoAdditionalInterests_DD_State,test);
-					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_ZipCode(strAutoAdditionalInterests_TXT_ZipCode), strAutoAdditionalInterests_TXT_ZipCode,test);
+					se.element().enterOrValidateTextDate(getAutoAdditionalInterests_TXT_ZipCode(strAutoAdditionalInterests_TXT_ZipCode), strAutoAdditionalInterests_TXT_ZipCode,test);
 					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_RefLoan(strAutoAdditionalInterests_TXT_RefLoan), strAutoAdditionalInterests_TXT_RefLoan,test);
 					se.element().Click(getBuildingandOccupSelection_BTN_Add(), test);
 					se.element().Click(getGI_CHK_Continue(), test);

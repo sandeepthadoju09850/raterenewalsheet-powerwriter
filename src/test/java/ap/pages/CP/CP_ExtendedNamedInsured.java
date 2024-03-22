@@ -75,7 +75,7 @@ public class CP_ExtendedNamedInsured extends BL_OR_CP{
 				se.element().SelectElement(ENI_DD_LegalEntity,strENI_DD_LegalEntity,test);
 				se.element().checkUncheckOrValidate( getENI_RBTN_TaxIDTypeFEIN(strENI_RBTN_TaxIDTypeFEIN),strENI_RBTN_TaxIDTypeFEIN,test);
 				se.element().checkUncheckOrValidate( getENI_RBTN_TaxIDTypeSSN(strENI_RBTN_TaxIDTypeSSN),strENI_RBTN_TaxIDTypeSSN,test);
-				se.element().enterOrValidateText(getENI_TXT_TaxID(strENI_TXT_TaxID),strENI_TXT_TaxID,test);
+				se.element().enterOrValidateTextDate(getENI_TXT_TaxID(strENI_TXT_TaxID),strENI_TXT_TaxID,test);
 				se.element().enterOrValidateText(getENI_TXT_DescribeThisRelationship(strENI_TXT_DescribeThisRelationship),strENI_TXT_DescribeThisRelationship,test);
 				se.util().sleep(3000);
 				if(transaction=="NewQuote") {

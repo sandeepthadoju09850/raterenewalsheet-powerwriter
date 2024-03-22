@@ -67,7 +67,7 @@ public class CA_Drivers extends BL_OR_CP {
 					se.element().Click(getLocations_BTN_AddNew(strDriver_BTN_Add),test);
 					se.element().enterOrValidateText(getDriverFirstName(strDriver_TXT_Firstname), strDriver_TXT_Firstname,test);
 					se.element().enterOrValidateText(getDriverLastName(strDriver_TXT_Lastname), strDriver_TXT_Lastname,test);
-					se.element().enterOrValidateText(getDriverDateOfBirth(strDriver_TXT_Dob), strDriver_TXT_Dob,test);
+					se.element().enterOrValidateTextDate(getDriverDateOfBirth(strDriver_TXT_Dob), strDriver_TXT_Dob,test);
 					se.element().enterOrValidateText(getDriverLicenseNumber(strDriver_TXT_LicenseNo), strDriver_TXT_LicenseNo,test);
 					se.element().selectElement(drivers_dd_LicenseState, strDriver_DD_LicenseState);
 					se.element().enterOrValidateText(getDriverDateLicensed(strDriver_TXT_Licensed), strDriver_TXT_Licensed,test);
