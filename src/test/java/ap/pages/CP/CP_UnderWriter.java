@@ -1293,6 +1293,7 @@ public class CP_UnderWriter extends BL_OR_CP {
 				se.element().checkUncheckOrValidate( getUW_CHK_Industrialorwarehouserefrigerationsystems_No(strUW_CHK_Industrialorwarehouserefrigerationsystems_No),strUW_CHK_Industrialorwarehouserefrigerationsystems_No,test);
 				se.element().checkUncheckOrValidate( getUW_CHK_Anyworkotherthansidewalksparkinglots_Yes(strUW_CHK_Anyworkotherthansidewalksparkinglots_Yes),strUW_CHK_Anyworkotherthansidewalksparkinglots_Yes,test);
 				se.element().checkUncheckOrValidate( getUW_CHK_Anyworkotherthansidewalksparkinglots_No(strUW_CHK_Anyworkotherthansidewalksparkinglots_No),strUW_CHK_Anyworkotherthansidewalksparkinglots_No,test);
+				se.util().sleep(2000);
 				se.element().checkUncheckOrValidate( getUW_CHK_AnytowerworkTC_Yes(strUW_CHK_AnytowerworkTC_Yes),strUW_CHK_AnytowerworkTC_Yes,test);
 				se.element().checkUncheckOrValidate( getUW_CHK_AnytowerworkTC_No(strUW_CHK_AnytowerworkTC_No),strUW_CHK_AnytowerworkTC_No,test);
 				

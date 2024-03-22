@@ -189,6 +189,8 @@ public class CU07_IN_CURegression extends BaseTest{
 			}
 			if (transactionsList.contains("RedoNewQuote")) {
 				transaction = "RedoNewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
+				BT.NavigateToTabs("Liability Classes", test);
+				BT.ClickContinue(test);
 				BT.NavigateToTabs("Underwriting Questions", test);
 				BT.ClickContinue(test);
 				BT.NavigateToTabs("Property Additional Interests",test);

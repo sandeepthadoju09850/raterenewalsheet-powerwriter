@@ -19,6 +19,7 @@ public void NavigateToTabs(String Page, ExtentTest test) throws IOException
 	se.util().sleep(2000);
 	se.element().MovetoElement(getNavigatetoPage(Page), test);
 	se.element().Click(getNavigatetoPage(Page), test);
+	
 	se.element().waitForElementToDisappear_One(progressBar,120);
 } 
 public void ClickContinue(ExtentTest test) throws IOException 

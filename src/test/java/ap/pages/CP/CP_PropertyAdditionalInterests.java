@@ -69,7 +69,7 @@ public class CP_PropertyAdditionalInterests extends BL_OR_CP {
 					se.element().enterOrValidateText(getPropAdditionalInts_TXT_StreetAddressLine2(strPropAdditionalInts_TXT_StreetAddressLine2),strPropAdditionalInts_TXT_StreetAddressLine2,test);
 					se.element().enterOrValidateText(getPropAdditionalInts_TXT_City(strPropAdditionalInts_TXT_City),strPropAdditionalInts_TXT_City,test);
 					se.element().SelectElement(PropAdditionalInts_DD_State, strPropAdditionalInts_DD_State, test);
-					se.element().enterOrValidateText(getPropAdditionalInts_TXT_ZipCode(strPropAdditionalInts_TXT_ZipCode),strPropAdditionalInts_TXT_ZipCode,test);
+					se.element().enterOrValidateTextDate(getPropAdditionalInts_TXT_ZipCode(strPropAdditionalInts_TXT_ZipCode),strPropAdditionalInts_TXT_ZipCode,test);
 					if(strPropAdditionalInts_BTN_Add.contains("Add"))
 					{
 						se.element().Click(getBuildingandOccupSelection_BTN_Add(), test);

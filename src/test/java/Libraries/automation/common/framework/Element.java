@@ -892,26 +892,41 @@ public void clear(By locator) {
 	 * @param locator
 	 * @param selection
 	 * @return
+	 * @throws IOException 
 	 */
-	public boolean selectElement(final By locator, String selection) {
+	public boolean selectElement(final By locator, String selection) throws IOException {
 		// se.log().logSeStep("Select " + selection + " In Element: "
 		// + locator.toString());
-		String browserName = ((RemoteWebDriver) se.driver()).getCapabilities().getBrowserName();
+		boolean flag = true;
+		try{
+			String browserName = ((RemoteWebDriver) se.driver()).getCapabilities().getBrowserName();
+			WebElement element = searchForElement(locator);
+			if(selection.equals("N/A") || selection.equals("NA")){
+				selection = "";
+			} else{
 
-		WebElement element = searchForElement(locator);
-		if (element != null) {
-			Select select = new Select(element);
-			try {
-				select.deselectAll();
+				if (element != null) {
+					Select select = new Select(element);
+					try {
+						select.deselectAll();
 
-			} catch (Exception e) {
-				// ignore
+					} catch (Exception e) {
+						// ignore
+					}
+					select.selectByVisibleText(selection);
+					flag = true;
+				} else{
+					flag = false;
+				}
 			}
-			select.selectByVisibleText(selection);
-			return true;
-		} else
-			return false;
+		}catch (Exception e) {
+			se.verify().verifyEqualsNoScreenshot("Issue with dropdown for"+locator+" ---", true, false);
+		}
+		return flag;	
 	}
+	
+	
+	
 	
 	public boolean selectElementDDrOrValidateText(WebElement element,String testdata, ExtentTest test)
 	{

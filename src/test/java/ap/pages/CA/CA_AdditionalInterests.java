@@ -59,8 +59,8 @@ public class CA_AdditionalInterests extends BL_OR_CP {
 					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_StrAddLine2(strAutoAdditionalInterests_TXT_StrAddLine2), strAutoAdditionalInterests_TXT_StrAddLine2,test);
 					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_City(strAutoAdditionalInterests_TXT_City), strAutoAdditionalInterests_TXT_City,test);
 					se.element().SelectElement(AutoAdditionalInterests_DD_State, strAutoAdditionalInterests_DD_State,test);
-					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_ZipCode(strAutoAdditionalInterests_TXT_ZipCode), strAutoAdditionalInterests_TXT_ZipCode,test);
-					se.element().enterOrValidateText(getAutoAdditionalInterests_TXT_ZipCode(strAutoAdditionalInterests_TXT_ZipCode), strAutoAdditionalInterests_TXT_ZipCode,test);
+					se.element().enterOrValidateTextDate(getAutoAdditionalInterests_TXT_ZipCode(strAutoAdditionalInterests_TXT_ZipCode), strAutoAdditionalInterests_TXT_ZipCode,test);
+					se.element().enterOrValidateTextDate(getAutoAdditionalInterests_TXT_ZipCode(strAutoAdditionalInterests_TXT_ZipCode), strAutoAdditionalInterests_TXT_ZipCode,test);
 					executor.executeScript("arguments[0].scrollIntoView(0,500);", getLocations_BTN_Save());
 					se.element().Click(getLocations_BTN_Save(), test);
 					se.element().waitForElement(progressBar);
