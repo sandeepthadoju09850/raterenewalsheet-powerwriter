@@ -115,12 +115,14 @@ public class BP11_MN_BPRegression extends BaseTest{
 			CA_Underwriter CA_Underwriter=TestPageFactory.initElements(se, CA_Underwriter.class);
 			CA_Drivers CA_Drivers=TestPageFactory.initElements(se, CA_Drivers.class);
 			CP_ValuablePapers CP_ValuablePapers = TestPageFactory.initElements(se, CP_ValuablePapers.class);
+			
 						try {
 				String transaction = "NewQuote";
 				String strRegressionIDUnderlined = "CUBP_11";
-				List<String> transactionsList = ExcelOperations.getBLTransactionsList(strRegressionIDUnderlined);
+				List<String> transactionsList = ExcelOperations.getBLTransactionsList(strRegressionID);
+				System.out.println(transactionsList.size());
 				List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
-
+				System.out.println(table.size());
 				int iteration = 0;
 				while (iteration < table.size()) {
 					System.out.println(table.size());
@@ -131,14 +133,34 @@ public class BP11_MN_BPRegression extends BaseTest{
 					String strRelease_SelectRelease = (String) row.get("Select_Release");
 
 					if (transactionsList.contains("NewQuote")) {
-						transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionIDUnderlined,transaction);
-						LoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"No", test);
+						transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
+						LoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"Yes", test);
+						CP_GenInfo.CP_GenInfo_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);
+						CP_AccountClearance.CP_AccountClearance_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);
+						CP_ExtendedNamedInsured.CP_ExtendedNamedInsured_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink,strLOB,strRelease_SelectRelease,strRole_SelectRoleAs, test);
+						CP_CoverageParts.CP_CoverageParts_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_Locations.CP_Locations_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink,strLOB,strRelease_SelectRelease,strRole_SelectRoleAs, test);
 						quote=APPW_CommonMethods.getQuoteNumber(strRegressionIDUnderlined,test);
-						CP_PremiumIndication.CP_PremiumIndication_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_BandOS.CP_BuildandOccupantSelection_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_BulidingDetails.CP_Buliding_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);
+						CP_PropertyCoverages.CP_PropertyCoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_OptionalPropertyCoverages.CP_OptionalPropertyCoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_Liablitycoverages.CP_Liablitycoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_Liablityclasses.CP_Liablityclasses_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_LiabilityAdditonalInterests.CP_LiabilityAdditonalInterests_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+						CP_CrimeCoverageSelection.CP_CrimeCoverageSelection_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+			     		CP_InlandMarineCovSelection.CP_InlandMarineCovSelection_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+			     		
+			     		CP_AccReceivableSchedule.CP_AccReceivableSchedule_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+			     		
+			     		CP_ContractorsEquipmentScheduled.CP_ContractorsEquipmentScheduled_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+			     		CP_SignsScheduleInfo.CP_SignsScheduleInfo_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+			     		CP_ValuablePapers.CP_ValuablePapers_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+			     		CP_PremiumIndication.CP_PremiumIndication_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						
 					}
 					if (transactionsList.contains("RedoNewQuote")) {
-						 transaction = "RedoNewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionIDUnderlined,transaction);
+						 transaction = "RedoNewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 						BT.NavigateToTabs("Liability Coverages",test);
 						CP_Liablitycoverages.CP_Liablitycoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						//BT.NavigateToTabs("Crime Coverage Selection",test);
@@ -167,7 +189,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 					if (transactionsList.contains("NewQuote")) {
 						transaction = "NewQuote";
 
-						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionIDUnderlined,transaction);
+						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 						
 						LoginPage.APAppLogin(strRegressionID,   transaction,"No", test);
 						APPW_CommonMethods.openQuoteInAP(quote,"N/A",test);
@@ -186,7 +208,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 						BT.ClickContinue(test);
 						CP_PremiumIndication.CP_PremiumIndication_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						BT.ClickContinue(test);
-						BT.ClickContinue(test);
+						CA_PremiumModification.CA_PremiumModification_Details(strRegressionID, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);						
 						CA_Underwriter.CA_UnderWriter_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						CA_Drivers.CA_Drivers_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						//BT.ClickContinue(test);
