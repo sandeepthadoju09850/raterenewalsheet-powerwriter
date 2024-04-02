@@ -72,7 +72,7 @@ public class WC_StateRatingFactors extends BL_OR_CP {
 					//se.element().waitBasedOnCount(PleaseWaitPopup,40); 
 					se.element().enterOrValidateText(getSRF_TXT_DeducAmt(strSRF_TXT_DeducAmt),strSRF_TXT_DeducAmt,test);
 					se.element().enterOrValidateText(getSRF_TXT_StateEmployerNum(strSRF_TXT_StateEmployerNum),strSRF_TXT_StateEmployerNum,test);
-					se.element().enterOrValidateText(getSRF_TXT_RiskId(strSRF_TXT_RiskId),strSRF_TXT_RiskId,test);					
+					se.element().enterOrValidateTextDate(getSRF_TXT_RiskId(strSRF_TXT_RiskId),strSRF_TXT_RiskId,test);					
 					if(!strSRF_TXT_RiskId.equalsIgnoreCase("N/A")){
 						se.element().waitBasedOnCount(PleaseWaitPopup,40);
 					}

@@ -182,7 +182,7 @@ public class RRS_Regression_01 extends BaseTest {
 				
 			String transaction = "NewQuote";
 			String strRegressionIDUnderlined = "CUTC_13";
-			List<String> transactionsList = ExcelOperations.getBLTransactionsList(strRegressionID);
+			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
 			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(0);
 			String strAgentLink = (String) row.get("AgentLink");
@@ -231,18 +231,15 @@ public class RRS_Regression_01 extends BaseTest {
 				BT.ClickContinue(test);
 				BT.NavigateToTabs("Property Additional Interests",test);
 				CP_PropertyAdditionalInterests.CP_PropertyAdditionalInterests_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				//CP_CarrierInformation.CP_CarrierInformation_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CP_BillingInformation.CP_BillingInformation_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLinkTC, "Package", strRelease_SelectReleaseTC, strRole_SelectRoleAsTC,quote, test, file,  workbook);
 
 			}
 
-			// UNDERLYING POLICY 2 CUCA_06 - CA 6 
 			strRegressionIDUnderlined = "CUCA_06";
 
 			if (transactionsList.contains("BLNewQuote")) {
 				transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
-				//LoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"No", test);
 				APPW_CommonMethods.openQuoteInAP(quote,"N/A",test);
 				APPW_CommonMethods.openAccountDetails(test);
 				APPW_CommonMethods.addNewWorkItem("Commercial Auto", test);
@@ -255,31 +252,23 @@ public class RRS_Regression_01 extends BaseTest {
 				CA_VehiclesCoverages.CA_VehiclesCoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CA_AdditionalCoverages.CA_AdditionalCoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CA_Garagekeepers.CA_Garagekeepers_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				//CA_TrailerInterchange.CA_TrailerInterchange_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				BT.ClickContinue(test);
 				CA_AdditionalInterests.CA_AdditionalInterests_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CP_PremiumIndication.CP_PremiumIndication_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				
 				CA_PremiumModification.CA_PremiumModification_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);
 				CA_Underwriter.CA_UnderWriter_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CA_Drivers.CA_Drivers_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				//BT.ClickContinue(test);
 				CP_BillingInformation.CP_BillingInformation_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "Commercial Auto", strRelease_SelectRelease, strRole_SelectRoleAs,quote, test, file,  workbook);
-				//LoginPage.APLogoutDetails( strAgentLink,test );
-
+				
 			}
 
 			strRegressionIDUnderlined = "CUWC_07";
 			if (transactionsList.contains("BLNewQuote")) {
 				transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
-				/*LoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"No", test);
-				APPW_CommonMethods.openQuoteInAP(quote,"N/A",test);
-				APPW_CommonMethods.openAccountDetails(test);*/
 				APPW_CommonMethods.openAccountDetails(test);
 				APPW_CommonMethods.addNewWorkItem("Workers", test);
 				CP_GenInfo.CP_GenInfo_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink, "Umbrella", strRelease_SelectRelease, strRole_SelectRoleAs, test);
-				//CP_AccountClearance.CP_AccountClearance_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);
 				CP_ExtendedNamedInsured.CP_ExtendedNamedInsured_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink,strLOB,strRelease_SelectRelease,strRole_SelectRoleAs, test);
 				CP_Locations.CP_Locations_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink,strLOB,strRelease_SelectRelease,strRole_SelectRoleAs, test);
 				quote=APPW_CommonMethods.getQuoteNumber(strRegressionIDUnderlined,test);
@@ -291,34 +280,28 @@ public class RRS_Regression_01 extends BaseTest {
 				WC_IndividualsIncluded.WC_IndividualsIncluded_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				WC_UWQuestions.WC_UnderWriter_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				WC_OtherStateInsurance.WC_OtherStateInsurance_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
-				//BT.ClickContinue(test);
 				CP_BillingInformation.CP_BillingInformation_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "Workers", strRelease_SelectRelease, strRole_SelectRoleAs,quote, test, file,  workbook);
-				//LoginPage.APLogoutDetails( strAgentLink,test );
+				
 
 			}
 
-			// CommercialUmbrella New Quote transaction
+			
 
 
-
+			strRegressionIDUnderlined = "RCU_07";
 			if (transactionsList.contains("BLNewQuote")) {
 				transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
-				/*LoginPage.APAppLogin(strRegressionID,   transaction,"No", test);
-				APPW_CommonMethods.openQuoteInAP(quote,"N/A",test);
-				APPW_CommonMethods.openAccountDetails(test);*/
+				
 				APPW_CommonMethods.openAccountDetails(test);
 				APPW_CommonMethods.addNewWorkItem("Umbrella", test);
-				UnderLying.UM_UnderLying_Details(strRegressionID, transaction, suspendSheet, test);
-				UM_GenInfo.UM_GenInfo_Details(strRegressionID, transaction, suspendSheet,  test);
+				UnderLying.UM_UnderLying_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+				UM_GenInfo.UM_GenInfo_Details(strRegressionIDUnderlined, transaction, suspendSheet,  test);
 				quote=APPW_CommonMethods.getQuoteNumber(strRegressionIDUnderlined,test);
-				UM_Umbrellalimits.UM_Umbrellalimits_Details(strRegressionID, transaction, suspendSheet, test);
-				//quote=APPW_CommonMethods.getQuoteNumber(strRegressionID, test);
-				UM_ScheduleName.UM_ScheduleName_Details(strRegressionID, transaction, suspendSheet, test);
-				/*CP_PremiumIndication.CP_PremiumIndication_Details(strRegressionID, transaction, suspendSheet, test);
-				BT.ClickContinue(test);
-				*/UM_Underwriter.UM_UW_Details(strRegressionID, transaction, suspendSheet, test);
-				CP_Summary.CP_Summary_Details(strRegressionID,strRegressionName, transaction, suspendSheet, strAgentLinkTC, "Umbrella", strRelease_SelectRelease, strRole_SelectRoleAs,quote, test, file,  workbook);
+				UM_Umbrellalimits.UM_Umbrellalimits_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+				UM_ScheduleName.UM_ScheduleName_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+				UM_Underwriter.UM_UW_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
+				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLinkTC, "Umbrella", strRelease_SelectRelease, strRole_SelectRoleAs,quote, test, file,  workbook);
 				
 			}
 						
