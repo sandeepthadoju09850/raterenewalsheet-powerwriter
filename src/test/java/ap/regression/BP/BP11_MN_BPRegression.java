@@ -224,7 +224,6 @@ public class BP11_MN_BPRegression extends BaseTest{
 						 transaction = "RedoNewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 						BT.NavigateToTabs("Liability Coverages",test);
 						CP_Liablitycoverages.CP_Liablitycoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
-						//BT.NavigateToTabs("Crime Coverage Selection",test);
 						BT.ClickContinue(test);
 						BT.ClickContinue(test);						
 						CP_CrimeCoverageSelection.CP_CrimeCoverageSelection_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
@@ -265,7 +264,6 @@ public class BP11_MN_BPRegression extends BaseTest{
 						CA_PremiumModification.CA_PremiumModification_Details(strRegressionID, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);						
 						CA_Underwriter.CA_UnderWriter_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						CA_Drivers.CA_Drivers_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
-						//BT.ClickContinue(test);
 						CP_BillingInformation.CP_BillingInformation_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,quote, test, file,  workbook);
 									
