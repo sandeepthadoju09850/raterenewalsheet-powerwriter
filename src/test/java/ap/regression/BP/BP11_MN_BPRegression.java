@@ -144,7 +144,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 						try {
 				String transaction = "NewQuote";
 				String strRegressionIDUnderlined = "CUBP_11";
-				List<String> transactionsList = ExcelOperations.getBLTransactionsList(strRegressionID);
+				List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
 				System.out.println(transactionsList.size());
 				List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionIDUnderlined,transaction);
 				System.out.println(table.size());
@@ -157,7 +157,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 					String strRole_SelectRoleAs = (String) row.get("Select_RoleAs");
 					String strRelease_SelectRelease = (String) row.get("Select_Release");
 
-					if (transactionsList.contains("NewQuote")) {
+					if (transactionsList.contains("BLNewQuote")) {
 						transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 						LoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"Yes", test);
 						CP_GenInfo.CP_GenInfo_Details(strRegressionIDUnderlined, transaction, suspendSheet, strAgentLink, strLOB, strRelease_SelectRelease, strRole_SelectRoleAs, test);
@@ -184,7 +184,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 			     		CP_PremiumIndication.CP_PremiumIndication_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
 						
 					}
-					if (transactionsList.contains("RedoNewQuote")) {
+					if (transactionsList.contains("BLRedoNewQuote")) {
 						 transaction = "RedoNewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 						BT.NavigateToTabs("Liability Coverages",test);
 						CP_Liablitycoverages.CP_Liablitycoverages_Details(strRegressionIDUnderlined, transaction, suspendSheet, test);
@@ -209,7 +209,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 					
 					
 					strRegressionIDUnderlined = "RCUCA_11";
-					if (transactionsList.contains("NewQuote")) {
+					if (transactionsList.contains("BLNewQuote")) {
 						transaction = "NewQuote";
 						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);									
 						APPW_CommonMethods.openAccountDetails(test);
@@ -236,7 +236,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 									
 					}
 					strRegressionIDUnderlined = "RCUWC_11";	
-					if (transactionsList.contains("NewQuote")) {
+					if (transactionsList.contains("BLNewQuote")) {
 						transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 						APPW_CommonMethods.openAccountDetails(test);
 						APPW_CommonMethods.addNewWorkItem("Workers", test);
@@ -258,7 +258,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 					
 					}
 					
-					if (transactionsList.contains("NewQuote")) {
+					if (transactionsList.contains("BLNewQuote")) {
 						transaction = "NewQuote";
 						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);						
 						APPW_CommonMethods.openAccountDetails(test);

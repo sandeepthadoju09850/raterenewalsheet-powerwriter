@@ -33,6 +33,7 @@ import Libraries.automation.common.framework.ExtentManager;
 import Libraries.automation.common.framework.ExtentTestManager;
 import Libraries.automation.common.framework.Util;
 import Libraries.automation.common.framework.Browser.Browsers;
+import ap.regression.BP.BP11_MN_BPRegression;
 import pw.Constants.constants;
 import pw.regressions.BP.BP10_MO_BPRegression;
 import pw.regressions.BP.BP11_ND_BPRegression;
@@ -245,8 +246,8 @@ public class BPRunner extends BaseTest {
 		String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
 		String RegressionName = Util.getRegressionName(strRegressionId);
 		ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-		BP11_ND_BPRegression.NDBPRegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-		extent.endTest(test);
+		BP11_MN_BPRegression.BP11_MN_BPRegressionMethod(myBrowser, se,params, strRegressionId,RegressionName, premiumsFile, workbook, test);
+        extent.endTest(test);
 	}
 
 	@Test(description = "BP_12 PA BP regression testing", dataProvider = "browserXlsByRow", groups = {
