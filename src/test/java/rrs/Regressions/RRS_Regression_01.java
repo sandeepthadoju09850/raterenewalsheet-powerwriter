@@ -73,6 +73,7 @@ import ap.pages.WC.WC_StateRatingFactors;
 import ap.pages.WC.WC_UWQuestions;
 import ap.pages.common.APPW_CommonMethods;
 import ap.pages.common.AP_Login;
+import pw.BookQuotes.BookTCQuote;
 import pw.pages.CA.CA_ScheduleRating;
 import pw.pages.COMMON.PW_CommonFun;
 import pw.pages.COMMON.PW_CommonMethods;
@@ -155,6 +156,8 @@ public class RRS_Regression_01 extends BaseTest {
 		CA_TrailerInterchange CA_TrailerInterchange = TestPageFactory.initElements(se, CA_TrailerInterchange.class);
 		CA_IndividualSchedule CA_IndividualSchedule = TestPageFactory.initElements(se, CA_IndividualSchedule.class);
 		CommonAPMethods BT=TestPageFactory.initElements(se, CommonAPMethods.class);
+		BookTCQuote BookTCQuote=TestPageFactory.initElements(se, BookTCQuote.class);
+		
 		
 		try {
 			
@@ -313,6 +316,15 @@ public class RRS_Regression_01 extends BaseTest {
 			transaction = "BPNewQuote";			
 			CommonFunPage.PWAppStartUp(test);
 			LoginPage.PWAppLogin(strRegressionID, transaction, test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"BP",test);
+			PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A",test);
+			PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"WC",test);
+			PolicyNumberWC = APPW_CommonMethods.retrievePolicyNumber(test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"CU",test);
+			PolicyNumberCU = APPW_CommonMethods.retrievePolicyNumber(test);
+			
 			}
 			
 			
