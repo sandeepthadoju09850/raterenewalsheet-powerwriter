@@ -74,6 +74,15 @@ import ap.pages.CP.CP_Summary;
 import ap.pages.CP.CP_UnderWriter;
 import ap.pages.common.APPW_CommonMethods;
 import ap.pages.common.AP_Login;
+import pw.BookQuotes.BookTCQuote;
+import pw.pages.CA.CA_ScheduleRating;
+import pw.pages.COMMON.PW_CommonFun;
+import pw.pages.COMMON.PW_CommonMethods;
+import pw.pages.COMMON.PW_Login;
+import pw.pages.COMMON.PW_ScheduleRatingIRPM;
+import pw.pages.WC.WC_WaiverOfSubrogation;
+import rrs.pages.MainScreen.PWQuoteOpen;
+import rrs.pages.MainScreen.RateRenewalSheet;
 
 public class BP11_MN_BPRegression extends BaseTest{
 	ExtentReports extent;
@@ -81,6 +90,12 @@ public class BP11_MN_BPRegression extends BaseTest{
 	static String quote;
 	static String PolicyNumber = "";
 
+	static String PolicyNumberCU = "";
+	static String PolicyNumberBP = "";
+	static String PolicyNumberTC = "";
+	static String PolicyNumberCA = "";
+	static String PolicyNumberWC = "";
+	
 	@SuppressWarnings("unused")
 	public static void BP11_MN_BPRegressionMethod(Browsers myBrowser, SeHelper se, Map<String, Object> params,String strRegressionID,String strRegressionName, File file,XSSFWorkbook workbook, ExtentTest test) throws IOException {
 		{
@@ -139,9 +154,32 @@ public class BP11_MN_BPRegression extends BaseTest{
 			UM_Umbrellalimits  UM_Umbrellalimits = TestPageFactory.initElements(se, UM_Umbrellalimits.class);
 			UM_ScheduleName  UM_ScheduleName = TestPageFactory.initElements(se, UM_ScheduleName.class);
 			UM_Underwriter UM_Underwriter=TestPageFactory.initElements(se, UM_Underwriter.class);
+			PW_Login  PWLoginPage = TestPageFactory.initElements(se, PW_Login.class);
+			PW_CommonFun CommonFunPage = TestPageFactory.initElements(se, PW_CommonFun.class);
+			PW_ScheduleRatingIRPM ScheduleRatingIRPMPage = TestPageFactory.initElements(se, PW_ScheduleRatingIRPM.class);
+			PW_CommonMethods CommonMethods = TestPageFactory.initElements(se, PW_CommonMethods.class);
+			BookTCQuote BookTCQuote=TestPageFactory.initElements(se, BookTCQuote.class);
+			CA_ScheduleRating CA_ScheduleRatingPage = TestPageFactory.initElements(se, CA_ScheduleRating.class);
+			RateRenewalSheet RateRenewalSheet = TestPageFactory.initElements(se, RateRenewalSheet.class);
+			PWQuoteOpen PWQuoteOpenPage = TestPageFactory.initElements(se, PWQuoteOpen.class);
+			WC_WaiverOfSubrogation WCWaiverOfSubrogation = TestPageFactory.initElements(se, WC_WaiverOfSubrogation.class);
 			
 			
-						try {
+			try {
+				
+				LinkedHashMap<String, String> QFR= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> CurrentTermPremiums= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> CurrentTermPremiumsCA= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> CurrentTermPremiumsWC= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> CurrentTermPremiumsUM= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> QFRPremiumsCA= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> QFRPremiumsWC= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> QFRPremiumsUM= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> NewQFRPremium= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> NewQFRPremiumCA= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> NewQFRPremiumWC= new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> OldQFRPremium= new LinkedHashMap<String, String>();
+				
 				String transaction = "NewQuote";
 				String strRegressionIDUnderlined = "CUBP_11";
 				List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
@@ -271,32 +309,152 @@ public class BP11_MN_BPRegression extends BaseTest{
 						CP_Summary.CP_Summary_Details(strRegressionID,strRegressionName, transaction, suspendSheet, strAgentLink, "Umbrella", strRelease_SelectRelease, strRole_SelectRoleAs,quote, test, file,  workbook);
 						
 					}
-					
-					 if (transactionsList.contains("BookPolicyInPW")) {
-							transaction = "BookPolicyInPW";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
-							test.log(LogStatus.INFO, "Bizlink Elapsed Time", "<b>Started Time : "+test.getStartedTime()+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(test.getStartedTime(), Util.getTime())); 
-							Date PWstartTime = Util.getTime();
-							LoginPage.APAppLogin(strRegressionID,   transaction,"No", test);
-							APPW_CommonMethods.PW_Search_Details(test,quote,"N/A");
-							APPW_CommonMethods.getDashboardActions(strRegressionID, transaction, suspendSheet, test);
-							APPW_CommonMethods.getCalculatePremium(strRegressionID,"N/A", transaction, test);
-							PolicyNumber = APPW_CommonMethods.retrievePolicyNumber(test);APPW_CommonMethods.getCalculatePremium(strRegressionID,"N/A", "PWConvertToPolicy", test);CP_Summary.CP_Summary_Details(strRegressionID,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumber, test, file,  workbook);
-							APPW_CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
-							APPW_CommonMethods.getDashboardActions(strRegressionID, "PWConvertToPolicy", suspendSheet, test);
-							test.log(LogStatus.INFO, "PW Elapsed Time", "<b>Started Time : "+PWstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PWstartTime, Util.getTime())); 
-							
-						}
+					Date PWstartTime = Util.getTime();
+					if (transactionsList.contains("BookQuoteInPW")) {
+						transaction = "BPNewQuote";			
+						CommonFunPage.PWAppStartUp(test);
+						PWLoginPage.PWAppLogin(strRegressionID, transaction, test);
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"BP",test);
+						PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A",test);
+						PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"WC",test);
+						PolicyNumberWC = APPW_CommonMethods.retrievePolicyNumber(test);
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"CU",test);
+						PolicyNumberCU = APPW_CommonMethods.retrievePolicyNumber(test);
 						
-						if (transactionsList.contains("PolicyIssuanceOnAP")) {
-							  transaction = "PolicyIssuanceOnAP";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
-							  Date PolicyVerificationstartTime = Util.getTime();
-							  LoginPage.APAppLogin(strRegressionID,   transaction,"No", test);
-							   APPW_CommonMethods.APSearchPolicyNumber(PolicyNumber,test);
-							   CP_Summary.CP_Summary_Details(strRegressionID,strRegressionName, transaction, suspendSheet, strAgentLink, "N/A", strRelease_SelectRelease, strRole_SelectRoleAs,PolicyNumber, test, file,  workbook);
-							   test.log(LogStatus.INFO, "Elapsed Time for PolicyVerification in Bizlink", "<b>Started Time : "+PolicyVerificationstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PolicyVerificationstartTime, Util.getTime())); 
-							
 						}
-
+					
+					if (transactionsList.contains("BPPWPremiums")) {
+						transaction = "BPPWPremiums";		
+						PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);								
+					}
+					
+					if (transactionsList.contains("BPRRSValidationOne")) {
+						
+						transaction = "BPRRSValidationOne";	
+						CommonMethods.newTab(test);
+						CommonMethods.switchWindow(1,test);
+						CommonFunPage.RRSAppStartUp(test, constants.Env);				
+						RateRenewalSheet.RateRenewalSheetMethod(CurrentTermPremiums,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,strRegressionID, transaction,"CurrentTerm",test);							
+						RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, "BPRRSValidationTwo", "QFR",test);
+						
+					}
+					
+					String controlDate = RateRenewalSheet.ControlDate;
+					
+					if(transactionsList.contains("BPReviseQuote")){				
+						transaction = "BPReviseQuote";
+						CommonMethods.switchWindow(0,test);
+						CommonFunPage.PWAppStartUp(test);
+						String policyNum = PolicyNumberTC;
+						//String policyNum = "4166696";
+						PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,test);
+						CommonMethods.CollapseAllAndNavigateTo("Business Protector Policy", "20-BP", test);
+						CommonMethods.NavigateTo("Cyber Security", test);
+						CommonMethods.NavigateTo("Schedule Rating/IRPM",test);				
+						ScheduleRatingIRPMPage.ScheduleRatingIRPM(strRegressionID,transaction,test);
+						CommonMethods.getCalculatePremium(strRegressionID, transaction, test);				
+						PWQuoteOpenPage.getPremiums(NewQFRPremium,"Package");
+						CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+						
+					}
+					
+					if(transactionsList.contains("CAReviseQuote")){				
+						transaction = "CAReviseQuote";
+						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
+						String policyNum = PolicyNumberCA;
+						//String policyNum = "4166698";
+						PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,test);				
+						CommonMethods.NavigateTo("Commercial Auto",test);
+						CommonMethods.NavigateTo("Schedule Rating (1)",test);					
+						CA_ScheduleRatingPage.CA_ScheduleRatingPage(strRegressionID, transaction, suspendSheet, test);
+						CommonMethods.getCalculatePremium(strRegressionID, transaction, test);				
+						PWQuoteOpenPage.getPremiums(NewQFRPremiumCA,"CA");
+						CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+						
+					}
+					
+					if(transactionsList.contains("WCReviseQuote")){				
+						transaction = "WCReviseQuote";
+						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
+						String policyNum = PolicyNumberWC;
+						//String policyNum = "4166700";
+						PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,test);				
+						CommonMethods.NavigateTo("Workers Compensation", test);
+						CommonMethods.NavigateTo("State Information (3)", test);
+						CommonMethods.NavigateTo("Colorado", test);
+						CommonMethods.NavigateTo("Waiver of Subrogation", test);
+						WCWaiverOfSubrogation.WaiverOfSubrogation(strRegressionID, transaction, suspendSheet, test);
+						CommonMethods.getCalculatePremium(strRegressionID, transaction, test);	
+						PWQuoteOpenPage.getPremiums(NewQFRPremiumWC,"WC");
+						CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+						
+					}
+					
+					if (transactionsList.contains("BPRRSValidationThree")) {
+						transaction = "BPRRSValidationThree";
+						CommonMethods.switchWindow(1,test);
+						RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID,transaction, "QFR",test);				
+						
+					}
+					
+					
+					if(transactionsList.contains("BPReviseQuoteTwo")){				
+						transaction = "BPReviseQuoteTwo";
+						CommonMethods.switchWindow(0,test);
+						String policyNum = PolicyNumberBP;	
+						//String policyNum = "4174843";
+						PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",test);
+						CommonMethods.CollapseAllAndNavigateTo("Business Protector Policy", "20-BP", test);
+						CommonMethods.NavigateTo("Cyber Security", test);
+						CommonMethods.NavigateTo("Schedule Rating/IRPM",test);				
+						ScheduleRatingIRPMPage.ScheduleRatingIRPM(strRegressionID,transaction,test);
+						CommonMethods.getCalculatePremium(strRegressionID, transaction, test);				
+						PWQuoteOpenPage.getPremiums(OldQFRPremium,"Package");
+						CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+						
+					}
+					
+					if(transactionsList.contains("CAReviseQuoteTwo")){				
+						transaction = "CAReviseQuoteTwo";
+						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
+						String policyNum = PolicyNumberCA;
+						PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",test);				
+						CommonMethods.NavigateTo("Commercial Auto",test);
+						CommonMethods.NavigateTo("Schedule Rating (1)",test);					
+						CA_ScheduleRatingPage.CA_ScheduleRatingPage(strRegressionID, transaction, suspendSheet, test);
+						CommonMethods.getCalculatePremium(strRegressionID, transaction, test);				
+						PWQuoteOpenPage.getPremiums(OldQFRPremium,"CA");
+						CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+						
+					}
+					
+					if(transactionsList.contains("WCReviseQuoteTwo")){				
+						transaction = "WCReviseQuoteTwo";
+						String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
+						String policyNum = PolicyNumberWC;
+						PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",test);				
+						CommonMethods.NavigateTo("Workers Compensation", test);
+						CommonMethods.NavigateTo("State Information (3)", test);
+						CommonMethods.NavigateTo("Colorado", test);
+						CommonMethods.NavigateTo("Waiver of Subrogation (1)", test);
+						WCWaiverOfSubrogation.WaiverOfSubrogation(strRegressionID, transaction, suspendSheet, test);
+						CommonMethods.getCalculatePremium(strRegressionID, transaction, test);	
+						PWQuoteOpenPage.getPremiums(OldQFRPremium,"WC");
+						CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
+						
+					}
+					
+					if (transactionsList.contains("BPRRSValidationFour")) {
+						transaction = "BPRRSValidationFour";
+						CommonMethods.switchWindow(1,test);
+						RateRenewalSheet.RateRenewalSheetMethod(OldQFRPremium,OldQFRPremium,OldQFRPremium,OldQFRPremium,strRegressionID,transaction, "OldQFR",test);				
+						test.log(LogStatus.INFO, "PW Elapsed Time", "<b>Started Time : "+PWstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PWstartTime, Util.getTime()));
+						
+					}
+						
+						
 					iteration++;
 
 				}

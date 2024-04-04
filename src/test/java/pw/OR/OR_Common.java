@@ -3491,12 +3491,40 @@ public class OR_Common extends Page {
 	return se.element().getElement(PW_Btn_Search);
 	}
 	
-	
 	public By PW_Btn_SearchResult = By.xpath("//table[contains(@id,'DataTables_Table')]//tbody//tr[1]//a");
 	public WebElement getPW_Btn_SearchResult(){
 	se.element().waitForElement(PW_Btn_SearchResult);
 	return se.element().getElement(PW_Btn_SearchResult);
 	}
+	
+	//"+dataValue+"
+	public By PW_Btn_SearchResultD; 
+	public WebElement getPW_Btn_SearchResultD(String quote,String LOB){
+		PW_Btn_SearchResultD = By.xpath("//a[contains(text(),'"+quote+"') and contains(text(),'"+LOB+"')]");
+	se.element().waitForElement(PW_Btn_SearchResultD);
+	return se.element().getElement(PW_Btn_SearchResultD);
+	}
+	
+	public By PW_Btn_ConvertToPolicy = By.xpath("//a[contains(text(),'Convert to Policy')]");
+	public WebElement getPW_Btn_ConvertToPolicy(){
+	se.element().waitForElement(PW_Btn_ConvertToPolicy);
+	return se.element().getElement(PW_Btn_ConvertToPolicy);
+	}
+	
+	public By PW_Btn_Approve = By.xpath("//a[contains(text(),'Approve')]");
+	public WebElement getPW_Btn_Approve(){
+	se.element().waitForElement(PW_Btn_Approve);
+	return se.element().getElement(PW_Btn_Approve);
+	}
+	
+	public By PW_Btn_Book = By.xpath("//a[contains(text(),'Book')]");
+	public WebElement getPW_Btn_Book(){
+	se.element().waitForElement(PW_Btn_Book);
+	return se.element().getElement(PW_Btn_Book);
+	}
+	
+	
+	//a[contains(text(),'Convert to Policy')]
 	public By PW_Btn_SearchResultTwo = By.xpath("//table[contains(@id,'DataTables_Table')]//tbody//tr[2]//a");
 	public WebElement getPW_Btn_SearchResultTwo(){
 	se.element().waitForElement(PW_Btn_SearchResultTwo);
