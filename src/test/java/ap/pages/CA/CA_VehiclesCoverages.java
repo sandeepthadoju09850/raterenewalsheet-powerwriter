@@ -16,6 +16,7 @@ import ap.Constants.constants;
 import ap.OR.BL_OR_CP;
 
 public class CA_VehiclesCoverages extends BL_OR_CP {
+	
 	public void CA_VehiclesCoverages_Details(String strRegressionID, String transaction,String suspendSheet,  ExtentTest test) throws IOException
 	{
 		try{
@@ -23,7 +24,7 @@ public class CA_VehiclesCoverages extends BL_OR_CP {
 		    	test.log(LogStatus.INFO, "Page Suspended :- ","Transaction Step : "+ transaction + "<br>" +"Page : "+suspendSheet);
 		         testTearDown(se, test);
 		    }
-			//JavascriptExecutor executor = (JavascriptExecutor) se.driver();
+			
 		List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.VehiclesCoverages, strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
@@ -184,7 +185,9 @@ public class CA_VehiclesCoverages extends BL_OR_CP {
 					se.element().Click(getVehiclesCoverages_VINPopup(strVehiclesCoverages_TXT_OrgCostNew,NewstrVehiclesCoverages_LNK_ModelNum_VIN ), test);
 					*/
 				if(!strVehiclesCoverages_LNK_OrgCostNew.equalsIgnoreCase("N/A")){	
-				se.element().Click(getVehiclesCoverages_LNK_OrgCostNew(strVehiclesCoverages_LNK_OrgCostNew), test);{}
+					
+					
+				se.element().clickElement(getVehiclesCoverages_LNK_OrgCostNew(strVehiclesCoverages_LNK_OrgCostNew), test);{}
 				}
 				else {
 						se.element().Click(getVehiclesCoverages_LNK_ModelNum(strVehiclesCoverages_LNK_ModelNum_VIN), test);{}

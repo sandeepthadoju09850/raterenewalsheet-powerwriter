@@ -305,7 +305,7 @@ public class BP11_MN_BPRegression extends BaseTest{
 						
 					}
 					Date PWstartTime = Util.getTime();
-					if (transactionsList.contains("BookQuoteInPW")) {
+					if (transactionsList.contains("BPNewQuote")) {
 						transaction = "BPNewQuote";			
 						CommonFunPage.PWAppStartUp(test);
 						PWLoginPage.PWAppLogin(strRegressionID, transaction, test);

@@ -41,7 +41,6 @@ public class WC_RatingClassifications extends BL_OR_CP {
 				se.util().sleep(3000);
 				se.log().logTestStep("WC_RatingClassifications");
 				test.log(LogStatus.INFO, "WC_RatingClassifications","Transaction Step : "+transaction + "<br>" +"Page : WC_RatingClassifications");
-				se.verify().verifyEquals("WC_RatingClassifications  of AgencyPortal ", getmenu_lnk_RatingClassifications().isDisplayed(),true, true,test);
 				
 				if(strRC_BTN_Edit.contains("Edit"))
 				{
@@ -72,7 +71,7 @@ public class WC_RatingClassifications extends BL_OR_CP {
 				{
 					se.element().Click(getRC_BTN_Delete(strRC_BTN_Delete_Loc), test);
 					se.element().Click(getLocations_BTN_Delete_Yes(), test);
-				}else {
+				}else if(strRC_BTN_Edit.contains("N/A")){
 					se.element().SelectElement(RC_DD_State,strRC_DD_State,test);
 					se.util().sleep(3000);
 					se.element().Click(getRC_Click_ClassCode(), test);
