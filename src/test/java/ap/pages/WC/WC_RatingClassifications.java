@@ -47,6 +47,7 @@ public class WC_RatingClassifications extends BL_OR_CP {
 				{
 					se.element().Click(getRC_BTN_Edit(strRC_BTN_Edit_Loc), test);
 					se.element().SelectElement(RC_DD_State,strRC_DD_State,test);
+					se.util().sleep(3000);
 					se.element().Click(getRC_Click_ClassCode(), test);
 					se.element().enterOrValidateText(getRC_TXT_ClassCode(strRC_TXT_ClassCode),strRC_TXT_ClassCode,test);
 					se.element().checkUncheckOrValidate(getRC_CHK_IfAny(strRC_CHK_IfAny),strRC_CHK_IfAny,test);
@@ -71,6 +72,17 @@ public class WC_RatingClassifications extends BL_OR_CP {
 				{
 					se.element().Click(getRC_BTN_Delete(strRC_BTN_Delete_Loc), test);
 					se.element().Click(getLocations_BTN_Delete_Yes(), test);
+				}else {
+					se.element().SelectElement(RC_DD_State,strRC_DD_State,test);
+					se.util().sleep(3000);
+					se.element().Click(getRC_Click_ClassCode(), test);
+					se.element().enterOrValidateText(getRC_TXT_ClassCode(strRC_TXT_ClassCode),strRC_TXT_ClassCode,test);
+					se.element().checkUncheckOrValidate(getRC_CHK_IfAny(strRC_CHK_IfAny),strRC_CHK_IfAny,test);
+					se.element().enterOrValidateText(getRC_TXT_EstimatedAnnualExposure(strRC_TXT_EstimatedAnnualExposure),strRC_TXT_EstimatedAnnualExposure,test);
+					se.element().enterOrValidateText(getRC_TXT_FullTimeEmp(strRC_TXT_FullTimeEmp),strRC_TXT_FullTimeEmp,test);
+					se.element().enterOrValidateText(getRC_TXT_PartTimeEmp(strRC_TXT_PartTimeEmp),strRC_TXT_PartTimeEmp,test);
+					se.element().Click(getLocations_BTN_Save(), test);
+				
 				}
 			}
 			catch(Exception e){
