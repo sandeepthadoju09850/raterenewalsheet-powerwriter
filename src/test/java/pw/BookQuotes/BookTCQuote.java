@@ -39,15 +39,6 @@ public class BookTCQuote extends OR_RRS_MainScreen{
 			 test.log(LogStatus.INFO, "Page Suspended :- ","Transaction Step : "+ transaction + "<br>" +"Page : "+SuspendSheet);
 			testTearDown(se, test);
 		}
-		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.RRS, strRegressionID, transaction);
-		int iteration = 0;
-		while (iteration < table.size()) {
-			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);
-		
-			String strPW_TXT_LeadPolicy = (String) row.get("PW_TXT_LeadPolicy");
-			String strRRS_TXT_SearchPolicy = (String) row.get("RRS_TXT_SearchPolicy");
-			String strPW_TXT_QuoteTransaction = (String) row.get("PW_TXT_QuoteTransaction");
-			 
 			
 			
 			
@@ -79,8 +70,8 @@ public class BookTCQuote extends OR_RRS_MainScreen{
 			} catch(Exception e){
 				se.verify().verifyEquals("Failed to get details for PW Home Page ", true, false, true, test);
 				}
-				iteration++;
-			}
+				
+			
 
 		} catch (Exception e) {
 			// TODO: handle exception

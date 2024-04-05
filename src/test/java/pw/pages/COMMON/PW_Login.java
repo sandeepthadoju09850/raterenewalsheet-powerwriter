@@ -24,6 +24,7 @@ public class PW_Login extends OR_Common {
 					"Transaction Step : " + transaction + "<br>" + "Page : " + SuspendSheet);
 			testTearDown(se, test);
 		}
+		System.out.println(strRegressionID+transaction);
 		List<Map<String, String>> table = ExcelOperations.getPagesData(constants.Login, strRegressionID,
 				transaction);
 		

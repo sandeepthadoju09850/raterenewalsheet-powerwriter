@@ -151,6 +151,9 @@ public static List<Map<String, String>> getPagesData(String page,String strRegre
 		else if(transaction.contains(constants.CU)){
 			 getRowsSheet = CommonBaseTest.getXLSTestDataByRow( constants.NA,"../../resources/testData/CUPages.xlsx", "new", page);
 		}
+		else if(transaction.contains(constants.CP)||(transaction.contains(constants.BP))||(transaction.contains(constants.TC))){
+			 getRowsSheet = CommonBaseTest.getXLSTestDataByRow(constants.NA, "../../resources/testData/Pages.xlsx", "new", page);
+		}
 		else{
 			 getRowsSheet = CommonBaseTest.getXLSTestDataByRow("../../resources/testData/E2EFlow_Bizlink_TestData.xlsx", "new", page);
 		}
