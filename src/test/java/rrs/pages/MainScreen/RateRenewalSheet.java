@@ -20,7 +20,7 @@ import rrs.OR.OR_RRS_MainScreen;
 public class RateRenewalSheet extends OR_RRS_MainScreen{
 
 	public String ControlDate="";
-	public void RateRenewalSheetMethod(LinkedHashMap<String, String> hm, LinkedHashMap<String, String> CA,LinkedHashMap<String, String> WC,LinkedHashMap<String, String> UM,String strRegressionID, String transaction,String Row ,ExtentTest test) throws IOException {
+	public void RateRenewalSheetMethod(LinkedHashMap<String, String> hm, LinkedHashMap<String, String> CA,LinkedHashMap<String, String> WC,LinkedHashMap<String, String> UM,String strRegressionID, String transaction,String Row ,String PolicyNumber,ExtentTest test) throws IOException {
 		try{
 			PWValidations PWValidationsPage = TestPageFactory.initElements(se, PWValidations.class);
 			
@@ -35,7 +35,7 @@ public class RateRenewalSheet extends OR_RRS_MainScreen{
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);
 		
 			
-			String strPW_TXT_LeadPolicy = (String) row.get("PW_TXT_LeadPolicy");
+			String strPW_TXT_LeadPolicy = PolicyNumber;
 			String strWaitCycles = (String) row.get("WaitCycles");
 			String strRevisionSelectPackage = (String) row.get("RevisionSelectPackage");
 			String strRevisionSelectCA = (String) row.get("RevisionSelectCA");
