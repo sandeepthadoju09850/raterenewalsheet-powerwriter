@@ -30,7 +30,7 @@ public class BookTCQuote extends OR_RRS_MainScreen{
 	public static String policyNumberCA="";
 	public static String policyNumberWC="";
 	public static String policyNumberUM="";
-	public void PWBookQuote(String strRegressionID, String transaction, String quote, String LOB,ExtentTest test) throws IOException {
+	public void PWBookQuote(String strRegressionID, String transaction, String quote, String LOB,String ExecuteBook,ExtentTest test) throws IOException {
 		try{
 			PWValidations PWValidationsPage = TestPageFactory.initElements(se, PWValidations.class);
 			
@@ -55,17 +55,26 @@ public class BookTCQuote extends OR_RRS_MainScreen{
 				se.element().Click(getPW_Btn_SearchResultD(quote,LOB),test);												
 				driver.switchTo().defaultContent();
 				se.util().sleep(2000);
+				
+				if(ExecuteBook.equals("Yes")){
 				se.element().switchToFrame(getPW_Frm_QuoteDetails());
-				se.element().Click(getPW_Btn_ConvertToPolicy(),test);
-				Thread.sleep(2000);
+				se.element().waitUntiltextIsDisplayed(getPW_Btn_ConvertToPolicy(),"Convert to Policy");
+				se.element().waitUntiltextIsDisplayed(getPW_Btn_ConvertToPolicy(),"Convert to Policy");
+			 	se.element().Click(getPW_Btn_ConvertToPolicy(),test);
+				Thread.sleep(60000);
 				driver.switchTo().defaultContent();
+				se.util().sleep(3000);
 				se.element().Click(getcommon_BTN_completetranx(),test);
-				se.util().sleep(2000);
+				se.util().sleep(10000);
+				se.element().waitUntiltextIsDisplayed(getPW_Btn_ConvertToPolicy(),"Book");
+				se.element().waitUntiltextIsDisplayed(getPW_Btn_ConvertToPolicy(),"Book");
+				se.element().waitUntiltextIsDisplayed(getPW_Btn_ConvertToPolicy(),"Book");
+				se.element().waitUntiltextIsDisplayed(getPW_Btn_ConvertToPolicy(),"Book");
 				se.element().switchToFrame(getPW_Frm_QuoteDetails());
 				se.element().Click(getPW_Btn_Book(),test);
-				Thread.sleep(2000);
+				Thread.sleep(60000);
 				driver.switchTo().defaultContent();
-				
+				}
 				
 			} catch(Exception e){
 				se.verify().verifyEquals("Failed to get details for PW Home Page ", true, false, true, test);

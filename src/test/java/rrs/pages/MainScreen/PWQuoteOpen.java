@@ -28,7 +28,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 	public static String policyNumberCA="";
 	public static String policyNumberWC="";
 	public static String policyNumberUM="";
-	public void PWQuoteForRenewal(LinkedHashMap<String, String> CurrentTermPremiums,LinkedHashMap<String, String> QFR,LinkedHashMap<String, String> CurrentTermPremiumsCA, LinkedHashMap<String, String> CurrentTermPremiumsWC,LinkedHashMap<String, String> CurrentTermPremiumsUM,LinkedHashMap<String, String> QFRPremiumsCA,LinkedHashMap<String, String> QFRPremiumsWC,LinkedHashMap<String, String> QFRPremiumsUM,String strRegressionID, String transaction, ExtentTest test) throws IOException {
+	public void PWQuoteForRenewal(LinkedHashMap<String, String> CurrentTermPremiums,LinkedHashMap<String, String> QFR,LinkedHashMap<String, String> CurrentTermPremiumsCA, LinkedHashMap<String, String> CurrentTermPremiumsWC,LinkedHashMap<String, String> CurrentTermPremiumsUM,LinkedHashMap<String, String> QFRPremiumsCA,LinkedHashMap<String, String> QFRPremiumsWC,LinkedHashMap<String, String> QFRPremiumsUM,String Package,String Auto,String WorkComp,String Umbrella,String strRegressionID, String transaction, ExtentTest test) throws IOException {
 		try{
 			PWValidations PWValidationsPage = TestPageFactory.initElements(se, PWValidations.class);
 			
@@ -42,8 +42,6 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		while (iteration < table.size()) {
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);
 		
-			String strPW_TXT_LeadPolicy = (String) row.get("PW_TXT_LeadPolicy");
-			String strRRS_TXT_SearchPolicy = (String) row.get("RRS_TXT_SearchPolicy");
 			String strPW_TXT_QuoteTransaction = (String) row.get("PW_TXT_QuoteTransaction");
 			 
 			
@@ -57,7 +55,18 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 				
 				//strRRS_TXT_SearchPolicy ="4166449";
 				se.element().switchToFrame(getPW_Frm_FrameSearch());
-				se.element().enterOrValidateText(getPW_TXT_Search(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy,test);
+				if(strPW_TXT_QuoteTransaction.equals("Package")) {
+				se.element().enterOrValidateText(getPW_TXT_Search(Package),Package,test);
+				}
+				if(strPW_TXT_QuoteTransaction.equals("CA")) {
+					se.element().enterOrValidateText(getPW_TXT_Search(Auto),Auto,test);
+					}
+				if(strPW_TXT_QuoteTransaction.equals("WC")) {
+					se.element().enterOrValidateText(getPW_TXT_Search(WorkComp),WorkComp,test);
+					}
+				if(strPW_TXT_QuoteTransaction.equals("UM")) {
+					se.element().enterOrValidateText(getPW_TXT_Search(Umbrella),Umbrella,test);
+					}
 				se.element().Click(getPW_Btn_Search(),test);
 				boolean ele = se.element().isElementPresent(getPW_Btn_SearchResult());
 				if(ele) {
@@ -71,20 +80,20 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 				if(transaction.equalsIgnoreCase("BPPWPremiums")) {				
 					
 					if(strPW_TXT_QuoteTransaction.equals("Package")) {
-						policyNumberPackage = strRRS_TXT_SearchPolicy;
-						getTransaction(CurrentTermPremiums,QFR,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);
+						policyNumberPackage = Package;
+						getTransaction(CurrentTermPremiums,QFR,Package,Package,strPW_TXT_QuoteTransaction,test);
 					}
 					else if(strPW_TXT_QuoteTransaction.equals("CA")) {
-						policyNumberCA = strRRS_TXT_SearchPolicy;
-						getTransaction(CurrentTermPremiumsCA,QFRPremiumsCA,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);	
+						policyNumberCA = Auto;
+						getTransaction(CurrentTermPremiumsCA,QFRPremiumsCA,Package,Auto,strPW_TXT_QuoteTransaction,test);	
 					}
 					else if(strPW_TXT_QuoteTransaction.equals("WC")) {
-						policyNumberWC = strRRS_TXT_SearchPolicy;
-						getTransaction(CurrentTermPremiumsWC,QFRPremiumsWC,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);	
+						policyNumberWC = WorkComp;
+						getTransaction(CurrentTermPremiumsWC,QFRPremiumsWC,Package,WorkComp,strPW_TXT_QuoteTransaction,test);	
 					}
 					else if(strPW_TXT_QuoteTransaction.equals("UM")) {
-						policyNumberUM = strRRS_TXT_SearchPolicy;
-						getTransaction(CurrentTermPremiumsUM,QFRPremiumsUM,strPW_TXT_LeadPolicy,strRRS_TXT_SearchPolicy,strPW_TXT_QuoteTransaction,test);	
+						policyNumberUM = Umbrella;
+						getTransaction(CurrentTermPremiumsUM,QFRPremiumsUM,Package,Umbrella,strPW_TXT_QuoteTransaction,test);	
 					}
 					
 					if(strPW_TXT_QuoteTransaction.equals("UM")) {
