@@ -316,21 +316,25 @@ public class RRS_Regression_01 extends BaseTest {
 			transaction = "BPNewQuote";			
 			CommonFunPage.PWAppStartUp(test);
 			LoginPage.PWAppLogin(strRegressionID, transaction, test);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"BP",test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"TC","No",test);
 			PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A",test);
+			System.out.println(PolicyNumberBP);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A","No",test);
 			PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"WC",test);
+			System.out.println(PolicyNumberCA);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"WC","No",test);
 			PolicyNumberWC = APPW_CommonMethods.retrievePolicyNumber(test);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"CU",test);
+			System.out.println(PolicyNumberWC);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"CU","No",test);
 			PolicyNumberCU = APPW_CommonMethods.retrievePolicyNumber(test);
+			System.out.println(PolicyNumberCU);
 			
 			}
 			
 			
 			if (transactionsList.contains("BPPWPremiums")) {
 				transaction = "BPPWPremiums";		
-				PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, transaction, test);								
+				PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,PolicyNumberBP,PolicyNumberCA,PolicyNumberWC,PolicyNumberCU,strRegressionID, transaction, test);								
 			}
 			
 			if (transactionsList.contains("BPRRSValidationOne")) {
@@ -339,8 +343,8 @@ public class RRS_Regression_01 extends BaseTest {
 				CommonMethods.newTab(test);
 				CommonMethods.switchWindow(1,test);
 				CommonFunPage.RRSAppStartUp(test, constants.Env);				
-				RateRenewalSheet.RateRenewalSheetMethod(CurrentTermPremiums,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,strRegressionID, transaction,"CurrentTerm",test);							
-				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, "BPRRSValidationTwo", "QFR",test);
+				RateRenewalSheet.RateRenewalSheetMethod(CurrentTermPremiums,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,strRegressionID, transaction,"CurrentTerm",PolicyNumberBP,test);							
+				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, "BPRRSValidationTwo", "QFR",PolicyNumberBP,test);
 				
 			}
 			
@@ -398,7 +402,7 @@ public class RRS_Regression_01 extends BaseTest {
 			if (transactionsList.contains("BPRRSValidationThree")) {
 				transaction = "BPRRSValidationThree";
 				CommonMethods.switchWindow(1,test);
-				RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID,transaction, "QFR",test);				
+				RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID,transaction, "QFR",PolicyNumberBP,test);				
 				
 			}
 			
@@ -452,7 +456,7 @@ public class RRS_Regression_01 extends BaseTest {
 			if (transactionsList.contains("BPRRSValidationFour")) {
 				transaction = "BPRRSValidationFour";
 				CommonMethods.switchWindow(1,test);
-				RateRenewalSheet.RateRenewalSheetMethod(OldQFRPremium,OldQFRPremium,OldQFRPremium,OldQFRPremium,strRegressionID,transaction, "OldQFR",test);				
+				RateRenewalSheet.RateRenewalSheetMethod(OldQFRPremium,OldQFRPremium,OldQFRPremium,OldQFRPremium,strRegressionID,transaction, "OldQFR",PolicyNumberBP,test);				
 				test.log(LogStatus.INFO, "PW Elapsed Time", "<b>Started Time : "+PWstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PWstartTime, Util.getTime()));
 				
 			}
