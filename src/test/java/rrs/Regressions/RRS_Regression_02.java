@@ -187,9 +187,13 @@ public class RRS_Regression_02 extends BaseTest{
 			
 			String transaction = "NewQuote";
 			String strRegressionIDUnderlined = "CUBP_15";
-			List<String> transactionsList = ExcelOperations.getBLTransactionsList(strRegressionID);
+			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
 			System.out.println(transactionsList.size());
 			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
+			System.out.println(table.size());
+			System.out.println(strRegressionID);
+			System.out.println(transaction);
+			
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(0);
 			String strAgentLink = (String) row.get("AgentLink");
 			String strLOB = (String) row.get("LOB_Select");
@@ -288,7 +292,7 @@ public class RRS_Regression_02 extends BaseTest{
 				CP_Summary.CP_Summary_Details(strRegressionIDUnderlined,strRegressionName, transaction, suspendSheet, strAgentLink, "Workers", strRelease_SelectRelease, strRole_SelectRoleAs,quote, test, file,  workbook);
 				
 			}
-
+			strRegressionIDUnderlined = "RCU_13";
 			if (transactionsList.contains("BLNewQuote")) {
 				transaction = "NewQuote";
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);

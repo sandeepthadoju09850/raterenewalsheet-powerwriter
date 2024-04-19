@@ -187,6 +187,9 @@ public class RRS_Regression_01 extends BaseTest {
 			String strRegressionIDUnderlined = "CUTC_13";
 			List<String> transactionsList = ExcelOperations.getTransactionsList(strRegressionID);
 			List<Map<String, String>> table = ExcelOperations.getBLPagesData(constants.loginPageName, strRegressionID,transaction);
+			System.out.println(table.size());
+			System.out.println(strRegressionID);
+			System.out.println(transaction);
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(0);
 			String strAgentLink = (String) row.get("AgentLink");
 			String strLOB = (String) row.get("LOB_Select");
