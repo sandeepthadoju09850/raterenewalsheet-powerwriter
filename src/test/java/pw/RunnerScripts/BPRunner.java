@@ -81,7 +81,7 @@ import pw.regressions.CP.CP6_KS_CPRegression;
 import pw.regressions.CP.CP7_KY_CPRegression;
 import pw.regressions.CP.CP8_MI_CPRegression;
 import pw.regressions.CP.CP9_MN_CPRegression;
-import rrs.Regressions.RRS_Regression_01;
+import rrs.Regressions.RRS_Regression_02;
 
 @SuppressWarnings("unused")
 public class BPRunner extends BaseTest {
@@ -133,7 +133,7 @@ public class BPRunner extends BaseTest {
 		String RegressionName = Util.getRegressionName(strRegressionId);
 		ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
 		
-		RRS_Regression_01.RRS_RegressionMethod(myBrowser, se, params, strRegressionId, RegressionName,premiumsFile, workbook, test);
+		RRS_Regression_02.RRS_RegressionMethod(myBrowser, se, params, strRegressionId, RegressionName,premiumsFile, workbook, test);
 		test.setEndedTime(Util.getTime());
 		extent.endTest(test);
 	}

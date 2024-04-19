@@ -102,8 +102,8 @@ import pw.regressions.TC.TC6_IN_TCRegression;
 import pw.regressions.TC.TC7_KS_TCRegression;
 import pw.regressions.TC.TC8_KY_Regression;
 import pw.regressions.TC.TC9_MI_TCRegression;
-import rrs.Regressions.RRS_Regression_01;
 import rrs.Regressions.RRS_Regression_02;
+import rrs.Regressions.RRS_Regression_01;
 
 @SuppressWarnings("unused")
 public class CURunner extends BaseTest {
@@ -152,7 +152,7 @@ public class CURunner extends BaseTest {
 	String RegressionName = Util.getRegressionName(strRegressionId);
 	System.out.println(RegressionName);
 	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	RRS_Regression_01.RRS_RegressionMethod(myBrowser, se, params, strRegressionId,RegressionName, premiumsFile, workbook, test);
+	RRS_Regression_02.RRS_RegressionMethod(myBrowser, se, params, strRegressionId,RegressionName, premiumsFile, workbook, test);
 	test.setEndedTime(Util.getTime());
 	extent.endTest(test);
 	}
@@ -166,119 +166,11 @@ public class CURunner extends BaseTest {
 	String RegressionName = Util.getRegressionName(strRegressionId);
 	System.out.println(RegressionName);
 	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	RRS_Regression_02.RRS_RegressionMethod02(myBrowser, se, params, strRegressionId,RegressionName, premiumsFile, workbook, test);
+	RRS_Regression_01.RRS_RegressionMethod01(myBrowser, se, params, strRegressionId,RegressionName, premiumsFile, workbook, test);
 	test.setEndedTime(Util.getTime());
 	extent.endTest(test);
 	}
 	
-	@Test(description = "CU1_AZ_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_1(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU1_AZ_CA_WK_CURegression.CU1_AZ_CA_WK_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	
-	}
-	
-	@Test(description = "CU2_IA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_2(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU2_IA_CP_CA_CURegression.CU2_IA_CP_CA_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	
-	}
-	
-	@Test(description = "CU3_IL_CUCPRegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_3(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU3_IL_CUCPRegression.CU3_IL_CUCPRegression(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	
-	}
-	
-	@Test(description = "CU4_IN_CA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-       @TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-       public void CU_4(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-       String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-       String RegressionName = Util.getRegressionName(strRegressionId);
-       ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-       CU4_IN_CU_Regression.CU4_IN_CU_RegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-       
-       }
-	
-	@Test(description = "CU5_KS_CA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-       @TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-       public void CU_5(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-       String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-       String RegressionName = Util.getRegressionName(strRegressionId);
-       ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-       CU5_KS_CA_CURegression.CU5_KS_CA_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-       
-       }
-
-	
-	@Test(description = "CU6_KY_BP_CA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_6(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU6_KY_BP_CA_CURegression.KY_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	}
-	
-	
-	@Test(description = "CU7_MI_CP_CA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_7(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU7_MI_CP_CA_CURegression.MI_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	
-	}
-	@Test(description = "CU8_MN_CP_CA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_8(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU8_MN_CP_CA_CURegression.MN_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	
-	}
-	
-	@Test(description = "CU9_ND_CP_CA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_9(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU9_ND_CP_CA_CURegression.ND_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	
-	}
-	
-	@Test(description = "CU10_WI_TC_CA_CURegression", dataProvider = "browserXlsByRow", groups = {
-    "PWRateComparision" }, timeOut = 500000000)
-	@TestDataXLS(fileName = "../../resources/testData/Scenario_Selection", sheetVersion = "new", sheetName = "Scenario_Selection")
-	public void CU_10(Browsers myBrowser, SeHelper se, Map<String, Object> params) throws IOException {
-	String strRegressionId = Thread.currentThread().getStackTrace()[1].getMethodName();
-	String RegressionName = Util.getRegressionName(strRegressionId);
-	ExtentTest test = ExtentTestManager.startTest(strRegressionId + " :: " + RegressionName);
-	CU10_WI_TC_CA_CURegression.WI_CURegressionMethod(myBrowser, se, params, strRegressionId, premiumsFile, workbook, test);
-	}
 	
 	@Test(description = "CU11_IL_CP_HumSvc_CURegression", dataProvider = "browserXlsByRow", groups = {
     "PWRateComparision" }, timeOut = 500000000)
