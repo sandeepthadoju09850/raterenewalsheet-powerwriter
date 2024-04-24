@@ -314,7 +314,7 @@ public class RRS_Regression_01 extends BaseTest{
 			transaction = "BPNewQuote";			
 			CommonFunPage.PWAppStartUp(test);
 			PWLoginPage.PWAppLogin(strRegressionID, transaction, test);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"TC","No",test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"BP","No",test);
 			PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
 			System.out.println(PolicyNumberBP);
 			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A","No",test);
