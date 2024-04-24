@@ -3423,6 +3423,12 @@ public class OR_Common extends Page {
 	return se.element().getElement(Common_BTN_Revise);
 	}
 	
+	public By Common_BTN_Endorse = By.xpath("//a[contains(text(),'Endorse')]");
+	public WebElement getCommon_BTN_Endorse(){
+	se.element().waitForElement(Common_BTN_Endorse);
+	return se.element().getElement(Common_BTN_Endorse);
+	}
+	
 	public By Common_BTN_PremiumSummary = By.xpath("//div[contains(text(),'Premium Summary')]");
 	public WebElement getCommon_BTN_PremiumSummary(){
 	se.element().waitForElement(Common_BTN_PremiumSummary);

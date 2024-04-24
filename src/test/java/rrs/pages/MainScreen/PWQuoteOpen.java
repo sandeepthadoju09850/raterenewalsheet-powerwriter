@@ -453,7 +453,7 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 			 
 		}
 
-	public void openPendingQuoteInPW(String strRRS_TXT_SearchPolicy,String controlDate,ExtentTest test) throws InterruptedException {	
+	public void openPendingQuoteInPW(String strRRS_TXT_SearchPolicy,String controlDate,String tranx,ExtentTest test) throws InterruptedException {	
 		driver.switchTo().defaultContent();
 		se.element().switchToFrame(getPW_Frm_FrameSearch());
 		se.element().enterOrValidateText(getPW_TXT_Search(strRRS_TXT_SearchPolicy),strRRS_TXT_SearchPolicy,test);
@@ -474,8 +474,12 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		Thread.sleep(2000);
 		se.element().switchToFrame(getPW_Frm_QuoteDetails());
 		Thread.sleep(2000);
+		if(tranx.contains("Endorsement")) {
+			se.element().Click(getCommon_BTN_Endorse(),test);
+		}else {
 		se.element().Click(getCommon_BTN_Revise(),test);
-		Thread.sleep(2000);
+			Thread.sleep(2000);
+		}
 		driver.switchTo().defaultContent();
 		Thread.sleep(2000);
 		test.log(LogStatus.PASS, "Navigated to Quote which is in Pending Quote status");
