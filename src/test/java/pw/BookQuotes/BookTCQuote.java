@@ -56,6 +56,15 @@ public class BookTCQuote extends OR_RRS_MainScreen{
 				driver.switchTo().defaultContent();
 				se.util().sleep(2000);
 				
+				if (transaction.equals("BPNewQuote")) {
+					se.element().switchToFrame(getPW_Frm_QuoteDetails());
+					se.util().sleep(2000);
+					se.element().Click(getPW_LNK_PolicyNumOne(), test);
+					se.util().sleep(2000);
+					driver.switchTo().defaultContent();
+					se.util().sleep(2000);
+				}
+				
 				if(ConvertToPolicy.equals("Yes")){					
 										
 					se.element().switchToFrame(getPW_Frm_QuoteDetails());
@@ -70,11 +79,12 @@ public class BookTCQuote extends OR_RRS_MainScreen{
 				}
 
 					if (BookPolicy.equals("Yes")) {
-						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
-						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
-						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
-						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
 						se.element().switchToFrame(getPW_Frm_QuoteDetails());
+						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
+						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
+						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
+						se.element().waitUntiltextIsDisplayed(getPW_Btn_Book(), "Book");
+						
 						se.element().Click(getPW_Btn_Book(), test);
 						Thread.sleep(60000);
 						driver.switchTo().defaultContent();

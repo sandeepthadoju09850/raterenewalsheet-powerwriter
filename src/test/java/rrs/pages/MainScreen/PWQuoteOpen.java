@@ -476,6 +476,13 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		Thread.sleep(2000);
 		if(tranx.contains("Endorsement")) {
 			se.element().Click(getCommon_BTN_Endorse(),test);
+			driver.switchTo().defaultContent();
+			Thread.sleep(3000);
+			String EndorsementReason = "Test";
+			
+			se.element().enterOrValidateText(getProductInfo_TXT_TransEffectiveDate(controlDate), controlDate, test);
+			se.element().enterOrValidateText(getProductInfo_TXT_EndorsementReason(EndorsementReason), EndorsementReason, test);
+			
 		}else {
 		se.element().Click(getCommon_BTN_Revise(),test);
 			Thread.sleep(2000);

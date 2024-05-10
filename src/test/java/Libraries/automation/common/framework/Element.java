@@ -503,6 +503,7 @@ public class Element extends OR_CP{
 						Thread.sleep(1000);
 						
 						element.sendKeys(testdata);
+						Thread.sleep(5000);
 						enterTAB(element);
 						se.element().waitForElementToDisappear(bluelineIndicator, 5000);
 						se.element().waitForElementToDisappear(overalyRequestProcessing, 5000);

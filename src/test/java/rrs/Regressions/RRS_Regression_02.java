@@ -92,10 +92,10 @@ public class RRS_Regression_02 extends BaseTest {
 	ExtentTest test;
 	
 	static String PolicyNumberCU = "";
-	static String PolicyNumberBP = "";
+	static String policyNumberPackage = "";
 	static String PolicyNumberCA = "";
 	static String PolicyNumberWC = "";
-	static String quote = "";
+	static String quote = "5201717";
 
 
 	
@@ -212,7 +212,7 @@ public class RRS_Regression_02 extends BaseTest {
 			String strRole_SelectRoleAsTC = (String) rowTC.get("Select_RoleAs");
 			String strRelease_SelectReleaseTC = (String) rowTC.get("Select_Release");
 			// UNDERLYING POLICY 1 CUTC_08 NEW QUOTE TRANSACTION
-			
+		/*	
 			if (transactionsList.contains("BLNewQuote")) {
 				transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 				BLLoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"Yes", test);
@@ -323,17 +323,17 @@ public class RRS_Regression_02 extends BaseTest {
 				
 			}
 						
-	
+	*/
 			Date PWstartTime = Util.getTime();
 			if (transactionsList.contains("BPNewQuote")) {
 			transaction = "BPNewQuote";	
 			String ConvertToPolicy = "No";
-			String BookPolicy = "Yes";
+			String BookPolicy = "No";
 			CommonFunPage.PWAppStartUp(test);
 			LoginPage.PWAppLogin(strRegressionID, transaction, test);
 			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"TC",ConvertToPolicy,BookPolicy,test);
-			PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
-			System.out.println(PolicyNumberBP);
+			policyNumberPackage = APPW_CommonMethods.retrievePolicyNumber(test);
+			System.out.println(policyNumberPackage);
 			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A",ConvertToPolicy,BookPolicy,test);
 			PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
 			System.out.println(PolicyNumberCA);
@@ -345,48 +345,49 @@ public class RRS_Regression_02 extends BaseTest {
 			System.out.println(PolicyNumberCU);
 			
 			}
-			
+		
 			if (transactionsList.contains("FlatEndorsement")) {
 				transaction = "TCFlatEndorsement";		
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				String ConvertToPolicy = "No";
 				String BookPolicy = "Yes";
-				String policyNum = PWQuoteOpen.policyNumberPackage;
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, "N/A",transaction,test);
-				QuoteGenInfoPage.quote_ProdInfo(strRegressionID, transaction, test);
-				CommonMethods.NavigateTo("Target Contractor Protector",test);
+				
+				//String policyNum = "4176911";
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNumberPackage, "04/20/2024",transaction,test);
 				CommonMethods.NavigateTo("Schedule Rating/IRPM", test);
 				PWScheduleRatingIRPM.ScheduleRatingIRPM(strRegressionID, transaction, test);
-				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);				
+				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);
+				CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);				
 				BookTCQuote.PWBookQuote(strRegressionID, transaction, "N/A","N/A",ConvertToPolicy,BookPolicy,test);
 				
 				transaction = "CAFlatEndorsement";	
-				String policyCA = PWQuoteOpen.policyNumberCA;
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, "N/A",transaction,test);
-				CAWC_ProductInfoPage.quote_ProdInfo(strRegressionID, transaction, test);
+				//String policyNum = "4176912";
+				PWQuoteOpenPage.openPendingQuoteInPW(PolicyNumberCA, "04/20/2024",transaction,test);
+				
 				CommonMethods.NavigateTo("Commercial Auto",test);
 				CommonMethods.NavigateTo("Vehicles (5)",test);
 				CA_VehiclesPage.CA_VehiclesPage(strRegressionID, transaction, suspendSheet, test);
 				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);
+				CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
 				BookTCQuote.PWBookQuote(strRegressionID, transaction, "N/A","N/A",ConvertToPolicy,BookPolicy,test);
 				
 				transaction = "WCFlatEndorsement";
-				String policyWC = PWQuoteOpen.policyNumberWC;
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, "N/A",transaction,test);
-				CAWC_ProductInfoPage.quote_ProdInfo(strRegressionID, transaction, test);									
+				//String policyNum = "4176913";
+				PWQuoteOpenPage.openPendingQuoteInPW(PolicyNumberWC, "04/20/2024",transaction,test);												
 				CommonMethods.NavigateTo("Workers Compensation", test);
 				CommonMethods.NavigateTo("State Information (1)", test);
 				CommonMethods.NavigateTo("Indiana", test);
 				CommonMethods.NavigateTo("Waiver of Subrogation", test);
 				WCWaiverOfSubrogation.WaiverOfSubrogation(strRegressionID, transaction, suspendSheet, test);
 				CommonMethods.getCalculatePremium(strRegressionID, transaction, test);
+				CommonMethods.getCompleteTransaction(strRegressionID, transaction, test);
 				BookTCQuote.PWBookQuote(strRegressionID, transaction, "N/A","N/A",ConvertToPolicy,BookPolicy,test);
 				
 			}
 			
 			if (transactionsList.contains("BPPWPremiums")) {
 				transaction = "BPPWPremiums";		
-				PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,PolicyNumberBP,PolicyNumberCA,PolicyNumberWC,PolicyNumberCU,strRegressionID, transaction, test);								
+				PWQuoteOpenPage.PWQuoteForRenewal(CurrentTermPremiums,QFR,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,policyNumberPackage,PolicyNumberCA,PolicyNumberWC,PolicyNumberCU,strRegressionID, transaction, test);								
 			}
 			
 			if (transactionsList.contains("BPRRSValidationOne")) {
@@ -395,8 +396,8 @@ public class RRS_Regression_02 extends BaseTest {
 				CommonMethods.newTab(test);
 				CommonMethods.switchWindow(1,test);
 				CommonFunPage.RRSAppStartUp(test, constants.Env);				
-				RateRenewalSheet.RateRenewalSheetMethod(CurrentTermPremiums,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,strRegressionID, transaction,"CurrentTerm",PolicyNumberBP,test);							
-				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, "BPRRSValidationTwo", "QFR",PolicyNumberBP,test);
+				RateRenewalSheet.RateRenewalSheetMethod(CurrentTermPremiums,CurrentTermPremiumsCA,CurrentTermPremiumsWC,CurrentTermPremiumsUM,strRegressionID, transaction,"CurrentTerm",policyNumberPackage,test);							
+				RateRenewalSheet.RateRenewalSheetMethod(QFR,QFRPremiumsCA,QFRPremiumsWC,QFRPremiumsUM,strRegressionID, "BPRRSValidationTwo", "QFR",policyNumberPackage,test);
 				
 			}
 			
@@ -454,7 +455,7 @@ public class RRS_Regression_02 extends BaseTest {
 			if (transactionsList.contains("BPRRSValidationThree")) {
 				transaction = "BPRRSValidationThree";
 				CommonMethods.switchWindow(1,test);
-				RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID,transaction, "QFR",PolicyNumberBP,test);				
+				RateRenewalSheet.RateRenewalSheetMethod(NewQFRPremium,NewQFRPremiumCA,NewQFRPremiumWC,QFRPremiumsUM,strRegressionID,transaction, "QFR",policyNumberPackage,test);				
 				
 			}
 			
@@ -508,7 +509,7 @@ public class RRS_Regression_02 extends BaseTest {
 			if (transactionsList.contains("BPRRSValidationFour")) {
 				transaction = "BPRRSValidationFour";
 				CommonMethods.switchWindow(1,test);
-				RateRenewalSheet.RateRenewalSheetMethod(OldQFRPremium,OldQFRPremium,OldQFRPremium,OldQFRPremium,strRegressionID,transaction, "OldQFR",PolicyNumberBP,test);				
+				RateRenewalSheet.RateRenewalSheetMethod(OldQFRPremium,OldQFRPremium,OldQFRPremium,OldQFRPremium,strRegressionID,transaction, "OldQFR",policyNumberPackage,test);				
 				test.log(LogStatus.INFO, "PW Elapsed Time", "<b>Started Time : "+PWstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PWstartTime, Util.getTime()));
 				
 			}

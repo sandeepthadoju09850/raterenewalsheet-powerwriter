@@ -307,19 +307,21 @@ public class BP11_MN_BPRegression extends BaseTest{
 					}
 					Date PWstartTime = Util.getTime();
 					if (transactionsList.contains("BPNewQuote")) {
-						transaction = "BPNewQuote";			
+						transaction = "BPNewQuote";		
+						String ConvertToPolicy = "No";
+						String BookPolicy = "Yes";
 						CommonFunPage.PWAppStartUp(test);
 						PWLoginPage.PWAppLogin(strRegressionID, transaction, test);
-						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"BP","Yes",test);
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, "quote","BP",ConvertToPolicy,BookPolicy,test);
 						PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
 						System.out.println(PolicyNumberBP);
-						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A","Yes",test);
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, "quote","A",ConvertToPolicy,BookPolicy,test);
 						PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
-						System.out.println(PolicyNumberCA);
-						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"WC","Yes",test);
+						System.out.println(PolicyNumberCA);						
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, "quote","WC",ConvertToPolicy,BookPolicy,test);
 						PolicyNumberWC = APPW_CommonMethods.retrievePolicyNumber(test);
 						System.out.println(PolicyNumberCA);
-						BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"CU","Yes",test);
+						BookTCQuote.PWBookQuote(strRegressionID, transaction, "quote","CU",ConvertToPolicy,BookPolicy,test);
 						PolicyNumberCU = APPW_CommonMethods.retrievePolicyNumber(test);
 						System.out.println(PolicyNumberCA);
 						

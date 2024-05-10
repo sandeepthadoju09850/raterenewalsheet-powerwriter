@@ -45,6 +45,7 @@ public class CA_Vehicles extends OR_CA  {
 			se.verify().verifyEquals("CA_Vehicles of PowerWriter ", getVehicles_LBL_Vehicle().isDisplayed(),true, true,test);
 			if(strVehicles_BTN_VehicleAdd.equalsIgnoreCase("Yes")){
 				se.element().Click(getVehicles_BTN_VehicleAdd(), test);
+				se.element().Click(getVehicles_BTN_VehicleAdd(), test);
 			}
 			if(strVehicles_BTN_Delete_Vehicle.equalsIgnoreCase("Yes")){
 				se.element().checkUncheckOrValidate(getVehicles_CHK_Vehicle_Select(strVehicles_CHK_Vehicle_Select),"Check",test);

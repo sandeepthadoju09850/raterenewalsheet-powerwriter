@@ -3798,6 +3798,13 @@ public class OR_Common extends Page {
 	return se.element().getElement(PW_TXT_CASRPDReasonEqup, dtaValue);
 	}
 	
+	
+	public By PW_LNK_PolicyNumOne = By.xpath("//table[@width='100%']//tbody//tr[4]//td[contains(@class,'PolicyFieldText')]//data//a[contains(@href,'Entity')]");
+	public WebElement getPW_LNK_PolicyNumOne(){
+	se.element().waitForElement(PW_LNK_PolicyNumOne);
+	return se.element().getElement(PW_LNK_PolicyNumOne);
+	}
+	
 	//input[@id='field_key$40c379d0-523b-310e-99a0-d82620f34820$1c_shed_factor-textbox']
 	//input[@id='field_key$40c379d0-523b-310e-99a0-d82620f34820$2c_shed_factor-textbox']
 	//input[@id='field_key$b5d8557f-1525-3ea8-8ac8-0290df3302e9$1c_selected_percent-textbox']

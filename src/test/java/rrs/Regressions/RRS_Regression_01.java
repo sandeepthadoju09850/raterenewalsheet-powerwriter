@@ -311,19 +311,21 @@ public class RRS_Regression_01 extends BaseTest{
 			Date PWstartTime = Util.getTime();
 
 			if (transactionsList.contains("BPNewQuote")) {
-			transaction = "BPNewQuote";			
+			transaction = "BPNewQuote";	
+			String ConvertToPolicy = "No";
+			String BookPolicy = "No";
 			CommonFunPage.PWAppStartUp(test);
 			PWLoginPage.PWAppLogin(strRegressionID, transaction, test);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"BP","No",test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"BP",ConvertToPolicy,BookPolicy,test);
 			PolicyNumberBP = APPW_CommonMethods.retrievePolicyNumber(test);
 			System.out.println(PolicyNumberBP);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A","No",test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"A",ConvertToPolicy,BookPolicy,test);
 			PolicyNumberCA = APPW_CommonMethods.retrievePolicyNumber(test);
 			System.out.println(PolicyNumberCA);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"WC","No",test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"WC",ConvertToPolicy,BookPolicy,test);
 			PolicyNumberWC = APPW_CommonMethods.retrievePolicyNumber(test);
 			System.out.println(PolicyNumberWC);
-			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"CU","No",test);
+			BookTCQuote.PWBookQuote(strRegressionID, transaction, quote,"CU",ConvertToPolicy,BookPolicy,test);
 			PolicyNumberCU = APPW_CommonMethods.retrievePolicyNumber(test);
 			System.out.println(PolicyNumberCU);
 			
@@ -354,7 +356,7 @@ public class RRS_Regression_01 extends BaseTest{
 				CommonFunPage.PWAppStartUp(test);
 				String policyNum = PWQuoteOpen.policyNumberPackage;
 				//String policyNum = "4166696";
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,test);
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,transaction,test);
 				CommonMethods.CollapseAllAndNavigateTo("Business Protector Policy", "20-BP", test);
 				CommonMethods.NavigateTo("Cyber Security", test);
 				CommonMethods.NavigateTo("Schedule Rating/IRPM",test);				
@@ -370,7 +372,7 @@ public class RRS_Regression_01 extends BaseTest{
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				String policyNum = PWQuoteOpen.policyNumberCA;
 				//String policyNum = "4166698";
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,test);				
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,transaction,test);				
 				CommonMethods.NavigateTo("Commercial Auto",test);
 				CommonMethods.NavigateTo("Schedule Rating (1)",test);					
 				CA_ScheduleRatingPage.CA_ScheduleRatingPage(strRegressionID, transaction, suspendSheet, test);
@@ -385,7 +387,7 @@ public class RRS_Regression_01 extends BaseTest{
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				String policyNum = PWQuoteOpen.policyNumberWC;
 				//String policyNum = "4166700";
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,test);				
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum, controlDate,transaction,test);				
 				CommonMethods.NavigateTo("Workers Compensation", test);
 				CommonMethods.NavigateTo("State Information (3)", test);
 				CommonMethods.NavigateTo("Colorado", test);
@@ -410,7 +412,7 @@ public class RRS_Regression_01 extends BaseTest{
 				CommonMethods.switchWindow(0,test);
 				String policyNum = PWQuoteOpen.policyNumberPackage;	
 				//String policyNum = "4174843";
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",test);
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",transaction,test);
 				CommonMethods.CollapseAllAndNavigateTo("Business Protector Policy", "20-BP", test);
 				CommonMethods.NavigateTo("Cyber Security", test);
 				CommonMethods.NavigateTo("Schedule Rating/IRPM",test);				
@@ -425,7 +427,7 @@ public class RRS_Regression_01 extends BaseTest{
 				transaction = "CAReviseQuoteTwo";
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				String policyNum = PWQuoteOpen.policyNumberCA;
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",test);				
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",transaction,test);				
 				CommonMethods.NavigateTo("Commercial Auto",test);
 				CommonMethods.NavigateTo("Schedule Rating (1)",test);					
 				CA_ScheduleRatingPage.CA_ScheduleRatingPage(strRegressionID, transaction, suspendSheet, test);
@@ -439,7 +441,7 @@ public class RRS_Regression_01 extends BaseTest{
 				transaction = "WCReviseQuoteTwo";
 				String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID, transaction);
 				String policyNum = PWQuoteOpen.policyNumberWC;
-				PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",test);				
+				PWQuoteOpenPage.openPendingQuoteInPW(policyNum,"N/A",transaction,test);				
 				CommonMethods.NavigateTo("Workers Compensation", test);
 				CommonMethods.NavigateTo("State Information (3)", test);
 				CommonMethods.NavigateTo("Colorado", test);

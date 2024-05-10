@@ -24,6 +24,7 @@ public class PW_ScheduleRatingIRPM extends OR_Common {
 		List<Map<String, String>> table = ExcelOperations.getPagesData("ScheduleRating_IRPM", strRegressionID, transaction);
 		int iteration = 0;
 		while (iteration < table.size()) {
+			System.out.println(table.size());
 			LinkedHashMap<String, String> row = (LinkedHashMap<String, String>) table.get(iteration);
 		String strScheduleRating_CHK_Apply = (String) row.get("ScheduleRating_CHK_Apply");
 		String strScheduleRating_CHK_DoNotApply = (String) row.get("ScheduleRating_CHK_DoNotApply");
@@ -86,43 +87,59 @@ public class PW_ScheduleRatingIRPM extends OR_Common {
 			se.element().checkUncheckOrValidate(getScheduleRating_CHK_Jstfy_Prm_Mod_Check_No(strScheduleRating_CHK_Jstfy_Prm_Mod_Check_No,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_CHK_Jstfy_Prm_Mod_Check_No,test);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_Mngmt_SelectedPercent(strScheduleRating_TXT_Mngmt_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Mngmt_SelectedPercent,test);
+			se.element().enterOrValidateText(getScheduleRating_TXT_Employees_SelectedPercent(strScheduleRating_TXT_Employees_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Employees_SelectedPercent,test);
 			
+			se.element().enterOrValidateText(getScheduleRating_TXT_Mngmt_Reason(strScheduleRating_TXT_Mngmt_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Mngmt_Reason,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_Mngmt_Reason(strScheduleRating_TXT_Mngmt_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Mngmt_Reason,test);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_Loc_SelectedPercent(strScheduleRating_TXT_Loc_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Loc_SelectedPercent,test);
+			se.element().enterOrValidateText(getScheduleRating_TXT_Loc_SelectedPercent(strScheduleRating_TXT_Loc_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Loc_SelectedPercent,test);
 			
+			se.element().enterOrValidateText(getScheduleRating_TXT_Loc_Reason(strScheduleRating_TXT_Loc_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Loc_Reason,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_Loc_Reason(strScheduleRating_TXT_Loc_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Loc_Reason,test);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_BldgFeature_SelectedPercent(strScheduleRating_TXT_BldgFeature_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_BldgFeature_SelectedPercent,test);
+			se.element().enterOrValidateText(getScheduleRating_TXT_BldgFeature_SelectedPercent(strScheduleRating_TXT_BldgFeature_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_BldgFeature_SelectedPercent,test);
 			
+			se.element().enterOrValidateText(getScheduleRating_TXT_BldgFeature_Reason(strScheduleRating_TXT_BldgFeature_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_BldgFeature_Reason,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_BldgFeature_Reason(strScheduleRating_TXT_BldgFeature_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_BldgFeature_Reason,test);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_PremAndEquip_SelectedPercent(strScheduleRating_TXT_PremAndEquip_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_PremAndEquip_SelectedPercent,test);
+			se.element().enterOrValidateText(getScheduleRating_TXT_PremAndEquip_SelectedPercent(strScheduleRating_TXT_PremAndEquip_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_PremAndEquip_SelectedPercent,test);
 			
+			se.element().enterOrValidateText(getScheduleRating_TXT_PremAndEquip_Reason(strScheduleRating_TXT_PremAndEquip_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_PremAndEquip_Reason,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_PremAndEquip_Reason(strScheduleRating_TXT_PremAndEquip_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_PremAndEquip_Reason,test);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_Employees_SelectedPercent(strScheduleRating_TXT_Employees_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Employees_SelectedPercent,test);
-		
+			se.element().enterOrValidateText(getScheduleRating_TXT_Employees_SelectedPercent(strScheduleRating_TXT_Employees_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Employees_SelectedPercent,test);
+			
+			
+			se.element().enterOrValidateText(getScheduleRating_TXT_Employees_Reason(strScheduleRating_TXT_Employees_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Employees_Reason,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_Employees_Reason(strScheduleRating_TXT_Employees_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Employees_Reason,test);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_Prot_SelectedPercent(strScheduleRating_TXT_Prot_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Prot_SelectedPercent,test);
-			
+			se.element().enterOrValidateText(getScheduleRating_TXT_Prot_SelectedPercent(strScheduleRating_TXT_Prot_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Prot_SelectedPercent,test);
+					
+			se.element().enterOrValidateText(getScheduleRating_TXT_Prot_Reason(strScheduleRating_TXT_Prot_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Prot_Reason,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_Prot_Reason(strScheduleRating_TXT_Prot_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Prot_Reason,test);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_TurnOverRatio_SelectedPercent(strScheduleRating_TXT_TurnOverRatio_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_TurnOverRatio_SelectedPercent,test);
+			se.element().enterOrValidateText(getScheduleRating_TXT_TurnOverRatio_SelectedPercent(strScheduleRating_TXT_TurnOverRatio_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_TurnOverRatio_SelectedPercent,test);
 			
 			//se.element().enterOrValidateText(getScheduleRating_TXT_TurnOverRatio_Reason(strScheduleRating_TXT_TurnOverRatio_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_TurnOverRatio_Reason,test);
+			se.util().sleep(5000);
 			
-			
+			se.element().enterOrValidateText(getScheduleRating_TXT_LossHistory_SelectedPercent(strScheduleRating_TXT_LossHistory_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_LossHistory_SelectedPercent,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_LossHistory_SelectedPercent(strScheduleRating_TXT_LossHistory_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_LossHistory_SelectedPercent,test);
 			
 			//se.element().enterOrValidateText(getScheduleRating_TXT_LossHist3Year_Reason(strScheduleRating_TXT_LossHist3Year_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_LossHist3Year_Reason,test);
 			
-			
+			se.util().sleep(5000);
+			se.element().enterOrValidateText(getScheduleRating_TXT_SalaryRanges_SelectedPercent(strScheduleRating_TXT_SalaryRanges_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_SalaryRanges_SelectedPercent,test);
 			se.element().enterOrValidateText(getScheduleRating_TXT_SalaryRanges_SelectedPercent(strScheduleRating_TXT_SalaryRanges_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_SalaryRanges_SelectedPercent,test);
 			
 			//se.element().enterOrValidateText(getScheduleRating_TXT_SalaryRanges_Reason(strScheduleRating_TXT_SalaryRanges_Reason,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_SalaryRanges_Reason,test);
-			
+			se.util().sleep(5000);
 			
 			se.element().enterOrValidateText(getScheduleRating_TXT_Total_SelectedPercent(strScheduleRating_TXT_Total_SelectedPercent,strScheduleRating_TXT_State,strScheduleRating_TXT_LOB),strScheduleRating_TXT_Total_SelectedPercent,test);
 			
