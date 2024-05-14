@@ -39,7 +39,7 @@ import ap.pages.CP.CP_LiabilityAdditonalInterests;
 import ap.pages.CP.CP_LiabilityOptions;
 import ap.pages.CP.CP_Liablityclasses;
 import ap.pages.CP.CP_Liablitycoverages;
-import ap.pages.CP.CP_Locations;
+import ap.pages.CP.CP_BLocations;
 import ap.pages.CP.CP_LossHistoryExpRating;
 import ap.pages.CP.CP_OptionalPropertyCoverages;
 import ap.pages.CP.CP_PremiumIndication;
@@ -68,7 +68,7 @@ public class TC04_ND_TCRegression extends BaseTest{
 			CP_GenInfo CP_GenInfo = TestPageFactory.initElements(se, CP_GenInfo.class);
 			CP_ExtendedNamedInsured CP_ExtendedNamedInsured = TestPageFactory.initElements(se, CP_ExtendedNamedInsured.class);
 			CP_CoverageParts CP_CoverageParts = TestPageFactory.initElements(se, CP_CoverageParts.class);
-			CP_Locations CP_Locations = TestPageFactory.initElements(se, CP_Locations.class);
+			CP_BLocations CP_Locations = TestPageFactory.initElements(se, CP_BLocations.class);
 			CP_BuildingandOccupantSelection CP_BandOS = TestPageFactory.initElements(se, CP_BuildingandOccupantSelection.class);
 			CP_BulidingDetails CP_BulidingDetails = TestPageFactory.initElements(se, CP_BulidingDetails.class);
 			CP_PropertyCoverages CP_PropertyCoverages = TestPageFactory.initElements(se, CP_PropertyCoverages.class);

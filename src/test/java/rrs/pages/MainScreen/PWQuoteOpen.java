@@ -151,6 +151,8 @@ public class PWQuoteOpen extends OR_RRS_MainScreen{
 		se.element().switchToFrame(getPW_Frm_QuoteDetails());
 		se.element().Click(getCommon_BTN_QuoteforRenewal(),test);
 		driver.switchTo().defaultContent();
+		se.util().sleep(2000);
+		se.element().Click(getNext(),test);
 		se.element().waitForElementIsDisplayed(getCalprem());
 		se.element().Click(getCalprem(),test);
 		se.element().Click(getCalprem(),test);

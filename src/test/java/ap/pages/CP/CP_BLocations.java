@@ -19,7 +19,7 @@ import ap.Constants.constants;
 import ap.OR.BL_OR_CP;
 import ap.pages.common.AP_Login;
 
-public class CP_Locations extends BL_OR_CP {
+public class CP_BLocations extends BL_OR_CP {
 	String Edit ="Edit";
 	String Delete ="Delete";
 	String AddNew="Add";

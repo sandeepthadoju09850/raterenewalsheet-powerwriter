@@ -50,7 +50,7 @@ import ap.pages.CP.CP_LiabilityAdditonalInterests;
 import ap.pages.CP.CP_LiabilityOptions;
 import ap.pages.CP.CP_Liablityclasses;
 import ap.pages.CP.CP_Liablitycoverages;
-import ap.pages.CP.CP_Locations;
+import ap.pages.CP.CP_BLocations;
 import ap.pages.CP.CP_LossHistoryExpRating;
 import ap.pages.CP.CP_OptionalPropertyCoverages;
 import ap.pages.CP.CP_PremiumIndication;
@@ -124,7 +124,7 @@ public class CU07_IN_CURegression extends BaseTest{
 		UM_ScheduleName  UM_ScheduleName = TestPageFactory.initElements(se, UM_ScheduleName.class);
 		UM_Underwriter UM_Underwriter=TestPageFactory.initElements(se, UM_Underwriter.class);
 		CP_CoverageParts CP_CoverageParts = TestPageFactory.initElements(se, CP_CoverageParts.class);
-		CP_Locations CP_Locations = TestPageFactory.initElements(se, CP_Locations.class);
+		CP_BLocations CP_Locations = TestPageFactory.initElements(se, CP_BLocations.class);
 		CA_PolicyCoverages CA_PolicyCoverages=TestPageFactory.initElements(se, CA_PolicyCoverages.class);
 		CA_VehiclesCoverages CA_VehiclesCoverages=TestPageFactory.initElements(se, CA_VehiclesCoverages.class);
 		CA_AdditionalCoverages CA_AdditionalCoverages=TestPageFactory.initElements(se, CA_AdditionalCoverages.class);

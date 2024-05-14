@@ -12,15 +12,14 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 import Libraries.automation.common.BaseTest;
 import Libraries.automation.common.CommonAPMethods;
 import Libraries.automation.common.ExcelOperations;
 import Libraries.automation.common.SeHelper;
 import Libraries.automation.common.Utils.TestPageFactory;
-import Libraries.automation.common.framework.Browser.Browsers;
 import Libraries.automation.common.framework.Util;
+import Libraries.automation.common.framework.Browser.Browsers;
 import ap.Constants.constants;
 import ap.pages.CA.CA_AdditionalCoverages;
 import ap.pages.CA.CA_AdditionalInterests;
@@ -34,6 +33,7 @@ import ap.pages.CA.CA_Underwriter;
 import ap.pages.CA.CA_VehiclesCoverages;
 import ap.pages.CP.CP_AccountClearance;
 import ap.pages.CP.CP_AdditionalCoverageParts;
+import ap.pages.CP.CP_BLocations;
 import ap.pages.CP.CP_BillingInformation;
 import ap.pages.CP.CP_BuildingandOccupantSelection;
 import ap.pages.CP.CP_BulidingDetails;
@@ -48,7 +48,6 @@ import ap.pages.CP.CP_LiabilityAdditonalInterests;
 import ap.pages.CP.CP_LiabilityOptions;
 import ap.pages.CP.CP_Liablityclasses;
 import ap.pages.CP.CP_Liablitycoverages;
-import ap.pages.CP.CP_BLocations;
 import ap.pages.CP.CP_LossHistoryExpRating;
 import ap.pages.CP.CP_OptionalPropertyCoverages;
 import ap.pages.CP.CP_PremiumIndication;
@@ -85,7 +84,6 @@ import pw.pages.COMMON.PW_GenInfo;
 import pw.pages.COMMON.PW_Login;
 import pw.pages.COMMON.PW_ScheduleRatingIRPM;
 import pw.pages.CP.CP_Locations;
-import pw.pages.GL.GL_Location;
 import pw.pages.WC.WC_Classifications;
 import pw.pages.WC.WC_Locations;
 import pw.pages.WC.WC_StateInformation;
@@ -93,8 +91,8 @@ import pw.pages.WC.WC_WaiverOfSubrogation;
 import rrs.pages.MainScreen.PWQuoteOpen;
 import rrs.pages.MainScreen.RateRenewalSheet;
 
+public class RRS_Regression_04 extends BaseTest {
 
-public class RRS_Regression_02 extends BaseTest {
 	ExtentReports extent;
 	ExtentTest test;
 	
@@ -102,8 +100,7 @@ public class RRS_Regression_02 extends BaseTest {
 	static String policyNumberPackage = "";
 	static String PolicyNumberCA = "";
 	static String PolicyNumberWC = "";
-	static String quote = "";
-	//static String quote = "5201504";
+	static String quote = "5201504";
 
 
 	
@@ -228,7 +225,7 @@ public class RRS_Regression_02 extends BaseTest {
 			String strRole_SelectRoleAsTC = (String) rowTC.get("Select_RoleAs");
 			String strRelease_SelectReleaseTC = (String) rowTC.get("Select_Release");
 			// UNDERLYING POLICY 1 CUTC_08 NEW QUOTE TRANSACTION
-			
+		/*	
 			if (transactionsList.contains("BLNewQuote")) {
 				transaction = "NewQuote";String suspendSheet = ExcelOperations.getPageToBeSuspended(strRegressionID,transaction);
 				BLLoginPage.APAppLogin(strRegressionIDUnderlined,   transaction,"Yes", test);
@@ -339,7 +336,7 @@ public class RRS_Regression_02 extends BaseTest {
 				
 			}
 						
-	
+	*/
 			Date PWstartTime = Util.getTime();
 			if (transactionsList.contains("BPNewQuote")) {
 			transaction = "BPNewQuote";	
@@ -488,7 +485,7 @@ public class RRS_Regression_02 extends BaseTest {
 			}
 			
 			
-		if(transactionsList.contains("BPReviseQuoteTwo")){				
+		/*	if(transactionsList.contains("BPReviseQuoteTwo")){				
 				transaction = "BPReviseQuoteTwo";
 				CommonMethods.switchWindow(0,test);
 				String policyNum = PWQuoteOpen.policyNumberPackage;	
@@ -541,7 +538,7 @@ public class RRS_Regression_02 extends BaseTest {
 				test.log(LogStatus.INFO, "PW Elapsed Time", "<b>Started Time : "+PWstartTime+"<br> <b>Ended Time : "+Util.getTime()+"<br> <b>Time Taken : "+Util.DiffInTime(PWstartTime, Util.getTime()));
 				
 			}
-		
+		*/	
 				} 
 				catch (Exception e) {
 					e.printStackTrace();
@@ -551,6 +548,6 @@ public class RRS_Regression_02 extends BaseTest {
 				
 			
 			}
+
+
 }
-
-
